@@ -22,8 +22,7 @@ loadCSSFile('/css/style.css');
 // nav.js
 document.addEventListener('DOMContentLoaded', () => {
     const navbarContainer = document.getElementById('navbar');
-    const basePath = document.documentElement.getAttribute('data-base') || '/';
-    const navbarPath = basePath + 'Pages/navbar.html';
+    const navbarPath = '/navbar.html';
 
     fetch(navbarPath)
         .then(response => {
