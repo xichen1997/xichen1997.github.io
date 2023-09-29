@@ -18,10 +18,9 @@ email: chenxi.edu1997@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Here is my blog to record mine projects, articles and ideas.
   欢迎来到我的妙妙屋。
-baseurl: "xichen1997.github.io" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://xichen1997.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+github_username:  xichen1997
 
 # Build settings
 markdown: kramdown
