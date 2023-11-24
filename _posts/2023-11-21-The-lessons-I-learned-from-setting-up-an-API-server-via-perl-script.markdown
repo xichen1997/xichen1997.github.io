@@ -1,5 +1,9 @@
-# How to properly run a server via perl script
-
+---
+layout: post
+title:  "How to properly run a server via perl script"
+date:   2023-11-21 21:05:14 -0400
+categories: jekyll update
+---
 
 
 ## Problem Statement
