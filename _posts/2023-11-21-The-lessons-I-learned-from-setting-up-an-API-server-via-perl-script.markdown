@@ -1,10 +1,9 @@
 ---
 layout: post
-title:  "The-lessons-I-learned-from-setting-up-an-API-server-via-perl-script"
-date:   2023-11-21 21:05:14 -0400
+title: "The lessons I learned from setting up an API server via perl script"
+date: 2023-11-21 21:05:14 -0400
 categories: jekyll update
 ---
-
 
 ## Problem Statement
 
@@ -32,7 +31,7 @@ Use the command above in main test script will launch an API server in a child p
 
 However, my tests need to be run on all platform including windows, then it's not possible to use the UNIX/MAC specific command to kill the processes.
 
-Of course I can use 
+Of course I can use
 
 ```perl
 print "$^0"
@@ -40,9 +39,7 @@ print "$^0"
 
 to detect different OS and use different command to kill them, but I don't because I am afraid of some problem which unspecified platform will show up. I would like to use the naive perl method.
 
-
-
-Then the question become how to get the pid from the "system" command in perl, here, I use open3  [https://perldoc.perl.org/IPC::Open3]
+Then the question become how to get the pid from the "system" command in perl, here, I use open3 [https://perldoc.perl.org/IPC::Open3]
 
 The open3 will return a pid number, which could be used by perl to execute:
 
@@ -56,8 +53,6 @@ kill 'TERM', $pid;
 ```
 
 It should be fine to solve the problem, however, then I met the second question: The test is stucked once the child processes launch the API server.
-
-
 
 ### Program stucked after launch the API server.
 
@@ -77,29 +72,23 @@ Two ways to solve the problem:
 
 2. In the server.pl, add |=1 to force flush buffer.
 
-
-
 It should solve the problem of stucked program.
 
 However, new problem showed up:
 
-The server.pl still alive after successfully tests. 
+The server.pl still alive after successfully tests.
 
 I can still use ps aux | grep "server.pl" to find 4-5 processes.
 
-
-
 After careful thinking, I made an experiment which I will comment the "kill" in each tests, and after running the tests I found the residual processes have twice than before. This means the open3 launch not only 1 subprocess but 2.
 
-The reason is that the * couldn't been recognized by the open3 command, so open3 launch the command "perl server.pl daemon -l http://*:0" as a string via a bash subprocess, which run sh -c "perl server.pl daemon -l http://*:0". Thus, we know the reason behind it was we just kill the bash subprocess, not the server process.
+The reason is that the _ couldn't been recognized by the open3 command, so open3 launch the command "perl server.pl daemon -l http://_:0" as a string via a bash subprocess, which run sh -c "perl server.pl daemon -l http://\*:0". Thus, we know the reason behind it was we just kill the bash subprocess, not the server process.
 
 The fix is easy: replace it with "localhost" or "127.0.0.1".
 
-
-
 ### problem on windows
 
-Until this step, everything works fun on linux, however, on windows, the program stucked. 
+Until this step, everything works fun on linux, however, on windows, the program stucked.
 
 After investigation, I found the windows prefer the syntax:
 
@@ -107,9 +96,7 @@ After investigation, I found the windows prefer the syntax:
 open3(my *IN, my *OUT, my *ERR, $cmd);
 ```
 
-It was solved very easily. But I spent a lot of time on it. 
-
-
+It was solved very easily. But I spent a lot of time on it.
 
 ## Conclusion
 
