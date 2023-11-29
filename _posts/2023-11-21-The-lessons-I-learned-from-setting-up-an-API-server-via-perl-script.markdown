@@ -48,7 +48,7 @@ Kill 'TERM', $pid. which is quiet convenient.
 The command is:
 
 ```perl
-my $pid = open3(my $ In, my out, my err, "perl server.pl daemon -l http://*:0");
+my $pid = open3(my $in, my $out, my $err, "perl server.pl daemon -l http://*:0");
 kill 'TERM', $pid;
 ```
 
@@ -65,7 +65,7 @@ Two ways to solve the problem:
 1. use "unbuffer" to launch the server:
 
    ```perl
-   my $pid = open3(my $ In, my out, my err, "unbuffer perl server.pl daemon -l http://*:0");
+   my $pid = open3(my $in, my $out, my $err, "unbuffer perl server.pl daemon -l http://*:0");
    ```
 
    However, this can't be done on windows.
