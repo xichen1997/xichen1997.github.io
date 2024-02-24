@@ -39,11 +39,11 @@ quiet different from other gigabytes UEFI/BIOS. I search for a long time and did
 
 New UI:
 
-![The newly User-Centered BIOS is now available on GIGABYTE 600/700 series  motherboards | News - GIGABYTE Global](https://www.gigabyte.com/FileUpload/Global/News/2115/o202309280857186232.png)
+![New UI](https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/typora/20240224121733.jpg)
 
 Old UI:
 
-![X670 AORUS ELITE AX (rev. 1.0/1.2) Key Features | Motherboard - GIGABYTE  Global](https://www.gigabyte.com/FileUpload/Global/KeyFeature/2172/innergigabyteimages/auto-booster.jpg)
+![OLD UI](https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/typora/20240224121733.jpg)
 
 There are not so much configuration need to be finished. And I couldn't find anything related to change from onboard GPU to dedicated GPU HDMI, and many things are setup with "auto". Thus, I assume the hardware nowadays are intelligent enough to support all kinds of mode without manually setup.
 

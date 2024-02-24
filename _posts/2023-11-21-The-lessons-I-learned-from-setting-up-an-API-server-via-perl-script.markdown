@@ -26,7 +26,7 @@ system(perl server.pl daemon -l http://*:0);
 Use the command above in main test script will launch an API server in a child process. The residual server processes should be killed without any left after the tests. At first I use "system" to run the command, and then kill it in a different system command via:
 
 ```bash
- ps aux |grep "xxx" | awk {print $2}" | xargs kill
+ ps aux | grep "xxx" | awk {print $2}" | xargs kill
 ```
 
 However, my tests need to be run on all platform including windows, then it's not possible to use the UNIX/MAC specific command to kill the processes.
@@ -70,7 +70,7 @@ Two ways to solve the problem:
 
    However, this can't be done on windows.
 
-2. In the server.pl, add |=1 to force flush buffer.
+2. In the server.pl, add `|=1` to force flush buffer.
 
 It should solve the problem of stucked program.
 
@@ -78,7 +78,7 @@ However, new problem showed up:
 
 The server.pl still alive after successfully tests.
 
-I can still use ps aux | grep "server.pl" to find 4-5 processes.
+I can still use `ps aux | grep "server.pl"` to find 4-5 processes.
 
 After careful thinking, I made an experiment which I will comment the "kill" in each tests, and after running the tests I found the residual processes have twice than before. This means the open3 launch not only 1 subprocess but 2.
 
