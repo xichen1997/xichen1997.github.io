@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "Several issues I meet when plug in new RTX 4090 GPU for my workstation"
-date: 2024-02-24 21:05:14 -0400
+date: 2024-02-24 00:05:14 -0400
 categories: jekyll update
 ---
 
 # Several issues I meet when plug in new RTX 4090 GPU for my workstation
 
-Background hardware setup:
+Background hardware s
 
 AMD 7950X3D
 
