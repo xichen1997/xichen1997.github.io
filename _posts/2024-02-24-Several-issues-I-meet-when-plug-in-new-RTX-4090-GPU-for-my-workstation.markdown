@@ -39,7 +39,7 @@ quiet different from other gigabytes UEFI/BIOS. I search for a long time and did
 
 New UI:
 
-![New UI](https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/typora/20240224121733.jpg)
+![New UI](https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/typora/20240224121433.png)
 
 Old UI:
 
