@@ -10,16 +10,17 @@ categories:
 
 # Introduction
 
-nowdays, the chatgpt has been inserted into every aspect of our life and work. It greatly enhance the capacity for not only the individual developer, but staff in giant tech. 
+Nowadays, chatgpt has been integrated into every aspect of our lives and work. It greatly enhances the capacity not only of the individual developer, but of staff in giant tech. 
 
-It also has great potential in education, in my opinion, it's more like a very very patient personal teacher, which can answer you many strange questions any time and willing to discuss the details with you. And it has almost all the knowledge of human being, kind like the Aristle in 21st centry.
+It also has great potential in education. In my opinion, it's more like a very, very patient personal teacher that can many strange questions any time and is willing to discuss the details with you. And it possesses almost all human knowledge, akin to Aristotle in 21st centry.
 
-However, as we know the model is based on "probability", which means it doesn't really understand what's the sentense, but answer our queries with all the data feeded into the model, hided under billions of parameters. So that's why the answer from it can be misleading or with prejudice, and waste a lot of time. 
+However, as we know, the model is based on "probability", which means it doesn't really understand sentense, but answer our queries with all the data feeded into the model, hided under billions of parameters. So that's why the answer from it can be misleading and prejudiced.
 
-Because it doesn't have the reasoning, it's very hard to say no to some queries it doesn't know very well. Some times it just reply based on old memory, like the bugs under different operating system versions will generate confusing answer. That's the hallucination, a slight details can lead a giant error.
+Because it lacks reasoning, it's very hard to say no to queries it doesn't know well. Some times it replies based on old memory, like the bugs under different operating system versions,
+leading to confusing answer. That's the hallucination--a slight details can lead a giant error-- is a significant drawback.
 
 
-Here is my experience when setting up home assistant operating system on my raspberry pi 5.
+Here is my experience using GPT, setting up home assistant operating system on my raspberry pi 5.
 
 
 # Set up HomeAssistant with raspberry pi
@@ -28,7 +29,7 @@ First, I downloaded a specific operating system image and flash it into a SD car
 
 However, I found the fan connected to the raspberry pi couldn't response while the temperature is rising. (Raspberry pi 5 peak power reaches 27W, which need active cooling fan).
 
-I guess it's the operating system doesn't support GPIO control as the official image. Then I looked for some workaround, for example, running the HA(homeassistant) in the docker:
+I guessed it's the operating system doesn't support GPIO control like official image. Then I looked for some workarounds, for example, running the HA(homeassistant) in the docker:
 
 https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5
 
@@ -110,7 +111,7 @@ except KeyboardInterrupt:
     GPIO.cleanup()
 
 ```
-However, it doesn't work. After checking the logging, I foudnthe RPi.GPIO is not supported. Then I realized it's not official image, may doesn't have the GPIO configuration. Then I asked GPT to have a GPIO mapping, it gives me some suggestions:
+However, it didn't work. After checking the logging, I found that RPi.GPIO is not supported. Then I realized it's not official image, may doesn't have the GPIO configuration. Then I asked GPT to have a GPIO mapping, it gives me some suggestions:
 
 1. Adding `privileged=true` in configuration yaml file. 
  which will adding `--privileged` when running the docker.
@@ -146,24 +147,23 @@ And it's not supported on raspberry pi5, only works under raspberry pi4.
 
 The LLM can give us lots of information based on the training data. However, it still has many disadvantage. 
 
-### First thing is hallucination.
+### First, hallucination.
  
-it will make up some knowledge which doesn't exist with prior knowledge, in this case, it made up the knowledge about HA in raspberry pi5. And it can't tell us which one is not possible, and we should stop trying in certain way(lack of reasoning capacity). 
+It will make up some knowledge which doesn't based on prior knowledge. In my case, it made up the knowledge about HA in raspberry pi5. And it can't tell us which one is not possible, and if we should stop trying with current method(lack of reasoning capacity). 
 
 This will lead us spending a lot of time to debug what it tells us, which is much more time consuming. If I knew the raspberry pi5 can't use GPIO with HA I wouldn't try it. 
 
 ### Even if it has lots of shortages, we can still use it and learn from it.
 
-For example, I used it and learned how to setup addons in HomeAssistant, which I will almost not touch this area, and it also teaches me how to make a docker image with Dockerfile in a understandable and practical way, which is really helpful.
+For example, I used it and learned how to setup addons in HomeAssistant, which I would almost never touch this area, and it also taught me how to make a docker image with Dockerfile in a understandable and practical way, which is really helpful.
 
 We should take the advantage with LLM to open our horizon and technical stacks, this will provide different point of view when we meet something new.
 
 ### Expert will has more advantage
 
-This new technology will benefit the experienced programmer more. 
-Once the LLM provide some solutions or code, the programmer with more experience will know if this is possible or not very quick and give some more detailed instruction to LLM. As we know if we give a more detailed and well-organized description, we will have better output. 
+This new technology will benefit the experienced programmer more. Once the LLM provide some solutions or code, the programmer with more experience will know if this is possible or not very quick and give some more detailed instruction to LLM. As we know if we give a more detailed and well-organized description, we will have better output. 
 
-In this case these experts will free their hands from debugs and tedious work and think more deeper and systemically, which greatly increase their production rate(Few people could organize a company). 
+In this case these experts will free their hands from debugs and tedious work and think more deeper and systemically, which greatly increase productivity(Few people could organize a company). 
 
 
-The LLM is more like a powerful tool. These with lots of prior knowledge will take good use of it in the best way.
+The LLM is more like a powerful tool. Those with lots of prior knowledge will use it in the best way.
