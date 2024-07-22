@@ -24,7 +24,15 @@ github_username:  xichen1997
 
 # Build settings
 markdown: kramdown
-theme: minima
+# theme: minima-dark
+remote_theme: jekyll/minima
+plugins:
+  - jekyll-remote-theme
+minima:
+  skin: dark # or auto if you want it to switch with your system settings.
+
+
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
