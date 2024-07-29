@@ -26,7 +26,7 @@ system(perl server.pl daemon -l http://*:0);
 Use the command above in main test script will launch an API server in a child process. The residual server processes should be killed without any left after the tests. At first I use "system" to run the command, and then kill it in a different system command via:
 
 ```bash
- ps aux | grep "xxx" | awk {print $2}" | xargs kill
+ps aux \| grep "xxx" \| awk {print $2}" \| xargs kill
 ```
 
 However, my tests need to be run on all platform including windows, then it's not possible to use the UNIX/MAC specific command to kill the processes.
