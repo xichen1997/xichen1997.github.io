@@ -98,10 +98,10 @@ WantedBy=multi-user.target
 
 - your_local_username: Your local machine's username.
 - /path/to/your/private/key: The path to your SSH private key.
-- [VPS_port]: The port on the VPS for the reverse tunnel (e.g., 2222).
-- [local_port]: The port on the local machine to forward (e.g., 22).
-- [vps_user]: Your VPS username.
-- [vps_ip]: The IP address or domain of your VPS.
+- VPS_port: The port on the VPS for the reverse tunnel (e.g., 2222).
+- local_port: The port on the local machine to forward (e.g., 22).
+- vps_user: Your VPS username.
+- vps_ip: The IP address or domain of your VPS.
 
 
 Reload the systemd daemon to recognize the new service:
