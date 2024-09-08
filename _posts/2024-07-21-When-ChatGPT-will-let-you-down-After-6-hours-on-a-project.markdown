@@ -5,6 +5,7 @@ date: 2024-07-21 00:05:14 -0400
 categories: 
   - AI
   - programming
+  - computer_science
 ---
 
 

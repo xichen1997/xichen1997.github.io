@@ -2,7 +2,7 @@
 layout: post
 title: "Several issues I meet when plug in new RTX 4090 GPU for my workstation"
 date: 2024-02-24 00:05:14 -0400
-categories: jekyll update
+categories: computer_science
 ---
 
 # Several issues I meet when plug in new RTX 4090 GPU for my workstation

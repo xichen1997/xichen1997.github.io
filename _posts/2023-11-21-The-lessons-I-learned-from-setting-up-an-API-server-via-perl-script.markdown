@@ -2,7 +2,7 @@
 layout: post
 title: "The lessons I learned from setting up an API server via perl script"
 date: 2023-11-21 21:05:14 -0400
-categories: jekyll update
+categories: computer_science
 ---
 
 ## Problem Statement

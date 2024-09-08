@@ -2,7 +2,7 @@
 layout: post
 title: "HPC-2-Memory-hierarchy-in-computer"
 date: 2024-04-15 00:05:14 -0400
-categories: jekyll update
+categories: HPC computer_science
 ---
 
 # Hierarchy Memory

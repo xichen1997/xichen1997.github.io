@@ -2,7 +2,7 @@
 layout: post
 title:  "Why I open this blog"
 date:   2023-09-28 21:05:14 -0400
-categories: jekyll update
+categories: HPC computer_science
 ---
 Feynman has told us the best way to learn something is that you use concise and understandable words introduce what you learned to others, if they can understand well, then you master the knowledge.
 
