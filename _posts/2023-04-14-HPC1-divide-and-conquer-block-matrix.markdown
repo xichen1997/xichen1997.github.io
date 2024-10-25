@@ -345,9 +345,9 @@ $$
 $$
 The overall FMAs is mnk in this equation, we assume we can have Fmax FMAs by sending the memory into register once, then we need to transfer data:
 $$
-\begin{equation}
+\begin{equation*}
 \left(\frac{m n k}{F_{\rm max}} -1 \right) M
-\end{equation}
+\end{equation*}
 $$
 So if we choose S and M properly, we can maximize F and get the good solution of all the equation. In order to maximize F, we could use a model to abstract this procedure:
 
@@ -384,10 +384,10 @@ And:
 
 
 $$
-\begin{equation}
+\begin{equation*}
 \left(\frac{m n k}{F_{\rm max}} -1 \right) M = 
 \left(3 \sqrt{3} \frac{m n k}{( S + M )\sqrt{S+M}} -1 \right) M.
-\end{equation}
+\end{equation*}
 $$
 Take the derivatives of the right hand side, we assume S is a const and M is a variable, so in the end we get:
 $$
@@ -395,10 +395,10 @@ M=2S
 $$
 
 $$
-\begin{equation}
+\begin{equation*}
 \left(3 \sqrt{3} \frac{m n k}{( 3 S  )\sqrt{3 S}} -1 \right) (2S)
 = 2 \frac{m n k}{\sqrt{S}} - 2S.
-\end{equation}
+\end{equation*}
 $$
 
 Satisfy the equation, and S+M <= register memory, the S is bigger, the performance is better. and M = 2S. If we take an example, t

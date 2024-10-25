@@ -39,13 +39,17 @@ Note that:
 
 This algorithm means that we can use micro kernel algorithm to realize the operation in the three-for-loop:
 $$
-\begin{equation}
+\begin{equation*}
 C_{i, j}:= A_{i, p} B_{p, j}+C_{i, j}
-\end{equation}
+\end{equation*}
+
+The block matrix $C_{i,j}$ ,$A_{i,p}$ and $B_{p,j}$ small block matrix, which are submatrix. We define the ijp loop as level 1 for loop. The algorithm to realize
+
+$$ 
+\begin{equation*}
+C_{i, j}:= A_{i, p} B_{p, j}+C_{i, j}
+\end{equation*}
 $$
-The block matrix $C_{i,j}$ ,$A_{i,p}$ and $B_{p,j}$ small block matrix, which are submatrix. We define the ijp loop as level 1 for loop. The algorithm to realize $\begin{equation}
-C_{i, j}:= A_{i, p} B_{p, j}+C_{i, j}
-\end{equation}$ 
 
 as level 2 loop.
 
@@ -91,34 +95,34 @@ In the micro kernel for loop, we use vector intrinsic function:
 $$
 \begin{equation*}
 \begin{array}{rcl}
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
 m_C n_C \beta_{C \leftrightarrow M}} \\
-\mbox{load}~C_{i,j}
+\text{load}~C_{i,j}
 \end{array}
 + 
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
 m_C k_C \beta_{C \leftrightarrow M}} \\
-\mbox{load}~A_{i,p}
+\text{load}~A_{i,p}
 \end{array}
 +
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
 k_C n_C \beta_{C \leftrightarrow M}} \\
-\mbox{load}~B_{p,j}
+\text{load}~B_{p,j}
 \end{array} \\[0.2in]
 + 
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
 2 m_C  n_C k_C \gamma_C} \\
-\mbox{update}~C_{i,j} +:= A_{i,p} B_{p,j}
+\text{update}~C_{i,j} +:= A_{i,p} B_{p,j}
 \end{array} 
 +
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
 m_C n_C \beta_{C \leftrightarrow M}} \\
-\mbox{store}~C_{i,j}
+\text{store}~C_{i,j}
 \end{array}
 \end{array}
 \end{equation*}
@@ -126,19 +130,19 @@ $$
 The total cost is:
 $$
 \begin{equation*}
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
 \left( 2 m_C n_C + m_C k_C + k_C n_C \right) \beta_{C
 \leftrightarrow M}
 } \\
-\mbox{data movement overhead}
+\text{data movement overhead}
 \end{array}
 +
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
-2 m_C n_C k_C \gamma_C. 
+2 m_C n_C k_C \gamma_C
 } \\
-\mbox{useful computation}
+\text{useful computation}
 \end{array}
 \end{equation*}
 $$
@@ -146,10 +150,11 @@ Assume we have the square matrix, and their sizes are the same:
 $$
 \begin{equation*}
 \frac{ 2 m_C n_C k_C}
-{	   2 m_C n_C + m_C k_C + k_C n_C }.
-= \frac{2 b^3}{4b^2} = \frac{b}{2}.
+{	   2 m_C n_C + m_C k_C + k_C n_C }
+= \frac{2 b^3}{4b^2} = \frac{b}{2}
 \end{equation*}
 $$
+
 So the b is larger, more time you will use in computation rather than transferring data.
 
 * note that the data transferring expense in cache to main memory is more than 100 times than floats operation.
@@ -199,34 +204,34 @@ Each Level 2 for loop's expense is:
 $$
 \begin{equation*}
 \begin{array}{rcl}
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
 m_C n \beta_{C \leftrightarrow M}} \\
-\mbox{load}~C_{i,j}
+\text{load}~C_{i,j}
 \end{array}
 +
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
 m_C k_C \beta_{C \leftrightarrow M}} \\
-\mbox{load}~A_{i,p}
+\text{load}~A_{i,p}
 \end{array}
 +
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
 k_C n \beta_{C \leftrightarrow M}} \\
-\mbox{load}~B_{p,j}
+\text{load}~B_{p,j}
 \end{array} \\[0.2in]
 +
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
 2 m_C  n  k_C \gamma_C} \\
-\mbox{update}~C_{i} +:= A_{i,p} B_{p}
+\text{update}~C_{i} +:= A_{i,p} B_{p}
 \end{array} 
 +
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
 m_C n \beta_{C \leftrightarrow M}} \\
-\mbox{store}~C_{i,j}
+\text{store}~C_{i,j}
 \end{array}
 \end{array}
 \end{equation*}
@@ -234,19 +239,19 @@ $$
 And the summary is:
 $$
 \begin{equation*}
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
 m_C k_C + \left( 2 m_C n + k_C n \right) \beta_{C
 \leftrightarrow M}
 } \\
-\mbox{data movement overhead}
+\text{data movement overhead}
 \end{array}
 +
-\begin{array}[t]{c}
+\begin{array}{c}
 \underbrace{
-2 m_C n k_C \gamma_C. 
+2 m_C n k_C \gamma_C
 } \\
-\mbox{useful computation}
+\text{useful computation}
 \end{array}
 \end{equation*}
 $$
@@ -577,3 +582,5 @@ https://zh.wikipedia.org/wiki/循环展开
 **Note**:
 
 https://github.com/flame/blis/blob/master/kernels/haswell/3/old/bli_gemm_haswell_asm_d6x8.c
+
+
