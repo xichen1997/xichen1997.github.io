@@ -92,68 +92,17 @@ From the result above we can see that the micro-kernel is not sensitive to the o
 ### 3.2 performance analysis
 
 In the micro kernel for loop, we use vector intrinsic function:
-$$
-\begin{equation*}
-\begin{array}{rcl}
-\begin{array}{c}
-\underbrace{
-m_C n_C \beta_{C \leftrightarrow M}} \\
-\text{load}~C_{i,j}
-\end{array}
-+ 
-\begin{array}{c}
-\underbrace{
-m_C k_C \beta_{C \leftrightarrow M}} \\
-\text{load}~A_{i,p}
-\end{array}
-+
-\begin{array}{c}
-\underbrace{
-k_C n_C \beta_{C \leftrightarrow M}} \\
-\text{load}~B_{p,j}
-\end{array} \\[0.2in]
-+ 
-\begin{array}{c}
-\underbrace{
-2 m_C  n_C k_C \gamma_C} \\
-\text{update}~C_{i,j} +:= A_{i,p} B_{p,j}
-\end{array} 
-+
-\begin{array}{c}
-\underbrace{
-m_C n_C \beta_{C \leftrightarrow M}} \\
-\text{store}~C_{i,j}
-\end{array}
-\end{array}
-\end{equation*}
-$$
-The total cost is:
-$$
-\begin{equation*}
-\begin{array}{c}
-\underbrace{
-\left( 2 m_C n_C + m_C k_C + k_C n_C \right) \beta_{C
-\leftrightarrow M}
-} \\
-\text{data movement overhead}
-\end{array}
-+
-\begin{array}{c}
-\underbrace{
-2 m_C n_C k_C \gamma_C
-} \\
-\text{useful computation}
-\end{array}
-\end{equation*}
-$$
+
+
+
+
+![](https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/20241025024525.png)
+
+
 Assume we have the square matrix, and their sizes are the same:
-$$
-\begin{equation*}
-\frac{ 2 m_C n_C k_C}
-{	   2 m_C n_C + m_C k_C + k_C n_C }
-= \frac{2 b^3}{4b^2} = \frac{b}{2}
-\end{equation*}
-$$
+
+
+![](https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/20241025024703.png)
 
 So the b is larger, more time you will use in computation rather than transferring data.
 
@@ -582,5 +531,6 @@ https://zh.wikipedia.org/wiki/循环展开
 **Note**:
 
 https://github.com/flame/blis/blob/master/kernels/haswell/3/old/bli_gemm_haswell_asm_d6x8.c
+
 
 
