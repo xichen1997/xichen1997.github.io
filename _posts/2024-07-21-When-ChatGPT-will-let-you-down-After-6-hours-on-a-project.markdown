@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: 'When ChatGPT will let you down?After 6 hours on a project'
 date: 2024-07-21 00:05:14 -0400
 categories: 

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "HPC-3-use-openmp(shared-memory-method)"
 date: 2024-04-16 00:05:14 -0400
 categories: HPC computer_science

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "HPC-1-divide-and-conquer-block-matrix-algorithmr"
 date: 2024-04-15 00:05:14 -0400
 categories: jekyll update

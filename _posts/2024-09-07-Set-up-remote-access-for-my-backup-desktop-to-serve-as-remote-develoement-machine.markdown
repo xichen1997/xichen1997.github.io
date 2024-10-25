@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "Set up remote access for my backup desktop to serve as remote development machine"
 date: 2024-09-07 00:05:00 +0000
 categories: computer_science

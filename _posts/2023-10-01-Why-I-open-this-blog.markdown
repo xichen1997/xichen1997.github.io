@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Why I open this blog"
 date:   2023-09-28 21:05:14 -0400
 categories: HPC computer_science

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "HPC-2-Memory-hierarchy-in-computer"
 date: 2024-04-15 00:05:14 -0400
 categories: HPC computer_science
