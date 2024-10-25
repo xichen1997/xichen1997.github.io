@@ -52,123 +52,49 @@ $$
 $$
 
 $$
-\begin{equation*}
-\begin{array}{l}
-\begin{array}[t]{c}
-\underbrace{M N K}\\
-\mbox{numb.}\\
-\mbox{of MMM}\\
-\mbox{with blocks}
-\end{array}
-\left(
-\begin{array}[t]{c}
-\underbrace{
-(m_R n_R + m_R k_R + k_R n_R) \beta_{R \leftrightarrow M} }\\
-\mbox{Load blocks of }A, B, \mbox{ and }C
-\end{array}
-+
-\begin{array}[t]{c}
-\underbrace{
-2 m_R n_R k_R  \gamma_R }
-\\
-\mbox{multiplication}\\
-\mbox{with blocks}
-\end{array}
-+
-\begin{array}[t]{c}
-\underbrace{
-m_R n_R \beta_{R \leftrightarrow M} }\\
-\mbox{Write block of }C
-\end{array}
-\right)\\
-=\\
-\begin{array}{rcl}
-2 
-(M m_R) 
-(Nn_R)(K k_R) \gamma_R 
-+ 
-2 (M m_R) (N n_R ) K \beta_{R \leftrightarrow M}
-\\
-+
-(M m_R) N ( K k_R ) \beta_{R \leftrightarrow M}
-+
-M (N n_R) ( K k_R ) \beta_{R \leftrightarrow M}
-\end{array}
-\\
-~~~=~~~~\\
-\begin{array}[t]{c}
-\underbrace{
-2 m n k \gamma_R}\\
-\mbox{useful computation}
-\end{array}
-+~~~~~~~
-\begin{array}[t]{c}
-\underbrace{
-m n k ( \frac{2}{k_R} +
-\frac{1}{n_R} + \frac{1}{m_R} ) \beta_{R \leftrightarrow M},}
-\\
-\mbox{overhead}
-\end{array}
-\end{array}
-\end{equation*}
+\begin{aligned}
+& MNK \left( (m_R n_R + m_R k_R + k_R n_R) \beta_{R \leftrightarrow M} + 2 m_R n_R k_R \gamma_R + m_R n_R \beta_{R \leftrightarrow M} \right) \\
+&= 2 (M m_R)(N n_R)(K k_R) \gamma_R + 2 (M m_R)(N n_R) K \beta_{R \leftrightarrow M} \\
+&\quad + (M m_R) N (K k_R) \beta_{R \leftrightarrow M} + M (N n_R)(K k_R) \beta_{R \leftrightarrow M} \\
+&= 2 m n k \gamma_R + m n k \left( \frac{2}{k_R} + \frac{1}{n_R} + \frac{1}{m_R} \right) \beta_{R \leftrightarrow M}
+\end{aligned}
 $$
 
 
-
-In this exmple, the process is :
-$$
-\begin{equation*}
-\begin{array}{l}
-{\bf for~}  j := 0, \ldots , N-1  \\
-~~~ {\bf for~}  i := 0, \ldots , M-1  \\
-~~~ ~~~ {\bf for~}  p := 0, \ldots , K-1  \\
-~~~ ~~~ ~~~ {\rm Load~}  C_{i,j} ,  A_{i,p} , {\rm ~and~}
-B_{p,j}  {\rm ~into~registers} \\
-~~~ ~~~ ~~~  C_{i,j} := A_{i,p} B_{p,j} + C_{i,j}  \\
-~~~ ~~~ ~~~ {\rm Store~}  C_{i,j} {\rm ~to~memory}  \\
-~~~ ~~~ {\bf end} \\
-~~~ {\bf end} \\
-{\bf end}
-\end{array}
-\end{equation*}
-$$
-But we could do better in this example, that is we can save 
-$$
-C_{ij}
-$$
-before P loop, then the process becomes:
+The process is:
 
 $$
-\begin{equation*}
-\begin{array}{l}
-{\bf for~}  j := 0, \ldots , N-1  \\
-~~~ {\bf for~}  i := 0, \ldots , M-1  \\
-~~~ ~~~ {\rm Load~} C_{i,j}\\
+\begin{aligned}
+& \text{for } j = 0, \ldots, N-1 \\
+& \quad \text{for } i = 0, \ldots, M-1 \\
+& \quad \quad \text{for } p = 0, \ldots, K-1 \\
+& \quad \quad \quad \text{Load } C_{i,j}, A_{i,p}, \text{ and } B_{p,j} \text{ into registers} \\
+& \quad \quad \quad C_{i,j} := A_{i,p} B_{p,j} + C_{i,j} \\
+& \quad \quad \quad \text{Store } C_{i,j} \text{ to memory}
+\end{aligned}
+$$
 
-~~~ ~~~ {\bf for~}  p := 0, \ldots , K-1  \\
-~~~ ~~~ ~~~ {\rm Load~}    A_{i,p} , {\rm ~and~}
-B_{p,j}  {\rm ~into~registers} \\
-~~~ ~~~ ~~~  C_{i,j} := A_{i,p} B_{p,j} + C_{i,j}  \\
-~~~ ~~~ {\bf end} \\
-~~~ ~~~ {\rm Store~}C_{i,j}\\
-~~~ {\bf end} \\
-{\bf end}
-\end{array}
-\end{equation*}
+But we could do better by saving $C_{ij}$ before the P loop:
+
 $$
-Then the final computational time is :
+\begin{aligned}
+& \text{for } j = 0, \ldots, N-1 \\
+& \quad \text{for } i = 0, \ldots, M-1 \\
+& \quad \quad \text{Load } C_{i,j} \\
+& \quad \quad \text{for } p = 0, \ldots, K-1 \\
+& \quad \quad \quad \text{Load } A_{i,p} \text{ and } B_{p,j} \text{ into registers} \\
+& \quad \quad \quad C_{i,j} := A_{i,p} B_{p,j} + C_{i,j} \\
+& \quad \quad \text{Store } C_{i,j}
+\end{aligned}
 $$
-\begin{equation*}
-\begin{array}{l}
-M N K ( 2 m_R n_R k_R ) \gamma_R 
-+ \left[ M N  ( 2 m_R n_R ) 
-+ M N K (m_R k_R + k_R n_R )\right] \beta_{R 
-\leftrightarrow M}\\
-~~~= 2 m n k \gamma_R+ \left[ 2 m n + m n k (
-\frac{1}{n_R} + \frac{1}{m_R} ) \right]  \beta_{R 
-\leftrightarrow M}. 
-\end{array}
-\end{equation*}
+
+Then the final computational time is:
+
+$$
+\begin{aligned}
+& MNK(2m_Rn_Rk_R)\gamma_R + [MN(2m_Rn_R) + MNK(m_Rk_R + k_Rn_R)]\beta_{R \leftrightarrow M} \\
+&= 2mnk\gamma_R + \left[2mn + mnk\left(\frac{1}{n_R} + \frac{1}{m_R}\right)\right]\beta_{R \leftrightarrow M}
+\end{aligned}
 $$
 The capital K is Larger, the saved time is more.
 
@@ -209,105 +135,138 @@ In fact in the operation of streaming operation, we don't need to split the p in
 FMA: fused multiple add operation
 
 SIMD: simple instruction multiple data
+
 $$
-\begin{equation*}
-\begin{array}{l}
-\left( \begin{array}{c c c c}
-\gamma_{0,0} \  \gamma_{0,1} \ \gamma_{0,2}  
-\gamma_{0,3} \\
-\gamma_{1,0} \  \gamma_{1,1} \ \gamma_{1,2}
-\ \gamma_{1,3} \\
-\gamma_{2,0} \ \gamma_{2,1} \ \gamma_{2,2}
-\ \gamma_{2,3} \\
-\gamma_{3,0} \ \gamma_{3,1} \ \gamma_{3,2}
-\ \gamma_{3,3}
-\end{array} \right) 
+\begin{pmatrix}
+\gamma_{0,0} & \gamma_{0,1} & \gamma_{0,2} & \gamma_{0,3} \\
+\gamma_{1,0} & \gamma_{1,1} & \gamma_{1,2} & \gamma_{1,3} \\
+\gamma_{2,0} & \gamma_{2,1} & \gamma_{2,2} & \gamma_{2,3} \\
+\gamma_{3,0} & \gamma_{3,1} & \gamma_{3,2} & \gamma_{3,3}
+\end{pmatrix}
 +:=
-\left( \begin{array}{c}
+\begin{pmatrix}
 \alpha_{0,p} \\
 \alpha_{1,p} \\
 \alpha_{2,p} \\
 \alpha_{3,p}
-\end{array} \right) 
-\left( \begin{array}{c c c c}
-\beta_{p,0} \ \beta_{p,1} \ \beta_{p,2} \ 
-\beta_{p,3}
-\end{array} \right) \\
-~~~=
+\end{pmatrix}
+\begin{pmatrix}
+\beta_{p,0} & \beta_{p,1} & \beta_{p,2} & \beta_{p,3}
+\end{pmatrix}
+$$
+
+
+$$
 \beta_{p,0} 
-\left( \begin{array}{c}
+\begin{pmatrix}
 \alpha_{0,p} \\
 \alpha_{1,p} \\
 \alpha_{2,p} \\
 \alpha_{3,p}
-\end{array} \right) 
+\end{pmatrix}
 +
 \beta_{p,1} 
-\left( \begin{array}{c}
+\begin{pmatrix}
 \alpha_{0,p} \\
 \alpha_{1,p} \\
 \alpha_{2,p} \\
 \alpha_{3,p}
-\end{array} \right) 
+\end{pmatrix}
 +
 \beta_{p,2} 
-\left( \begin{array}{c}
+\begin{pmatrix}
 \alpha_{0,p} \\
 \alpha_{1,p} \\
 \alpha_{2,p} \\
 \alpha_{3,p}
-\end{array} \right) 
+\end{pmatrix}
 +
 \beta_{p,3} 
-\left( \begin{array}{c}
+\begin{pmatrix}
 \alpha_{0,p} \\
 \alpha_{1,p} \\
 \alpha_{2,p} \\
 \alpha_{3,p}
-\end{array} \right)  
-\end{array}
-\end{equation*}
+\end{pmatrix}
 $$
+
 If we use SIMD:
+
 $$
-\begin{equation*}
-\begin{array}{|c|}\hline 
+\beta_{p,0} 
+\begin{pmatrix}
+\alpha_{0,p} \\
+\alpha_{1,p} \\
+\alpha_{2,p} \\
+\alpha_{3,p}
+\end{pmatrix}
++
+\beta_{p,1} 
+\begin{pmatrix}
+\alpha_{0,p} \\
+\alpha_{1,p} \\
+\alpha_{2,p} \\
+\alpha_{3,p}
+\end{pmatrix}
++
+\beta_{p,2} 
+\begin{pmatrix}
+\alpha_{0,p} \\
+\alpha_{1,p} \\
+\alpha_{2,p} \\
+\alpha_{3,p}
+\end{pmatrix}
++
+\beta_{p,3} 
+\begin{pmatrix}
+\alpha_{0,p} \\
+\alpha_{1,p} \\
+\alpha_{2,p} \\
+\alpha_{3,p}
+\end{pmatrix}
+$$
+
+If we use SIMD:
+
+$$
+\begin{array}{|c|}
+\hline 
 \gamma_{0,0} \\ \hline 
 \gamma_{1,0} \\ \hline 
 \gamma_{2,0} \\ \hline 
 \gamma_{3,0} \\ \hline 
 \end{array}
-~~~~~
+\quad
 \begin{array}{c}
 +:= \\
 +:= \\
 +:= \\
 +:= 
 \end{array}
-~~~~~
-\begin{array}{|c|}\hline 
+\quad
+\begin{array}{|c|}
+\hline 
 \alpha_{0,p} \\ \hline 
 \alpha_{1,p} \\ \hline 
 \alpha_{2,p} \\ \hline 
 \alpha_{3,p} \\ \hline 
 \end{array}
-~~~~~
+\quad
 \begin{array}{c}
 \times \\
 \times \\
 \times \\
 \times 
 \end{array}
-~~~~~
-\begin{array}{|c|}\hline 
+\quad
+\begin{array}{|c|}
+\hline 
 \beta_{p,0} \\ \hline 
 \beta_{p,0} \\ \hline 
 \beta_{p,0} \\ \hline 
 \beta_{p,0} \\ \hline 
 \end{array}
-\end{equation*}
 $$
-
 
 Then implement it use the code: using AX2 intrinsic.
 
@@ -378,13 +337,11 @@ S is for the C matrix, M is for the matrix of B and A. Because in the end we wil
 
 We can combine the 3 for loop and split them into different phases. at each phase, we send S+M data into the register memory. S is storage of fast memory, and M is the data need to be replaced next phase.
 $$
-\begin{equation*}
-\begin{array}{l}
-{\bf for~} r := 0, \ldots , mnk-1 \\
-~~~ \gamma_{i_r,j_r} := \alpha_{i_r,p_r} \beta_{p_r,j_r} + \gamma_{i_r,j_r} \\
-{\bf end}
-\end{array}
-\end{equation*}
+\begin{aligned}
+& \text{for } r = 0, \ldots, mnk-1 \\
+& \quad \gamma_{i_r,j_r} := \alpha_{i_r,p_r} \beta_{p_r,j_r} + \gamma_{i_r,j_r} \\
+& \text{end}
+\end{aligned}
 $$
 The overall FMAs is mnk in this equation, we assume we can have Fmax FMAs by sending the memory into register once, then we need to transfer data:
 $$
@@ -418,20 +375,19 @@ $$
 
 According to mathematical calculation, the :
 $$
-\begin{equation*}
+\begin{equation}
 \vert \mathbf{C_D} \vert = \vert \mathbf{A_D} \vert = \vert
 \mathbf{B_D} \vert = \frac{S+M}{3} \quad \mbox{and} \quad F_{\rm max} = \frac{( S + M )\sqrt{S+M}}{3 \sqrt{3}}.
-\end{equation*}
+\end{equation}
 $$
 And:
 
 
 $$
-\begin{equation*}
-\left(\frac{m n k}{F_{\rm max}} -1 \right) M
-=
+\begin{equation}
+\left(\frac{m n k}{F_{\rm max}} -1 \right) M = 
 \left(3 \sqrt{3} \frac{m n k}{( S + M )\sqrt{S+M}} -1 \right) M.
-\end{equation*}
+\end{equation}
 $$
 Take the derivatives of the right hand side, we assume S is a const and M is a variable, so in the end we get:
 $$
@@ -439,10 +395,10 @@ M=2S
 $$
 
 $$
-\begin{equation*}
+\begin{equation}
 \left(3 \sqrt{3} \frac{m n k}{( 3 S  )\sqrt{3 S}} -1 \right) (2S)
 = 2 \frac{m n k}{\sqrt{S}} - 2S.
-\end{equation*}
+\end{equation}
 $$
 
 Satisfy the equation, and S+M <= register memory, the S is bigger, the performance is better. and M = 2S. If we take an example, t
