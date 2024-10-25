@@ -150,6 +150,7 @@ The algorithm above is just an example, of course you could make the whole subma
 That means every time we move the submatrix of A($m_c\times k_c$) into the L2 cache , and stream the red and green part from main memory to L2 cache.
 
 Each Level 2 for loop's expense is:
+
 $$
 \begin{equation*}
 \begin{array}{rcl}
@@ -204,7 +205,9 @@ m_C k_C + \left( 2 m_C n + k_C n \right) \beta_{C
 \end{array}
 \end{equation*}
 $$
+
 The ratio of use ful computation and data movement expense is:
+
 $$
 \begin{equation*}
 \frac{ 2 m_C n k_C}
@@ -213,6 +216,7 @@ $$
 \approx \frac{2 b^2n}{3bn} \approx \frac{2b}{3}
 \end{equation*}
 $$
+
 is a little better than PIJ level 1 For loop's performance.
 
 This is the comparison of PIJ v.s. PI Level 1 For loop:
