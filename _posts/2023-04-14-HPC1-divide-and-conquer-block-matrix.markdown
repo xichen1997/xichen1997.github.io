@@ -24,7 +24,7 @@ The front for loop is JIP is not related to the performance of the algorithm bec
 
 ![img](https://img-blog.csdn.net/20160730162655871)
 
-The relation of register and main memory can be shown as above, then we assume that when we computing we can't transfer data. The cost of transferring data is \\(R\_m\\)
+The relation of register and main memory can be shown as above, then we assume that when we computing we can't transfer data. The cost of transferring data is $R_m$
 
 The register can hold 64 doubles(512 bytes)
 
@@ -37,54 +37,54 @@ The register can hold 64 doubles(512 bytes)
 This is a exmple of using block matrix to update part of the final answer. 
 
 Assuming the CPU need to spend 
-\\[
-\gamma\_{R<->M}
-\\]
+$$
+\gamma_{R<->M}
+$$
 
-\\[
+$$
 \begin{aligned}
-& MNK \left( (m\_R n\_R + m\_R k\_R + k\_R n\_R) \beta\_{R \leftrightarrow M} + 2 m\_R n\_R k\_R \gamma\_R + m\_R n\_R \beta\_{R \leftrightarrow M} \right) \\
-&= 2 (M m\_R)(N n\_R)(K k\_R) \gamma\_R + 2 (M m\_R)(N n\_R) K \beta\_{R \leftrightarrow M} \\
-&\quad + (M m\_R) N (K k\_R) \beta\_{R \leftrightarrow M} + M (N n\_R)(K k\_R) \beta\_{R \leftrightarrow M} \\
-&= 2 m n k \gamma\_R + m n k \left( \frac{2}{k\_R} + \frac{1}{n\_R} + \frac{1}{m\_R} \right) \beta\_{R \leftrightarrow M}
+& MNK \left( (m_R n_R + m_R k_R + k_R n_R) \beta_{R \leftrightarrow M} + 2 m_R n_R k_R \gamma_R + m_R n_R \beta_{R \leftrightarrow M} \right) \\
+&= 2 (M m_R)(N n_R)(K k_R) \gamma_R + 2 (M m_R)(N n_R) K \beta_{R \leftrightarrow M} \\
+&\quad + (M m_R) N (K k_R) \beta_{R \leftrightarrow M} + M (N n_R)(K k_R) \beta_{R \leftrightarrow M} \\
+&= 2 m n k \gamma_R + m n k \left( \frac{2}{k_R} + \frac{1}{n_R} + \frac{1}{m_R} \right) \beta_{R \leftrightarrow M}
 \end{aligned}
-\\]
+$$
 
 The process is:
 
-\\[
+$$
 \begin{aligned}
 & \text{for } j = 0, \ldots, N-1 \\
 & \quad \text{for } i = 0, \ldots, M-1 \\
 & \quad \quad \text{for } p = 0, \ldots, K-1 \\
-& \quad \quad \quad \text{Load } C\_{i,j}, A\_{i,p}, \text{ and } B\_{p,j} \text{ into registers} \\
-& \quad \quad \quad C\_{i,j} := A\_{i,p} B\_{p,j} + C\_{i,j} \\
-& \quad \quad \quad \text{Store } C\_{i,j} \text{ to memory}
+& \quad \quad \quad \text{Load } C_{i,j}, A_{i,p}, \text{ and } B_{p,j} \text{ into registers} \\
+& \quad \quad \quad C_{i,j} := A_{i,p} B_{p,j} + C_{i,j} \\
+& \quad \quad \quad \text{Store } C_{i,j} \text{ to memory}
 \end{aligned}
-\\]
+$$
 
-But we could do better by saving \\(C\_{ij}\\) before the P loop:
+But we could do better by saving $C_{ij}$ before the P loop:
 
-\\[
+$$
 \begin{aligned}
 & \text{for } j = 0, \ldots, N-1 \\
 & \quad \text{for } i = 0, \ldots, M-1 \\
-& \quad \quad \text{Load } C\_{i,j} \\
+& \quad \quad \text{Load } C_{i,j} \\
 & \quad \quad \text{for } p = 0, \ldots, K-1 \\
-& \quad \quad \quad \text{Load } A\_{i,p} \text{ and } B\_{p,j} \text{ into registers} \\
-& \quad \quad \quad C\_{i,j} := A\_{i,p} B\_{p,j} + C\_{i,j} \\
-& \quad \quad \text{Store } C\_{i,j}
+& \quad \quad \quad \text{Load } A_{i,p} \text{ and } B_{p,j} \text{ into registers} \\
+& \quad \quad \quad C_{i,j} := A_{i,p} B_{p,j} + C_{i,j} \\
+& \quad \quad \text{Store } C_{i,j}
 \end{aligned}
-\\]
+$$
 
 Then the final computational time is:
 
-\\[
+$$
 \begin{aligned}
-& MNK(2m\_Rn\_Rk\_R)\gamma\_R + [MN(2m\_Rn\_R) + MNK(m\_Rk\_R + k\_Rn\_R)]\beta\_{R \leftrightarrow M} \\
-&= 2mnk\gamma\_R + \left[2mn + mnk\left(\frac{1}{n\_R} + \frac{1}{m\_R}\right)\right]\beta\_{R \leftrightarrow M}
+& MNK(2m_Rn_Rk_R)\gamma_R + [MN(2m_Rn_R) + MNK(m_Rk_R + k_Rn_R)]\beta_{R \leftrightarrow M} \\
+&= 2mnk\gamma_R + \left[2mn + mnk\left(\frac{1}{n_R} + \frac{1}{m_R}\right)\right]\beta_{R \leftrightarrow M}
 \end{aligned}
-\\]
+$$
 The capital K is Larger, the saved time is more.
 
 ## 4.2  Streaming operation:JIP_P_Ger
@@ -98,9 +98,9 @@ Every time we do streaming operation:
 ![img](http://www.cs.utexas.edu/users/flame/laff/pfhp/images/Week2/GemmIJPPrank1One.png)
 
 In order to make good use of all the register memory, we can assume the 
-\\(m\_R ,\ n\_R,\  k\_R\\)
+$m_R ,\ n_R,\  k_R$
 is the same, and assume they are 4. The overall memory in register is 
-\\[m\_R \times n\_R + m\_R + n\_R  = 24\\]
+$$m_R \times n_R + m_R + n_R  = 24$$
 
 ![plot_register_block_4](http://xcwp.azurewebsites.net/wp-content/uploads/2020/05\plot_register_block_4.png)
 
@@ -122,68 +122,68 @@ FMA: fused multiple add operation
 
 SIMD: simple instruction multiple data
 
-\\[
+$$
 \begin{pmatrix}
-\gamma\_{0,0} & \gamma\_{0,1} & \gamma\_{0,2} & \gamma\_{0,3} \\
-\gamma\_{1,0} & \gamma\_{1,1} & \gamma\_{1,2} & \gamma\_{1,3} \\
-\gamma\_{2,0} & \gamma\_{2,1} & \gamma\_{2,2} & \gamma\_{2,3} \\
-\gamma\_{3,0} & \gamma\_{3,1} & \gamma\_{3,2} & \gamma\_{3,3}
+\gamma_{0,0} & \gamma_{0,1} & \gamma_{0,2} & \gamma_{0,3} \\
+\gamma_{1,0} & \gamma_{1,1} & \gamma_{1,2} & \gamma_{1,3} \\
+\gamma_{2,0} & \gamma_{2,1} & \gamma_{2,2} & \gamma_{2,3} \\
+\gamma_{3,0} & \gamma_{3,1} & \gamma_{3,2} & \gamma_{3,3}
 \end{pmatrix}
 +:=
 \begin{pmatrix}
-\alpha\_{0,p} \\
-\alpha\_{1,p} \\
-\alpha\_{2,p} \\
-\alpha\_{3,p}
+\alpha_{0,p} \\
+\alpha_{1,p} \\
+\alpha_{2,p} \\
+\alpha_{3,p}
 \end{pmatrix}
 \begin{pmatrix}
-\beta\_{p,0} & \beta\_{p,1} & \beta\_{p,2} & \beta\_{p,3}
+\beta_{p,0} & \beta_{p,1} & \beta_{p,2} & \beta_{p,3}
 \end{pmatrix}
-\\]
+$$
 
-\\[
-\beta\_{p,0} 
+$$
+\beta_{p,0} 
 \begin{pmatrix}
-\alpha\_{0,p} \\
-\alpha\_{1,p} \\
-\alpha\_{2,p} \\
-\alpha\_{3,p}
+\alpha_{0,p} \\
+\alpha_{1,p} \\
+\alpha_{2,p} \\
+\alpha_{3,p}
 \end{pmatrix}
 +
-\beta\_{p,1} 
+\beta_{p,1} 
 \begin{pmatrix}
-\alpha\_{0,p} \\
-\alpha\_{1,p} \\
-\alpha\_{2,p} \\
-\alpha\_{3,p}
+\alpha_{0,p} \\
+\alpha_{1,p} \\
+\alpha_{2,p} \\
+\alpha_{3,p}
 \end{pmatrix}
 +
-\beta\_{p,2} 
+\beta_{p,2} 
 \begin{pmatrix}
-\alpha\_{0,p} \\
-\alpha\_{1,p} \\
-\alpha\_{2,p} \\
-\alpha\_{3,p}
+\alpha_{0,p} \\
+\alpha_{1,p} \\
+\alpha_{2,p} \\
+\alpha_{3,p}
 \end{pmatrix}
 +
-\beta\_{p,3} 
+\beta_{p,3} 
 \begin{pmatrix}
-\alpha\_{0,p} \\
-\alpha\_{1,p} \\
-\alpha\_{2,p} \\
-\alpha\_{3,p}
+\alpha_{0,p} \\
+\alpha_{1,p} \\
+\alpha_{2,p} \\
+\alpha_{3,p}
 \end{pmatrix}
-\\]
+$$
 
 If we use SIMD:
 
-\\[
+$$
 \begin{array}{|c|}
 \hline 
-\gamma\_{0,0} \\ \hline 
-\gamma\_{1,0} \\ \hline 
-\gamma\_{2,0} \\ \hline 
-\gamma\_{3,0} \\ \hline 
+\gamma_{0,0} \\ \hline 
+\gamma_{1,0} \\ \hline 
+\gamma_{2,0} \\ \hline 
+\gamma_{3,0} \\ \hline 
 \end{array}
 \quad
 \begin{array}{c}
@@ -195,10 +195,10 @@ If we use SIMD:
 \quad
 \begin{array}{|c|}
 \hline 
-\alpha\_{0,p} \\ \hline 
-\alpha\_{1,p} \\ \hline 
-\alpha\_{2,p} \\ \hline 
-\alpha\_{3,p} \\ \hline 
+\alpha_{0,p} \\ \hline 
+\alpha_{1,p} \\ \hline 
+\alpha_{2,p} \\ \hline 
+\alpha_{3,p} \\ \hline 
 \end{array}
 \quad
 \begin{array}{c}
@@ -210,12 +210,12 @@ If we use SIMD:
 \quad
 \begin{array}{|c|}
 \hline 
-\beta\_{p,0} \\ \hline 
-\beta\_{p,0} \\ \hline 
-\beta\_{p,0} \\ \hline 
-\beta\_{p,0} \\ \hline 
+\beta_{p,0} \\ \hline 
+\beta_{p,0} \\ \hline 
+\beta_{p,0} \\ \hline 
+\beta_{p,0} \\ \hline 
 \end{array}
-\\]
+$$
 
 Then implement it use the code: using AX2 intrinsic.
 
@@ -285,21 +285,21 @@ S is for the C matrix, M is for the matrix of B and A. Because in the end we wil
 
 We can combine the 3 for loop and split them into different phases. at each phase, we send S+M data into the register memory. S is storage of fast memory, and M is the data need to be replaced next phase.
 
-\\[
+$$
 \begin{aligned}
 & \text{for } r = 0, \ldots, mnk-1 \\
-& \quad \gamma\_{i\_r,j\_r} := \alpha\_{i\_r,p\_r} \beta\_{p\_r,j\_r} + \gamma\_{i\_r,j\_r} \\
+& \quad \gamma_{i_r,j_r} := \alpha_{i_r,p_r} \beta_{p_r,j_r} + \gamma_{i_r,j_r} \\
 & \text{end}
 \end{aligned}
-\\]
+$$
 
 The overall FMAs is mnk in this equation, we assume we can have Fmax FMAs by sending the memory into register once, then we need to transfer data:
 
-\\[
+$$
 \begin{equation*}
-\left(\frac{m n k}{F\_{\rm max}} -1 \right) M
+\left(\frac{m n k}{F_{\rm max}} -1 \right) M
 \end{equation*}
-\\]
+$$
 
 So if we choose S and M properly, we can maximize F and get the good solution of all the equation. In order to maximize F, we could use a model to abstract this procedure:
 
@@ -307,54 +307,54 @@ For a each phase, we assume a space D combined with (ir,jr,pr) tuple, In the sub
 
 The number of the space D can be limited by this relation(3d geometry):
 
-\\[
+$$
 \vert \mathbf{D} \vert \leq \sqrt{\vert
-\mathbf{C\_D} \vert \vert \mathbf{A\_D} \vert \vert \mathbf{B\_D}
+\mathbf{C_D} \vert \vert \mathbf{A_D} \vert \vert \mathbf{B_D}
 \vert }\text{.}
-\\]
+$$
 
 So we could limit D by these inequal:
 
-\\[
+$$
 \begin{equation*}
-{\rm maximize~} F\_{\rm max} {\rm ~such~that~} \left\{
-\begin{array}{l} F\_{\rm max} \leq \sqrt{\vert \mathbf{C\_D}
-\vert \vert \mathbf{A\_D} \vert \vert \mathbf{B\_D} \vert } \\
-\vert \mathbf{C\_D} \vert \gt 0, \vert \mathbf{A\_D} \vert \gt
-0, \vert \mathbf{B\_D} \vert \gt 0 \\ \vert \mathbf{C\_D}
-\vert + \vert \mathbf{A\_D} \vert + \vert \mathbf{B\_D} \vert
+{\rm maximize~} F_{\rm max} {\rm ~such~that~} \left\{
+\begin{array}{l} F_{\rm max} \leq \sqrt{\vert \mathbf{C_D}
+\vert \vert \mathbf{A_D} \vert \vert \mathbf{B_D} \vert } \\
+\vert \mathbf{C_D} \vert \gt 0, \vert \mathbf{A_D} \vert \gt
+0, \vert \mathbf{B_D} \vert \gt 0 \\ \vert \mathbf{C_D}
+\vert + \vert \mathbf{A_D} \vert + \vert \mathbf{B_D} \vert
 = S + M.  \end{array} \right.
 \end{equation*}
-\\]
+$$
 
 According to mathematical calculation, the:
 
-\\[
+$$
 \begin{aligned}
-|\mathbf{C\_D}| = |\mathbf{A\_D}| = |\mathbf{B\_D}| &= \frac{S+M}{3} \\
-F\_{\max} &= \frac{(S + M)\sqrt{S+M}}{3\sqrt{3}}
+|\mathbf{C_D}| = |\mathbf{A_D}| = |\mathbf{B_D}| &= \frac{S+M}{3} \\
+F_{\max} &= \frac{(S + M)\sqrt{S+M}}{3\sqrt{3}}
 \end{aligned}
-\\]
+$$
 
 And:
 
-\\[
+$$
 \begin{equation*}
-\left(\frac{m n k}{F\_{\rm max}} -1 \right) M = 
+\left(\frac{m n k}{F_{\rm max}} -1 \right) M = 
 \left(3 \sqrt{3} \frac{m n k}{( S + M )\sqrt{S+M}} -1 \right) M.
 \end{equation*}
-\\]
+$$
 
 Take the derivatives of the right hand side, we assume S is a const and M is a variable, so in the end we get:
 
-\\[M=2S\\]
+$$M=2S$$
 
-\\[
+$$
 \begin{equation*}
 \left(3 \sqrt{3} \frac{m n k}{( 3 S  )\sqrt{3 S}} -1 \right) (2S)
 = 2 \frac{m n k}{\sqrt{S}} - 2S.
 \end{equation*}
-\\]
+$$
 
 Satisfy the equation, and S+M <= register memory, the S is bigger, the performance is better. and M = 2S. If we take an example, t
 
