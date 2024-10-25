@@ -373,12 +373,12 @@ $$
 $$
 
 
-According to mathematical calculation, the :
+According to mathematical calculation, the:
 $$
-\begin{equation}
-\vert \mathbf{C_D} \vert = \vert \mathbf{A_D} \vert = \vert
-\mathbf{B_D} \vert = \frac{S+M}{3} \quad \mbox{and} \quad F_{\rm max} = \frac{( S + M )\sqrt{S+M}}{3 \sqrt{3}}.
-\end{equation}
+\begin{aligned}
+|\mathbf{C_D}| = |\mathbf{A_D}| = |\mathbf{B_D}| &= \frac{S+M}{3} \\
+F_{\max} &= \frac{(S + M)\sqrt{S+M}}{3\sqrt{3}}
+\end{aligned}
 $$
 And:
 
@@ -412,7 +412,7 @@ https://arxiv.org/pdf/1702.02017.pdf
 
 
 
-- ```
+- ```C++
   __m256d _mm256_loadu_pd (double const * mem_addr)
   ```
 
@@ -424,7 +424,7 @@ https://arxiv.org/pdf/1702.02017.pdf
 
 - 
 
-  ```
+  ```C++
   __m256d _mm256_broadcast_sd (double const * mem_addr)
   ```
 
@@ -436,7 +436,7 @@ https://arxiv.org/pdf/1702.02017.pdf
 
 - 
 
-  ```
+  ```C++
   __m256d _mm256_fmadd_pd (__m256d a, __m256d b, __m256d c)
   ```
 

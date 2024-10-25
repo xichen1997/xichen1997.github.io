@@ -24,6 +24,8 @@ github_username:  xichen1997
 
 # Build settings
 markdown: kramdown
+kramdown:
+  math_engine: mathjax
 # theme: minima-dark
 remote_theme: jekyll/minima
 plugins:

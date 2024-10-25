@@ -37,7 +37,7 @@ If we put this macro before one line of code or one block, the line or block wil
 
 The instruction:
 
-```
+```C++
 #pragma omp parallel for
 ```
 
