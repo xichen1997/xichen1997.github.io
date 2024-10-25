@@ -23,9 +23,10 @@ url: "https://xichen1997.github.io" # the base hostname & protocol for your site
 github_username:  xichen1997
 
 # Build settings
-markdown: kramdown
 kramdown:
+  input: GFM
   math_engine: mathjax
+  
 # theme: minima-dark
 remote_theme: jekyll/minima
 plugins:
