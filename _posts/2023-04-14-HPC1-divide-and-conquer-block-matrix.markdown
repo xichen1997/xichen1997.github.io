@@ -8,7 +8,7 @@ categories: jekyll update
 
 # 1. BLIS reference high performance implitation v.s. naive methods:
 
-![img](http://xcwp.azurewebsites.net/wp-content/uploads/2020/05/Plot_All_Orderings.png)
+![img](https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/Plot_All_Orderings.png)
 
 # 2. With different block size:
 
@@ -18,11 +18,11 @@ But if the block size is too small, the performance is not as good as naive PJI.
 
 The front for loop is JIP is not related to the performance of the algorithm because the computer will focus on each implementation in blocking. That means the register will focus on optimize the final for loop: the Gemm_JPI function, but will not paralize and optimize the for loop for block - matrix- matrix - multiplication.
 
-![img](http://xcwp.azurewebsites.net/wp-content/uploads/2020/05/Plot_Blocked_MMM.png)
+![img](https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/Plot_Blocked_MMM.png)
 
 # 3. memory and register model.
 
-![img](https://img-blog.csdn.net/20160730162655871)
+![img](https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/20241025123736.png)
 
 The relation of register and main memory can be shown as above, then we assume that when we computing we can't transfer data. The cost of transferring data is $R_m$
 
