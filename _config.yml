@@ -34,7 +34,9 @@ plugins:
 minima:
   skin: dark # or auto if you want it to switch with your system settings.
 
-
+# comment system
+disqus:
+  shortname: your-disqus-shortname
 
 plugins:
   - jekyll-feed

@@ -3,6 +3,7 @@ layout: default
 title: "An interesting flipping coin question"
 date: 2024-10-26 00:05:00 +0000
 categories: computer_science math 
+comments: true
 ---
 
 
