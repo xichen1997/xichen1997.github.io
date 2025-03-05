@@ -34,11 +34,11 @@ $\frac{8 \text{GB}}{100 \text{GB/s}} = 0.08 \text{s}$
 
 For a pipeline with 2 machines, assuming data transfer latency is T, the total time becomes:
 
-$\text{Total Time} = 0.08 \text{s} + T$
+$$\text{Total Time} = 0.08 \text{s} + T$$
 
 The effective bandwidth is:
 
-$\frac{1}{0.08 \text{s} + T} * 8 \text{GB/s}$
+$$\frac{1}{0.08 \text{s} + T} * 8 \text{GB/s}$$
 
 As latency T increases, the effective bandwidth decreases.
 
