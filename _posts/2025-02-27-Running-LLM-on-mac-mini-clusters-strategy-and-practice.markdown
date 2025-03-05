@@ -1,7 +1,7 @@
 ---
-layout: default
+layout: post
 title: "Running LLM on mac mini clusters, strategy and practice"
-date: 2025-02-27 00:05:00 +0000
+date: 2025-02-28 00:05:00 +0000
 categories: computer_science
 comments: true
 ---
