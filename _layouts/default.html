@@ -5,12 +5,36 @@
     {%- include head.html -%}
     {% include mathjax.html %}
     <style>
-      .wrapper, #disqus_thread {
-          width: 100%;  
-          max-width: 800px;  
-          margin: auto; 
-          padding: 20px;
-          margin-bottom: 20px;
+      .wrapper {
+        width: 100%;  
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+      }
+      
+      .math-display {
+        overflow-x: auto;
+        max-width: 100%;
+        margin: 1em 0;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 1em auto;
+      }
+
+      pre {
+        overflow-x: auto;
+        padding: 1em;
+        border-radius: 4px;
+      }
+
+      #disqus_thread {
+        max-width: 1000px;
+        margin: 2em auto;
+        padding: 0 20px;
       }
     </style>
   </head>
