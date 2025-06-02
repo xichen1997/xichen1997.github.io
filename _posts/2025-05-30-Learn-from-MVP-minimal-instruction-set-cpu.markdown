@@ -23,6 +23,22 @@ Alan Turing's computational theory provides a perfect starting point. His concep
 
 While we can't implement an infinite tape, we can create a system that operates in a loop, simulating this fundamental concept.
 
+## Extension reading on Turing's theory:
+
+We have to compute the number, then the number should be computable. It seems the word "computable" is vague, so he gave a definition:
+*A real number is computable if a mechanical procedure can print its digits one-by-one in finite time per digit. Replace "print a digit" with "return a value" and you have a computable (partial) function.*
+
+The probe can be seen as a finite-states machine, which react only on limited states to do some "computation", which can be defined by limited and concrete steps.
+
+
+Encode a TM's state table as an integer (its ⟨code⟩).
+* A Universal TM U takes (⟨M⟩, x) and simulates M running on input x.
+Legacy. 
+* "Program = data" → the von Neumann architecture, data can be control message(finite state) or information;
+
+![Turing Machine Diagram](/assets/images/turing-machine.png)
+*Figure 1: A simplified representation of a Turing Machine*
+
 ## Minimal Instruction Set Design
 
 Based on these principles, a minimal CPU needs only four types of instructions:
@@ -31,12 +47,10 @@ Based on these principles, a minimal CPU needs only four types of instructions:
 3. **ADD/SUB** - For arithmetic operations (multiplication and division can be simulated)
 4. **HALT** - To stop program execution
 
+
 ## CPU Specification
 
 After careful consideration and consultation, here's the design for our minimal CPU:
-
-![Turing Machine Diagram](/assets/images/turing-machine.png)
-*Figure 1: A simplified representation of a Turing Machine*
 
 ### Memory and Registers
 - **RAM**: 64KB (65536 bytes) with 16-bit addressing
@@ -44,8 +58,9 @@ After careful consideration and consultation, here's the design for our minimal 
 - **Program Counter (PC)**: 16-bit register for instruction fetching
 
 ### Instruction Set
+
 | Opcode | Instruction | Description |
-|--------|-------------|-------------|
+|:------:|:------------|:------------|
 | 0x00   | HALT        | Stops program execution |
 | 0x01   | LOAD        | Loads data from memory into register |
 | 0x02   | STORE       | Stores register value into memory |
@@ -60,6 +75,14 @@ The CPU follows a simple fetch-execute cycle:
 3. Execute instruction
 4. Update PC
 5. Repeat until HALT
+
+Look how cpu borrow the concept from Turing Machine:
+
+| Component          | Role                 | Modern analogue |
+| ------------------ | -------------------- | --------------- |
+| Unbounded tape     | Program + data store | RAM + disk      |
+| Read/write head    | Pointer & ALU        | CPU register    |
+| Finite state table | Control logic        | Instruction set |
 
 This minimal setup provides the foundation for basic logic and arithmetic operations, which can be extended to handle more complex tasks.
 
