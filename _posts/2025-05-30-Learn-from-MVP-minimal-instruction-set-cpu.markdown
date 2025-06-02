@@ -197,3 +197,8 @@ int main() {
 ## Conclusion
 
 This minimal CPU implementation demonstrates the fundamental principles of computing while remaining accessible and understandable. It provides a foundation that can be extended to create more complex systems, making it an excellent learning tool for understanding computer architecture.
+
+
+## GitHub Repository
+
+[View the complete implementation on GitHub](https://github.com/xichen1997/minimal_turing_complete_CPU)
