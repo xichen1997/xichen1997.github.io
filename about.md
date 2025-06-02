@@ -5,15 +5,13 @@ title: About
 
 <div class="about-container">
   <section class="about-intro">
-    <h1>Welcome to My Magic House</h1>
+    <h1>About Me</h1>
     <p class="lead-text">
-      A hub where I share my journey through fascinating topics in computer science and mathematics. 
-      Here, you'll find everything from in-depth discussions on algorithms and data structures to 
-      the mathematical puzzles that intrigue me.
+    Coder, Engineer and Gamer.
+    Texas A&M 2022 & 2023, Petroleum Engineering and Computer Engineering.
     </p>
     <p>
-      Whether you're a fellow enthusiast or just curious, I hope to spark your interest and invite 
-      you to share your thoughts and insights as we explore these subjects together.
+      <a src="https://www.linkedin.com/in/xi-chen-2b0358175/"> My LinkedIn</a>
     </p>
   </section>
 
