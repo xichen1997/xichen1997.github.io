@@ -11,7 +11,10 @@ title: About
     Texas A&M 2022 & 2023, Petroleum Engineering and Computer Engineering.
     </p>
     <p>
-      <a src="https://www.linkedin.com/in/xi-chen-2b0358175/"> My LinkedIn</a>
+      <a href="https://www.linkedin.com/in/xi-chen-2b0358175/"> My LinkedIn</a>
+    </p>
+    <p>
+      <a href="https://github.com/xichen1997"> My GitHub</a>
     </p>
   </section>
 
