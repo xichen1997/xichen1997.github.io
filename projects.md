@@ -34,7 +34,7 @@ title: Projects
 
 .projects-intro h1 {
   font-size: 2.5rem;
-  color: #4a5568;
+  color: #4a9eff;
   margin-bottom: 1.5rem;
   font-weight: 600;
 }
@@ -42,7 +42,7 @@ title: Projects
 .lead-text {
   font-size: 1.25rem;
   line-height: 1.6;
-  color: #718096;
+  color: #6ba9ff;
   margin-bottom: 1rem;
 }
 
@@ -67,13 +67,13 @@ title: Projects
 
 .project-card h3 {
   font-size: 1.5rem;
-  color: #718096;
+  color: #6ba9ff;
   margin-bottom: 1rem;
   font-weight: 500;
 }
 
 .project-card p {
-  color: #a0aec0;
+  color: #8bb9ff;
   line-height: 1.6;
 }
 

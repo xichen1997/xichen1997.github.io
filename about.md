@@ -50,7 +50,7 @@ title: About
 
 .about-intro h1 {
   font-size: 2.5rem;
-  color: #4a5568;
+  color: #4a9eff;
   margin-bottom: 1.5rem;
   font-weight: 600;
 }
@@ -58,14 +58,24 @@ title: About
 .lead-text {
   font-size: 1.25rem;
   line-height: 1.6;
-  color: #718096;
+  color: #6ba9ff;
   margin-bottom: 1rem;
 }
 
 .about-intro p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #a0aec0;
+  color: #8bb9ff;
+}
+
+.about-intro p a {
+  color: #4a9eff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.about-intro p a:hover {
+  color: #6ba9ff;
 }
 
 .pets-section {
@@ -74,7 +84,7 @@ title: About
 
 .pets-section h2 {
   font-size: 2rem;
-  color: #4a5568;
+  color: #4a9eff;
   margin-bottom: 2rem;
   text-align: center;
   font-weight: 600;
@@ -101,7 +111,7 @@ title: About
 
 .pet-card h3 {
   font-size: 1.5rem;
-  color: #718096;
+  color: #6ba9ff;
   margin-bottom: 1rem;
   text-align: center;
   font-weight: 500;
