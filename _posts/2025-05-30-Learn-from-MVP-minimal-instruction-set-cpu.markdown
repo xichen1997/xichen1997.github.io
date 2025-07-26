@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Learn from MVP: Minimal Instruction Set CPU"
-date: 2025-02-28 00:05:00 +0000
+date: 2025-05-30 00:05:00 +0000
 categories: computer_science
 ---
 
