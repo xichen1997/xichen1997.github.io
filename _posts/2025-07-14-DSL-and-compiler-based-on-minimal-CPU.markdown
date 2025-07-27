@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "DSL and Compiler Based on Minimal CPU"
-date: 2025-07-14 00:05:00 +0000
+date: 2025-07-14 00:06:00 +0000
 categories: computer_science
 ---
 
