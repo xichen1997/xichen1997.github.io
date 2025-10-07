@@ -1,0 +1,94 @@
+body {
+  background-color: #0d1117;
+  color: #c9d1d9;
+}
+
+a,
+a:visited {
+  color: #58a6ff;
+}
+
+a:hover,
+a:focus {
+  color: #8bb8ff;
+}
+
+.site-header,
+.site-nav {
+  background-color: #161b22;
+  border-color: #30363d;
+}
+
+.site-title,
+.site-title:visited {
+  color: #e6edf3;
+}
+
+.site-nav .page-link {
+  color: #c9d1d9;
+}
+
+.site-nav .page-link:hover,
+.site-nav .page-link:focus {
+  color: #58a6ff;
+}
+
+.page-content {
+  background-color: transparent;
+}
+
+.post,
+.post-content,
+.home .post-list > li,
+.archive {
+  background-color: transparent;
+  color: inherit;
+}
+
+.post-title,
+.page-heading {
+  color: #e6edf3;
+}
+
+.post-meta {
+  color: #8b949e;
+}
+
+.site-footer {
+  background-color: #161b22;
+  border-color: #30363d;
+  color: #8b949e;
+}
+
+.site-footer a {
+  color: #8bb8ff;
+}
+
+pre,
+code {
+  background-color: #161b22;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+}
+
+blockquote {
+  color: #8b949e;
+  border-left: 0.3em solid #30363d;
+}
+
+table {
+  border-color: #30363d;
+}
+
+th,
+td {
+  border-color: #30363d;
+}
+
+hr {
+  border-color: #30363d;
+}
+
+img {
+  filter: brightness(0.95);
+}

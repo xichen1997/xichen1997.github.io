@@ -4,6 +4,7 @@
   <head>
     {%- include head.html -%}
     {% include mathjax.html %}
+    <link rel="stylesheet" href="{{ '/assets/css/dark-theme.css' | relative_url }}">
     <style>
       .wrapper {
         width: 100%;  
@@ -12,7 +13,7 @@
         padding: 20px;
       }
       
-      .math-display {
+      mjx-container[display="true"] {
         overflow-x: auto;
         max-width: 100%;
         margin: 1em 0;

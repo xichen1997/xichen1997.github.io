@@ -28,19 +28,16 @@ kramdown:
   math_engine: mathjax
   
 # theme: minima-dark
-remote_theme: jekyll/minima
+theme: minima
 plugins:
-  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-seo-tag
 minima:
   skin: dark # or auto if you want it to switch with your system settings.
 
 # comment system
 disqus:
   shortname: your-disqus-shortname
-
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
 
 
 # remote_theme: pages-themes/slate@v0.2.0
