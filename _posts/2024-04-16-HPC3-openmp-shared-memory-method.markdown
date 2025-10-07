@@ -78,50 +78,55 @@ void LoopThree( int m, int n, int k, double *A, int ldA, double *Btilde, double 
 
 In MT Loop4, this algorithm is not correct. Because every threads will write to the matrix simutaneously. The C can't accumulate, this will lead to the error. Of course you could make another matrix to store the value temporarily, but it is too expensive.
 
-In MT Loop5, the performance will change with the quotient: $$\frac{n}{NC}$$
+In MT Loop5, the performance will change with the quotient $\frac{n}{N_C}$.
 
 
 ## 4 Ahmdahl's law
 
- Consider using sequential method to solve a problem using time T.
+Consider a sequential algorithm that solves the problem in time $T$.
 
-The time using t threads is $$T_n$$
-
-for computation. What if fraction ff of this time is not parallelized (or cannot be parallelized), and the other fraction (1−f)(1−f) is parallelized with tt threads. We can then write:
+Suppose a fraction $f$ of this work cannot be parallelized, while the remaining $1-f$ scales perfectly across $t$ threads. The total time with $t$ threads becomes
 
 $$
-T = \underbrace{(1-f)T}_{\text{part that is parallelized}} + \underbrace{fT}_{\text{part that is not parallelized}}
-$$
 
-
-Then the inequality:
-
-$$
-T_t \geq \frac{(1-f) T }{t} + f T \geq f T.
-$$
+\begin{equation*}
+T_t = \frac{(1-f)T}{t} + fT = T\left(f + \frac{1-f}{t}\right)
+\end{equation*}
 
 $$
+
+and it is immediate that $T_t \geq fT$.
+
+For matrix multiplication we can write the sequential cost as
+$$
+
+\begin{equation*}
 T(n) = 2 n^3 \gamma + C n^2 \beta
-$$
-
-
-The speedup coeffcient is:
-$$
-S_t(n) = \frac{2 n^3 \gamma + C n^2 \beta}{\frac{2 n^3 \gamma}{t} + C n^2 \beta}
-$$
-
-Then the efficiency is:
-$$
-E_t(n) = \frac{S_t(n)}{t} = \frac{2 n^3 \gamma + C n^2 \beta}{2 n^3 \gamma + t C n^2 \beta} = \frac{2 n^3 \gamma}{2 n^3 \gamma + t C n^2 \beta} + \frac{C n^2 \beta}{2 n^3 \gamma + t C n^2 \beta}
-$$
-
+\end{equation*}
 
 $$
-E_t(n) = \frac{1}{1 + \frac{t C n^2 \beta}{2 n^3 \gamma}} + \frac{1}{\frac{2 n^3 \gamma}{C n^2 \beta} + t} = \frac{1}{1 + \left(\frac{t C \beta}{2 \gamma}\right)\frac{1}{n}} + \frac{1}{\left(\frac{2 \gamma}{C \beta}\right) n + t}
+so the parallel execution time is
 $$
 
+\begin{equation*}
+T_t(n) = \frac{2 n^3 \gamma}{t} + C n^2 \beta
+\end{equation*}
 
+$$
+The speedup coefficient is therefore
+$$
 
-That means when n tends to $$\infty$$, then $$E_t(n)$$ tends to 1.
+\begin{equation*}
+S_t(n) = \frac{T(n)}{T_t(n)} = \frac{2 n^3 \gamma + C n^2 \beta}{\frac{2 n^3 \gamma}{t} + C n^2 \beta}
+\end{equation*}
 
-The n larger, the efficiency is larger.
+$$
+and the efficiency simplifies to
+$$
+
+\begin{equation*}
+E_t(n) = \frac{S_t(n)}{t} = \frac{2 n^3 \gamma + C n^2 \beta}{2 n^3 \gamma + t C n^2 \beta}
+\end{equation*}
+
+$$
+As $n \to \infty$, the lower-order term involving $C n^2 \beta$ vanishes and $E_t(n) \to 1$: larger problem sizes deliver higher efficiency.
