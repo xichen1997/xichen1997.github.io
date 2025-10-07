@@ -35,6 +35,9 @@ plugins:
 minima:
   skin: dark # or auto if you want it to switch with your system settings.
 
+header_pages:
+  - posts.md
+
 # comment system
 disqus:
   shortname: your-disqus-shortname

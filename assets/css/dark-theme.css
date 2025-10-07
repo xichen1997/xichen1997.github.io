@@ -92,3 +92,8 @@ hr {
 img {
   filter: brightness(0.95);
 }
+
+.home .page-heading,
+.home .post-list-heading {
+  display: none;
+}
