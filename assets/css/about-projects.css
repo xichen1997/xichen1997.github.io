@@ -7,9 +7,9 @@
 }
 
 .projects-column {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 .projects-column .section-title {
@@ -177,10 +177,6 @@
 }
 
 @media (max-width: 600px) {
-  .projects-column {
-    grid-template-columns: 1fr;
-  }
-  
   .project-card img {
     height: 180px;
   }
