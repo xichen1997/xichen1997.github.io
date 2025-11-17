@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Add array support for DSL on Minimal CPU"
+title: "Kernel comparison with a MMA in CUDA and near-SOTA/cuBLAS performance kernel"
 date: 2025-11-16 00:06:00 +0000
 categories: computer_science
 ---
