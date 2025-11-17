@@ -20,6 +20,14 @@
   border-radius: 8px;
 }
 
+.highlighter-rouge .highlight,
+.highlight,
+.highlight pre,
+pre.highlight {
+  background: var(--syntax-bg) !important;
+  color: var(--syntax-foreground) !important;
+}
+
 .highlight {
   margin: 1em 0;
 }
@@ -27,7 +35,7 @@
 .highlight pre,
 .highlighter-rouge pre,
 .highlighter-rouge code {
-  background: transparent;
+  background: transparent !important;
   color: inherit;
   border: 0;
 }
