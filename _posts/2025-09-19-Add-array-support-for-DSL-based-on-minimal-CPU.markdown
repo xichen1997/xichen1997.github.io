@@ -29,7 +29,7 @@ And it's has been clear that we need more instructions to apply for the memory l
 
 After adding the array instructions, we should get the usage and examples:
 
-```DSL
+```
 # Basic array operations
 let arr[5];
 arr[0] = 10;

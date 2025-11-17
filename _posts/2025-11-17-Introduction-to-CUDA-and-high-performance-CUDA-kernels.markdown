@@ -102,8 +102,8 @@ Computation time: 0.256279 seconds
 
 The answer is yes, recall how the array is stored in C++. It's row major, which means the memory address is continuous for each row.
 
-```
-int arr[2][4] = {{1,2,3,4},{5,6,7,8}};
+```c++
+int arr[2][4] = { {1,2,3,4} ,{ 5,6,7,8} };
 // a[0][0] a[0][1] a[0][2] a[0][3] they are continuous.
 // &a[1][0] - &a[0][0] = 4(stride)
 ```
