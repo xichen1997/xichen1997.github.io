@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Running LLM on mac mini clusters, strategy and practice | Xi&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Running LLM on mac mini clusters, strategy and practice
+Data Parallel
+This is the most straightforward strategy, typically used when batch size &gt; 1. It increases throughput by giving the system more data to process simultaneously.
+Pipeline Parallel
+Due to VRAM or unified memory limitations in Mac minis, loading the entire model into memory isn&rsquo;t always possible. Pipeline parallel is an effective strategy to reduce memory usage.
+The approach splits the model into several parts, loading them into memory sequentially. When running, it operates like a factory pipeline - data flows through the system as different model parts process it in sequence.">
+<meta name="author" content="Xi Chen">
+<link rel="canonical" href="http://localhost:1313/posts/2025-02-27-running-llm-on-mac-mini-clusters-strategy-and-practice/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.56bf4be95d09faf55cd507c845718ccfcabb2e24e37f8fa5a66f9fa098252b06.css" integrity="sha256-Vr9L6V0J&#43;vVc1QfIRXGMz8q7LiTjf4&#43;lpm&#43;foJglKwY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2025-02-27-running-llm-on-mac-mini-clusters-strategy-and-practice/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+
+window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function(x){
+      x.parentElement.classList += 'has-jax'})
+  });
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Xi&#39;s Blog (Alt + H)">Xi&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Running LLM on mac mini clusters, strategy and practice
+    </h1>
+    <div class="post-meta"><span title='2025-02-28 00:05:00 +0000 +0000'>February 28, 2025</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>578 words</span>&nbsp;·&nbsp;<span>Xi Chen</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#data-parallel">Data Parallel</a></li>
+    <li><a href="#pipeline-parallel">Pipeline Parallel</a>
+      <ul>
+        <li><a href="#theoretical-calculation-for-identical-bandwidth">Theoretical Calculation for Identical Bandwidth</a></li>
+        <li><a href="#real-world-pipeline-parallel-setup">Real-World Pipeline Parallel Setup</a></li>
+        <li><a href="#experimental-results">Experimental Results</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="running-llm-on-mac-mini-clusters-strategy-and-practice">Running LLM on mac mini clusters, strategy and practice<a hidden class="anchor" aria-hidden="true" href="#running-llm-on-mac-mini-clusters-strategy-and-practice">#</a></h1>
+<h2 id="data-parallel">Data Parallel<a hidden class="anchor" aria-hidden="true" href="#data-parallel">#</a></h2>
+<p>This is the most straightforward strategy, typically used when batch size &gt; 1. It increases throughput by giving the system more data to process simultaneously.</p>
+<h2 id="pipeline-parallel">Pipeline Parallel<a hidden class="anchor" aria-hidden="true" href="#pipeline-parallel">#</a></h2>
+<p>Due to VRAM or unified memory limitations in Mac minis, loading the entire model into memory isn&rsquo;t always possible. Pipeline parallel is an effective strategy to reduce memory usage.</p>
+<p>The approach splits the model into several parts, loading them into memory sequentially. When running, it operates like a factory pipeline - data flows through the system as different model parts process it in sequence.</p>
+<p>The calculated data after the final layer in one machine/GPU is sent to the next machine/GPU to continue processing. The key performance factor becomes the latency of data transfer between machines.</p>
+<h3 id="theoretical-calculation-for-identical-bandwidth">Theoretical Calculation for Identical Bandwidth<a hidden class="anchor" aria-hidden="true" href="#theoretical-calculation-for-identical-bandwidth">#</a></h3>
+<p>Let&rsquo;s consider a scenario:</p>
+<ul>
+<li>Mac mini A has 100GB/s bandwidth to transfer data to Mac mini B</li>
+<li>Model size is 8GB</li>
+<li>Batch size is 1</li>
+</ul>
+<p>For a single machine, the time needed to generate a token (simplified for illustration):</p>
+<p>$\frac{8 \text{GB}}{100 \text{GB/s}} = 0.08 \text{s}$</p>
+<p>For a pipeline with 2 machines, assuming data transfer latency is T, the total time becomes:</p>
+<p>$$\text{Total Time} = 0.08 \text{s} + T$$</p>
+<p>The effective bandwidth is:</p>
+<p>$$\frac{1}{0.08 \text{s} + T} * 8 \text{GB/s}$$</p>
+<p>As latency T increases, the effective bandwidth decreases.</p>
+<h3 id="real-world-pipeline-parallel-setup">Real-World Pipeline Parallel Setup<a hidden class="anchor" aria-hidden="true" href="#real-world-pipeline-parallel-setup">#</a></h3>
+<p>My setup consists of:</p>
+<ul>
+<li>2 Mac minis with 16GB unified memory each</li>
+<li>Connected via Thunderbolt 5 cable (claimed 120Gbps transfer rate)</li>
+<li>Using opensource libraries &rsquo;exo&rsquo; and &lsquo;ray&rsquo; for cluster management via thunderbolt bridge</li>
+<li>Static IP addresses for stable thunderbolt connections</li>
+</ul>
+<p><img alt="exo server on both machines, they are connected via thunderbolt" loading="lazy" src="https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/21741019393_.pic.jpg"></p>
+<h3 id="experimental-results">Experimental Results<a hidden class="anchor" aria-hidden="true" href="#experimental-results">#</a></h3>
+<p><strong>Experiment 1: Small Model (LLaMA-3.2 3B)</strong></p>
+<ul>
+<li>Easily fits within 16GB unified memory</li>
+</ul>
+<p><strong>Experiment 2: Medium Model (DeepSeek-R1 7B, FP16)</strong></p>
+<ul>
+<li>Slightly too large for single machine</li>
+<li>GPU utilization ~50% on both machines</li>
+<li>Significant overhead from data transfer</li>
+</ul>
+<p><img alt="GPU profile while running the model pipeline parallel - deepseek-r1-still-7b-fp16" loading="lazy" src="https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/11741019392_.pic.jpg"></p>
+<p><strong>Experiment 3: Large Model (Qwen 32B, 4-bit quantized)</strong></p>
+<ul>
+<li>~22GB model size</li>
+<li>Memory exhaustion led to exo server crash</li>
+<li>Even with 32GB total unified memory, system overhead makes stable operation challenging</li>
+</ul>
+<p><img alt="GPU profile while running the model pipeline parallel - deepseek-r1-still-7b-fp16" loading="lazy" src="https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/11741019392_.pic.jpg">, we can see the GPU usage is around 50% for both machine, which is a waste of the GPU.
+The overhead of the data transfer leads to the low GPU usage.</p>
+<p>!</p>
+<p>Experiment 3: Large model can&rsquo;t be loaded in the 16GB unified memory.</p>
+<p>Qwen 32B model quantized to 4-bits</p>
+<p>After running the model, which is about 22GB, The memory is almost full and GPU usage is low. And the exo server is crashed.
+In fact even if the unified memory is 32GB in total, the model can&rsquo;t be loaded pretty well because of the system overhead, and some preservation of the memory is needed.</p>
+<p>Conclusion:</p>
+<ul>
+<li>Pipeline parallel is a good strategy to reduce the memory usage.</li>
+<li>The data transfer latency is the key factor that affects the performance.</li>
+<li>The 120Gbps Thunderbolt 5 cable is not enough to transfer the data efficiently.</li>
+</ul>
+<p>With 2 machines, each layer is split between them, effectively creating a virtual GPU with double the memory and bandwidth capacity. This approach can potentially process twice the data simultaneously.</p>
+<p>To improve GPU utilization, tensor parallelism offers an alternative approach by splitting the model horizontally across machines.</p>
+<p>With 2 machines, each layer is split between them, effectively creating a virtual GPU with double the memory and bandwidth capacity. This approach can potentially process twice the data simultaneously.</p>
+<p>Currently, no existing tensor parallelism solution exists for Mac mini clusters. Further experimentation in this area is planned for future work.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/posts/2025-05-30-learn-from-mvp-minimal-instruction-set-cpu/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Learn from MVP: Minimal Instruction Set CPU</span>
+  </a>
+  <a class="next" href="http://localhost:1313/posts/2024-10-26-an-interesting-flipping-coin-question/">
+    <span class="title">Next »</span>
+    <br>
+    <span>An interesting flipping coin question</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Xi&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

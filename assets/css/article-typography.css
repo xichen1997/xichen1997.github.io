@@ -1,0 +1,124 @@
+/* Article Typography Improvements */
+/* Clean, readable typography inspired by modern technical blogs */
+
+/* Override body font to use a softer, more readable font stack */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 18px !important;
+  line-height: 1.75 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Improve heading spacing and make them less sharp */
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 600 !important;
+  margin-top: 2em !important;
+  margin-bottom: 0.75em !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Specific styling for each heading level */
+.post-content h1 {
+  font-size: 2.2em;
+  margin-top: 0;
+  margin-bottom: 1em;
+  font-weight: 700;
+}
+
+.post-content h2 {
+  font-size: 1.75em;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+
+.post-content h3 {
+  font-size: 1.4em;
+  margin-top: 1.8em;
+  margin-bottom: 0.65em;
+}
+
+.post-content h4 {
+  font-size: 1.2em;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+}
+
+/* Improve paragraph spacing and readability */
+.post-content p {
+  margin-bottom: 1.5em !important;
+  line-height: 1.75 !important;
+  font-size: 18px !important;
+}
+
+/* Better spacing for lists */
+.post-content ul,
+.post-content ol {
+  margin-bottom: 1.2em;
+  line-height: 1.7;
+}
+
+.post-content li {
+  margin-bottom: 0.5em;
+}
+
+/* Softer body font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Better spacing after code blocks */
+.post-content pre,
+.post-content .highlight {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+/* Better spacing for blockquotes */
+.post-content blockquote {
+  margin: 1.5em 0;
+  line-height: 1.6;
+}
+
+/* Improve table spacing */
+.post-content table {
+  margin: 1.5em 0;
+}
+
+/* Better spacing for images */
+.post-content img {
+  margin: 1.5em auto;
+}
+
+/* Improve contrast for dark mode */
+.post-content {
+  color: #e6edf3;
+}
+
+.post-content a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.post-content a:hover {
+  color: #79c0ff;
+  text-decoration: underline;
+}
+
+.post-content strong,
+.post-content b {
+  color: #f0f6fc;
+  font-weight: 600;
+}
+
+.post-content code {
+  color: #f0f6fc;
+}

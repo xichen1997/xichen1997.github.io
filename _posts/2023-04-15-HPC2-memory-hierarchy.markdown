@@ -17,7 +17,9 @@ The cache memory is bigger than register memory, if every time we fetch data fro
 
 Usually the expense of fetching data from register memory to cache is cheap. And because cache is larger so every time we could fetch more data from main memory. This means we could decrease the frequency of fetching data. Which will save a lot of time.
 
-## ![MemoryHierarchyOneCache.png](https://github.com/OeuFcok/picture_for_blog/blob/master/MemoryHierarchyOneCache.png?raw=true)2. Cache algorithm
+![MemoryHierarchyOneCache.png](https://github.com/OeuFcok/picture_for_blog/blob/master/MemoryHierarchyOneCache.png?raw=true)
+
+## 2. Cache algorithm
 
 In order to make the algorithm easy to analyse, we assume that the main memory will exchange data with cache and cache will exchange with register.
 
@@ -42,10 +44,11 @@ $$
 \begin{equation*}
 C_{i, j}:= A_{i, p} B_{p, j}+C_{i, j}
 \end{equation*}
+$$
 
 The block matrix $C_{i,j}$ ,$A_{i,p}$ and $B_{p,j}$ small block matrix, which are submatrix. We define the ijp loop as level 1 for loop. The algorithm to realize
 
-$$ 
+$$
 \begin{equation*}
 C_{i, j}:= A_{i, p} B_{p, j}+C_{i, j}
 \end{equation*}
@@ -77,7 +80,9 @@ And according to the estimate, the best size of the three matrix can be:
 
 The algorithm can be show using this picture:
 
-![image-20200515015229113.png](https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200515015229113.png?raw=true)Then we use the algorithm, the micro-kernel algorithm can use 4x4 or 12x4, compare their performance:
+![image-20200515015229113.png](https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200515015229113.png?raw=true)
+
+Then we use the algorithm, the micro-kernel algorithm can use 4x4 or 12x4, compare their performance:
 
 ![Copy_of_Plot_XY_JI_MRxNRKernel.png](https://github.com/OeuFcok/picture_for_blog/blob/master/Copy_of_Plot_XY_JI_MRxNRKernel.png?raw=true)
 
@@ -221,7 +226,9 @@ is a little better than PIJ level 1 For loop's performance.
 
 This is the comparison of PIJ v.s. PI Level 1 For loop:
 
-![Plot_XY_JI_MRxNRKernel.png](https://github.com/OeuFcok/picture_for_blog/blob/master/Plot_XY_JI_MRxNRKernel.png?raw=true)No large difference, I use the newest software, may be the compiler have automatic optimization function for this problem.
+![Plot_XY_JI_MRxNRKernel.png](https://github.com/OeuFcok/picture_for_blog/blob/master/Plot_XY_JI_MRxNRKernel.png?raw=true)
+
+No large difference, I use the newest software, may be the compiler have automatic optimization function for this problem.
 
 ### 3.4 Find the best $A_{i,p}$ size
 
@@ -243,7 +250,7 @@ For this procedure, the analysis method is to calculate the ratio of computation
 
 Every time we store the blue part of A for multiple usage, and streaming the submatrix of B and C, that means the marked part in the picture. We should compute the how many effective computation after we read from A, B and C. For submatrix of A, it could be reused for many streaming operation of B and C, thus the analysis base is not the same.
 
-* Bring an $mC×kC$ submatrix of A into the cache, at a cost of $m_C×k_Cβ_{M↔C}$,  And the floats is:$2m_Ck_Cn$, the ratio is,
+* Bring an $mC \times kC$ submatrix of A into the cache, at a cost of $m_C \times k_C\beta_{M \leftrightarrow C}$,  And the floats is:$2m_Ck_Cn$, the ratio is,
   $$
   \frac{floats}{memory\ operation}=\frac{2n}{\beta_{M\leftrightarrow C}}
   $$

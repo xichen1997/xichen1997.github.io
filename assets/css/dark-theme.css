@@ -1,6 +1,6 @@
 body {
   background-color: #0d1117;
-  color: #c9d1d9;
+  color: #e6edf3;
 }
 
 a,
@@ -47,7 +47,15 @@ a:focus {
 
 .post-title,
 .page-heading {
-  color: #e6edf3;
+  color: #f0f6fc;
+}
+
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  color: #f0f6fc;
 }
 
 .post-meta {
@@ -72,8 +80,8 @@ code {
 }
 
 blockquote {
-  color: #8b949e;
-  border-left: 0.3em solid #30363d;
+  color: #adbac7;
+  border-left: 0.3em solid #444c56;
 }
 
 table {

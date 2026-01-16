@@ -97,10 +97,12 @@ Every time we do streaming operation:
 
 ![img](http://www.cs.utexas.edu/users/flame/laff/pfhp/images/Week2/GemmIJPPrank1One.png)
 
-In order to make good use of all the register memory, we can assume the 
+In order to make good use of all the register memory, we can assume the
 $m_R ,\ n_R,\  k_R$
-is the same, and assume they are 4. The overall memory in register is 
-$$m_R \times n_R + m_R + n_R  = 24$$
+is the same, and assume they are 4. The overall memory in register is
+$$
+m_R \times n_R + m_R + n_R  = 24
+$$
 
 ![plot_register_block_4](http://xcwp.azurewebsites.net/wp-content/uploads/2020/05\plot_register_block_4.png)
 
@@ -347,7 +349,9 @@ $$
 
 Take the derivatives of the right hand side, we assume S is a const and M is a variable, so in the end we get:
 
-$$M=2S$$
+$$
+M=2S
+$$
 
 $$
 \begin{equation*}
