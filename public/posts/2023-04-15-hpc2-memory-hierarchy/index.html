@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>HPC-2-Memory-hierarchy-in-computer | Xi&#39;s Blog</title>
+<meta name="keywords" content="memory-hierarchy, cache, matrix-multiplication, performance-optimization">
+<meta name="description" content="Hierarchy Memory
+1. Why use Hierarchy Memory
+Because the register memory is much faster than main memory, in fact the difference is about two magnitude. And the  performance gap will be larger because the CPU&rsquo;s speed increase faster than main memory.
+In this situation, if we fetch data from the main memory too many times, the expense will be very expensive. But if we create some memory which is faster than main memory but a little bit slower than register memory. We call it cache.">
+<meta name="author" content="Xi Chen">
+<link rel="canonical" href="http://localhost:1313/posts/2023-04-15-hpc2-memory-hierarchy/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.56bf4be95d09faf55cd507c845718ccfcabb2e24e37f8fa5a66f9fa098252b06.css" integrity="sha256-Vr9L6V0J&#43;vVc1QfIRXGMz8q7LiTjf4&#43;lpm&#43;foJglKwY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2023-04-15-hpc2-memory-hierarchy/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+
+window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function(x){
+      x.parentElement.classList += 'has-jax'})
+  });
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Xi&#39;s Blog (Alt + H)">Xi&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      HPC-2-Memory-hierarchy-in-computer
+    </h1>
+    <div class="post-meta"><span title='2024-04-15 00:05:14 -0400 EDT'>April 15, 2024</span>&nbsp;·&nbsp;<span>15 min</span>&nbsp;·&nbsp;<span>3002 words</span>&nbsp;·&nbsp;<span>Xi Chen</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-why-use-hierarchy-memory">1. Why use Hierarchy Memory</a></li>
+    <li><a href="#2-cache-algorithm">2. Cache algorithm</a>
+      <ul>
+        <li><a href="#21-test-for-different-outer-for-loop">2.1 Test for different outer for loop</a></li>
+        <li><a href="#32-performance-analysis">3.2 performance analysis</a></li>
+        <li><a href="#33-algorithm-improvments">3.3 Algorithm improvments</a></li>
+        <li><a href="#34-find-the-best-a_ip-size">3.4 Find the best $A_{i,p}$ size</a></li>
+        <li><a href="#35-blocking-for-l1-and-l2-cache">3.5 Blocking for L1 and L2 cache</a></li>
+        <li><a href="#36-blocking-for-l1-l2-and-l3-cache">3.6 Blocking for L1 L2 and L3 cache</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-packing-in-mmm">4 Packing in MMM</a>
+      <ul>
+        <li><a href="#41-stride-matters">4.1 Stride matters</a></li>
+        <li><a href="#42-packing-of-a-and-b">4.2 Packing of A and B</a></li>
+      </ul>
+    </li>
+    <li><a href="#plot_"><img src="https://github.com/OeuFcok/picture_for_blog/blob/master/Plot_Five_loop_packed_12x4_Kernel_MC_KC_Performance.png?raw=true" alt="Plot_Five_loop_packed_12x4_Kernel_MC_KC_Performance.png"></a></li>
+    <li><a href="#5-recommandation-for-hpc">5. Recommandation for HPC</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="hierarchy-memory">Hierarchy Memory<a hidden class="anchor" aria-hidden="true" href="#hierarchy-memory">#</a></h1>
+<h2 id="1-why-use-hierarchy-memory">1. Why use Hierarchy Memory<a hidden class="anchor" aria-hidden="true" href="#1-why-use-hierarchy-memory">#</a></h2>
+<p>Because the register memory is much faster than main memory, in fact the difference is about two magnitude. And the  performance gap will be larger because the CPU&rsquo;s speed increase faster than main memory.</p>
+<p>In this situation, if we fetch data from the main memory too many times, the expense will be very expensive. But if we create some memory which is faster than main memory but a little bit slower than register memory. We call it cache.</p>
+<p>The cache memory is bigger than register memory, if every time we fetch data from main memory to cache firstly, then the register will extract data and return result to cache, which is faster. After all data completed, the register will communicate with main memory and get another batch of data.</p>
+<p>Usually the expense of fetching data from register memory to cache is cheap. And because cache is larger so every time we could fetch more data from main memory. This means we could decrease the frequency of fetching data. Which will save a lot of time.</p>
+<p><img alt="MemoryHierarchyOneCache.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/MemoryHierarchyOneCache.png?raw=true"></p>
+<h2 id="2-cache-algorithm">2. Cache algorithm<a hidden class="anchor" aria-hidden="true" href="#2-cache-algorithm">#</a></h2>
+<p>In order to make the algorithm easy to analyse, we assume that the main memory will exchange data with cache and cache will exchange with register.</p>
+<p>In order to simiplify this model, we assume in the data exchange procedure, there is no calculation(in fact they can do simultaneously, just image that the main memory update while cache change data with register, it is easy to achieve.)</p>
+<p><img alt="image-20200515004530367.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200515004530367.png?raw=true"></p>
+<p>This inspire us, that if the matrix size is smaller, which is smaller than L1-L3 cache size, the data will be all stored in cache, and it is very fast. So we make an algorithm:</p>
+<p>We divide the matrix as many micro-tile:</p>
+<p><img alt="image-20200515004750727.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200515004750727.png?raw=true"></p>
+<p>Note that:</p>
+<p><img alt="image-20200515004816306.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200515004816306.png?raw=true"></p>
+<p><img alt="image-20200515004826883.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200515004826883.png?raw=true"></p>
+<p>This algorithm means that we can use micro kernel algorithm to realize the operation in the three-for-loop:
+$$
+\begin{equation*}
+C_{i, j}:= A_{i, p} B_{p, j}+C_{i, j}
+\end{equation*}
+$$</p>
+<p>The block matrix $C_{i,j}$ ,$A_{i,p}$ and $B_{p,j}$ small block matrix, which are submatrix. We define the ijp loop as level 1 for loop. The algorithm to realize</p>
+<p>$$
+\begin{equation*}
+C_{i, j}:= A_{i, p} B_{p, j}+C_{i, j}
+\end{equation*}
+$$</p>
+<p>as level 2 loop.</p>
+<p><strong>Terminology</strong></p>
+<p><strong>A $m_R\times n_R$ submatrix of C is called micro-tile</strong></p>
+<p><strong>The $m_R\times k_C$ , $k_C\times n_R$is called micro-panles</strong></p>
+<p><strong>The routine that updates a micro-tile by multiplying two micro-panels we will call the micro-kernel.</strong></p>
+<hr>
+<p>Review the picture:</p>
+<p><img alt="image-20200515004530367.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200515004530367.png?raw=true"></p>
+<p>If we want to maintain good performance, the size of the micro-tile algorithm can be equal to L2 cache.</p>
+<p>And according to the estimate, the best size of the three matrix can be:</p>
+<p>96x96. (Because the L2 cache is 256KBytes, we want to find the matrix size which is the multiple of 12(because 12 is multiple of 2 4 6 12), then 96 is the most suitable)</p>
+<p>The algorithm can be show using this picture:</p>
+<p><img alt="image-20200515015229113.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200515015229113.png?raw=true"></p>
+<p>Then we use the algorithm, the micro-kernel algorithm can use 4x4 or 12x4, compare their performance:</p>
+<p><img alt="Copy_of_Plot_XY_JI_MRxNRKernel.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/Copy_of_Plot_XY_JI_MRxNRKernel.png?raw=true"></p>
+<p>The size of micro-kernel should consider the size of L1 cache and register.</p>
+<h3 id="21-test-for-different-outer-for-loop">2.1 Test for different outer for loop<a hidden class="anchor" aria-hidden="true" href="#21-test-for-different-outer-for-loop">#</a></h3>
+<p><img alt="Plot_XYZ_JI_MRxNR.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/Plot_XYZ_JI_MRxNR.png?raw=true"></p>
+<p>From the result above we can see that the micro-kernel is not sensitive to the outer for loop. But the size of micro Kernel will related to the speed of MMM.</p>
+<h3 id="32-performance-analysis">3.2 performance analysis<a hidden class="anchor" aria-hidden="true" href="#32-performance-analysis">#</a></h3>
+<p>In the micro kernel for loop, we use vector intrinsic function:</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/20241025024525.png"></p>
+<p>Assume we have the square matrix, and their sizes are the same:</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/20241025024703.png"></p>
+<p>So the b is larger, more time you will use in computation rather than transferring data.</p>
+<ul>
+<li>note that the data transferring expense in cache to main memory is more than 100 times than floats operation.</li>
+<li>In practice the movement of the data can often be overlapped with computation (this is known as prefetching). However, clearly only so much can be overlapped, so it is still important to make the ratio favorable.</li>
+</ul>
+<h3 id="33-algorithm-improvments">3.3 Algorithm improvments<a hidden class="anchor" aria-hidden="true" href="#33-algorithm-improvments">#</a></h3>
+<ol>
+<li>Streaming submatrix of B and C.</li>
+</ol>
+<p>Consider previous algorithm:</p>
+<p><img alt="image-20200516164608693.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200516164608693.png?raw=true"></p>
+<p>Every time we put 3 submatrix into the cache, but according to the calculation, the larger of the submatrix, the better performance. Note that every time in fact we do streaming operation, just use a little piece of A and a panel of B.</p>
+<p>So we can do this instead:</p>
+<p><img alt="image-20200516164934159.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200516164934159.png?raw=true"></p>
+<p>Every time we put the colored space into L2 cache, that means we could store larger submatrix of A(the blue part) to get better efficiency. And every time, we pick up micro panel of A and streaming micro panel of B and streaming micro-tile of C to finish calculation.</p>
+<p>$m_c$,$n_c$ and $k_c$ are dimensional of submatrix of C, A and B.</p>
+<p>If we use a 4x4 micro kernel algorithm, then we can continue divide the submatrix into micro kernel and using streaming method:</p>
+<p>$m_r\times 4= m_c$, $n_r\times 4= n_c$, $k_r\times 4= k_c$</p>
+<p><img alt="image-20200515232134715.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200515232134715.png?raw=true"></p>
+<p>In the L2 cache, use JIP for rank-1 operation for calculating submatrix multiplication. J is the outer for loop, then in this processdure we can keep the matrix of A stay in L2 cache, stay for the all loop, then every time we just need to stream the micro kernel of submatrix C and B(in the picture is the red and green part).</p>
+<p>The algorithm above is just an example, of course you could make the whole submatrix of B in the L2 cache, just change the order of the micro-kernel loop is OK.</p>
+<ol start="2">
+<li>
+<p>A smarter method.</p>
+<p>In the previous part, we use PIJ loop to take apart the A, B and C matrix. In this method, we will load the same $A_{i,p}$ submatrix for many times. We could do better to optimize this, and we could compress the PIJ for loop to PI for loop. This will decrease the number which the same block of A will loaded.</p>
+<p>The picture will show the procedure:</p>
+<p><img alt="image-20200516010329361.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200516010329361.png?raw=true"></p>
+</li>
+</ol>
+<p>That means every time we move the submatrix of A($m_c\times k_c$) into the L2 cache , and stream the red and green part from main memory to L2 cache.</p>
+<p>Each Level 2 for loop&rsquo;s expense is:</p>
+<p>$$
+\begin{equation*}
+\begin{array}{rcl}
+\begin{array}{c}
+\underbrace{
+m_C n \beta_{C \leftrightarrow M}} \
+\text{load}~C_{i,j}
+\end{array}
++
+\begin{array}{c}
+\underbrace{
+m_C k_C \beta_{C \leftrightarrow M}} \
+\text{load}~A_{i,p}
+\end{array}
++
+\begin{array}{c}
+\underbrace{
+k_C n \beta_{C \leftrightarrow M}} \
+\text{load}~B_{p,j}
+\end{array} \[0.2in]
++
+\begin{array}{c}
+\underbrace{
+2 m_C  n  k_C \gamma_C} \
+\text{update}~C_{i} +:= A_{i,p} B_{p}
+\end{array}
++
+\begin{array}{c}
+\underbrace{
+m_C n \beta_{C \leftrightarrow M}} \
+\text{store}~C_{i,j}
+\end{array}
+\end{array}
+\end{equation*}
+$$
+And the summary is:
+$$
+\begin{equation*}
+\begin{array}{c}
+\underbrace{
+m_C k_C + \left( 2 m_C n + k_C n \right) \beta_{C
+\leftrightarrow M}
+} \
+\text{data movement overhead}
+\end{array}
++
+\begin{array}{c}
+\underbrace{
+2 m_C n k_C \gamma_C
+} \
+\text{useful computation}
+\end{array}
+\end{equation*}
+$$</p>
+<p>The ratio of use ful computation and data movement expense is:</p>
+<p>$$
+\begin{equation*}
+\frac{ 2 m_C n k_C}
+{	   2 m_C n + m_C k_C + k_C n }.
+= \frac{2 b^2 n}{3b n + b^2}
+\approx \frac{2 b^2n}{3bn} \approx \frac{2b}{3}
+\end{equation*}
+$$</p>
+<p>is a little better than PIJ level 1 For loop&rsquo;s performance.</p>
+<p>This is the comparison of PIJ v.s. PI Level 1 For loop:</p>
+<p><img alt="Plot_XY_JI_MRxNRKernel.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/Plot_XY_JI_MRxNRKernel.png?raw=true"></p>
+<p>No large difference, I use the newest software, may be the compiler have automatic optimization function for this problem.</p>
+<h3 id="34-find-the-best-a_ip-size">3.4 Find the best $A_{i,p}$ size<a hidden class="anchor" aria-hidden="true" href="#34-find-the-best-a_ip-size">#</a></h3>
+<p>Using the last streaming algorithm, we can calculate all possible situation to get the best performance size of micro tile:       $m_C\times k_C$</p>
+<p>After trying different size of the submatrix of A.</p>
+<p><img alt="Plot_MC_KC_Performance.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/Plot_MC_KC_Performance.png?raw=true"></p>
+<p>From this figure, we can see that the best size of the submatirx of A is 192x40.</p>
+<p><strong>Performance Analysis</strong></p>
+<p>For this procedure, the analysis method is to calculate the ratio of computation and memory operation.</p>
+<p><img alt="image-20200516163634734.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200516163634734.png?raw=true"></p>
+<p>Every time we store the blue part of A for multiple usage, and streaming the submatrix of B and C, that means the marked part in the picture. We should compute the how many effective computation after we read from A, B and C. For submatrix of A, it could be reused for many streaming operation of B and C, thus the analysis base is not the same.</p>
+<ul>
+<li>
+<p>Bring an $mC \times kC$ submatrix of A into the cache, at a cost of $m_C \times k_C\beta_{M \leftrightarrow C}$,  And the floats is:$2m_Ck_Cn$, the ratio is,
+$$
+\frac{floats}{memory\ operation}=\frac{2n}{\beta_{M\leftrightarrow C}}
+$$
+The larger n, the better ratio(performance).</p>
+<p>This analysis didn&rsquo;t consider the streaming cost of submatrix of C and B.</p>
+</li>
+<li>
+<p>For the micro-kernel operation:</p>
+<p>Every time we read a submatrix of B:
+$$
+\frac{floats}{memory\ operations} = \frac{2m_C}{\beta&rsquo;_{M\leftrightarrow C}}
+$$</p>
+</li>
+<li>
+<p>For the micro-kernel operation:</p>
+<p>Every time we read a submatrix of C:
+$$
+\frac{floats}{memory\ operations} = \frac{2m_Ck_Cn_R}{2m_Cn_R\beta&rsquo;&rsquo;<em>{M\leftrightarrow C}}=\frac{k_C}{\beta&rsquo;&rsquo;</em>{M\leftrightarrow C}}
+$$</p>
+</li>
+</ul>
+<p>We should make sure the $m_C$, $k_C$ as large as enough.</p>
+<h3 id="35-blocking-for-l1-and-l2-cache">3.5 Blocking for L1 and L2 cache<a hidden class="anchor" aria-hidden="true" href="#35-blocking-for-l1-and-l2-cache">#</a></h3>
+<p>If we want to do better, we could use L1 and L2 cache properly. The micro-tile is small could be use in register memory. Then keep submatrix of A in L2 cache and streaming micro-panel of B to L1 cache, which is faster.</p>
+<p>This algorithm&rsquo;s Level 1 for loop is the same as 3.4, the smarter method, which is show in the picture at the main memory part.</p>
+<p><img alt="image-20200516171714395.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200516171714395.png?raw=true"></p>
+<h3 id="36-blocking-for-l1-l2-and-l3-cache">3.6 Blocking for L1 L2 and L3 cache<a hidden class="anchor" aria-hidden="true" href="#36-blocking-for-l1-l2-and-l3-cache">#</a></h3>
+<p><img alt="image-20200516175259185.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200516175259185.png?raw=true"></p>
+<p>The for loop procedue can be illustrated using this picture:</p>
+<p><img alt="img" loading="lazy" src="http://www.cs.utexas.edu/users/flame/laff/pfhp/images/Week3/BLISPictureNoPack.png"></p>
+<p>Every for loop, we can know from the picture what the loop do in this level. and the code is attached:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#define alpha( i,j ) A[ (j)*ldA + (i) ]   </span><span class="c1">// map alpha( i,j ) to array A
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define beta( i,j )  B[ (j)*ldB + (i) ]   </span><span class="c1">// map beta( i,j ) to array B
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define gamma( i,j ) C[ (j)*ldC + (i) ]   </span><span class="c1">// map gamma( i,j ) to array C
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#define min( x, y ) ( ( x ) &lt; ( y ) ? x : y )
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">LoopFive</span><span class="p">(</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">LoopFour</span><span class="p">(</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">LoopThree</span><span class="p">(</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">LoopTwo</span><span class="p">(</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">LoopOne</span><span class="p">(</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">Gemm_MRxNRKernel</span><span class="p">(</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">MyGemm</span><span class="p">(</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldA</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	     <span class="kt">double</span> <span class="o">*</span><span class="n">B</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldB</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">C</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldC</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span> <span class="n">m</span> <span class="o">%</span> <span class="n">MR</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">MC</span> <span class="o">%</span> <span class="n">MR</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span> <span class="s">&#34;m and MC must be multiples of MR</span><span class="se">\n</span><span class="s">&#34;</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">exit</span><span class="p">(</span> <span class="mi">0</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span> <span class="n">n</span> <span class="o">%</span> <span class="n">NR</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">NC</span> <span class="o">%</span> <span class="n">NR</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span> <span class="s">&#34;n and NC must be multiples of NR</span><span class="se">\n</span><span class="s">&#34;</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">exit</span><span class="p">(</span> <span class="mi">0</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">LoopFive</span><span class="p">(</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">ldA</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">ldB</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">ldC</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">LoopFive</span><span class="p">(</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldA</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		   <span class="kt">double</span> <span class="o">*</span><span class="n">B</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldB</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">C</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldC</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">+=</span><span class="n">NC</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">jb</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span> <span class="n">NC</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="n">j</span> <span class="p">);</span>    <span class="cm">/* Last loop may not involve a full block */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">LoopFour</span><span class="p">(</span> <span class="n">m</span><span class="p">,</span> <span class="n">jb</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">ldA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">beta</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span><span class="n">j</span>  <span class="p">),</span> <span class="n">ldB</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">gamma</span><span class="p">(</span>  <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="p">),</span> <span class="n">ldC</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">LoopFour</span><span class="p">(</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldA</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">	       <span class="kt">double</span> <span class="o">*</span><span class="n">B</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldB</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">C</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldC</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">p</span><span class="o">&lt;</span><span class="n">k</span><span class="p">;</span> <span class="n">p</span><span class="o">+=</span><span class="n">KC</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">pb</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span> <span class="n">KC</span><span class="p">,</span> <span class="n">k</span><span class="o">-</span><span class="n">p</span> <span class="p">);</span>    <span class="cm">/* Last loop may not involve a full block */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">LoopThree</span><span class="p">(</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">pb</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">alpha</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="n">p</span>  <span class="p">),</span> <span class="n">ldA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">beta</span><span class="p">(</span> <span class="n">p</span> <span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">ldB</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">ldC</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">LoopThree</span><span class="p">(</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldA</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">		<span class="kt">double</span> <span class="o">*</span><span class="n">B</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldB</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">C</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldC</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">+=</span><span class="n">MC</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ib</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span> <span class="n">MC</span><span class="p">,</span> <span class="n">m</span><span class="o">-</span><span class="n">i</span> <span class="p">);</span>    <span class="cm">/* Last loop may not involve a full block */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">LoopTwo</span><span class="p">(</span> <span class="n">ib</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">alpha</span><span class="p">(</span> <span class="n">i</span> <span class="p">,</span><span class="mi">0</span>  <span class="p">),</span> <span class="n">ldA</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">ldB</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">gamma</span><span class="p">(</span> <span class="n">i</span> <span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">ldC</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">LoopTwo</span><span class="p">(</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldA</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	      <span class="kt">double</span> <span class="o">*</span><span class="n">B</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldB</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">C</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldC</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">+=</span><span class="n">NR</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">jb</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span> <span class="n">NR</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="n">j</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">LoopOne</span><span class="p">(</span> <span class="n">m</span><span class="p">,</span> <span class="n">jb</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">ldA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">beta</span><span class="p">(</span>  <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="p">),</span> <span class="n">ldB</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">gamma</span><span class="p">(</span> <span class="mi">0</span> <span class="p">,</span> <span class="n">j</span> <span class="p">),</span> <span class="n">ldC</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">LoopOne</span><span class="p">(</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldA</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	      <span class="kt">double</span> <span class="o">*</span><span class="n">B</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldB</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">C</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldC</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">+=</span><span class="n">MR</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ib</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span> <span class="n">MR</span><span class="p">,</span> <span class="n">m</span><span class="o">-</span><span class="n">i</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Gemm_MRxNRKernel</span><span class="p">(</span> <span class="n">k</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">alpha</span><span class="p">(</span><span class="n">i</span> <span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">ldA</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">ldB</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">gamma</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">ldC</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And this is the performance of the implementation:</p>
+<p><img alt="Copy_of_Plot_Five_Loops_only_no_packing.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/Copy_of_Plot_Five_Loops_only_no_packing.png?raw=true"></p>
+<p>which is much better. And 12x4 micro-kernel is very good.</p>
+<h2 id="4-packing-in-mmm">4 Packing in MMM<a hidden class="anchor" aria-hidden="true" href="#4-packing-in-mmm">#</a></h2>
+<h3 id="41-stride-matters">4.1 Stride matters<a hidden class="anchor" aria-hidden="true" href="#41-stride-matters">#</a></h3>
+<p>From the picture:</p>
+<p><img alt="Copy_of_Plot_Five_Loops_only_no_packing.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/Copy_of_Plot_Five_Loops_only_no_packing.png?raw=true"></p>
+<p>We can see that the performance will go down with the matrix dimension. When the size is small, its efficiency is good, but when the size become larger, it will tends to a lower constant.</p>
+<p>In our experiment, if we at first will create a matrix of leading dimension is 1500x1500, and use submatrix to do the experimental ,like the picture :<img alt="image-20200517154723590.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200517154723590.png?raw=true"></p>
+<p>we will get the result(Five_Loops_12x4Kernel_Ldim).</p>
+<p>That is because the data is not continous, which is not packed tightly. So it will decrease the efficiency of the algorithm.</p>
+<p>The result also related to some conceptiong about memory pages(4kb) and cache prefetching technique.</p>
+<ul>
+<li>
+<p>Memory page: <a href="https://en.wikipedia.org/wiki/Page_(computer_memory)"><code>https://en.wikipedia.org/wiki/Page_(computer_memory)</code></a>.</p>
+</li>
+<li>
+<p>Cache prefetching: <a href="https://en.wikipedia.org/wiki/Cache_prefetching"><code>https://en.wikipedia.org/wiki/Cache_prefetching</code></a>.</p>
+<p><img alt="image-20200517162722650.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200517162722650.png?raw=true"></p>
+</li>
+</ul>
+<p>Note that the prefetching only allow for the size continuously below 4kb, so once the matrix become larger, the prefetching will not be executed. Thus the performance goes down.</p>
+<p><strong>Note</strong></p>
+<p>The packing operation will need some extra operation, but if we amortize the expense, the performance will still increase.</p>
+<h3 id="42-packing-of-a-and-b">4.2 Packing of A and B<a hidden class="anchor" aria-hidden="true" href="#42-packing-of-a-and-b">#</a></h3>
+<p>In order to let the matrix become continuous memory we should pack the submatrix of A and B.</p>
+<p>Apply for a extra memory to store packed submatrix of B (the Btilde):<img alt="image-20200517184923666.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200517184923666.png?raw=true"></p>
+<p>The code is:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">PackPanelB_KCxNC</span><span class="p">(</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">B</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldB</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">Btilde</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/* Pack a k x n panel of B in to a KC x NC buffer.
+</span></span></span><span class="line"><span class="cl"><span class="cm">.  
+</span></span></span><span class="line"><span class="cl"><span class="cm">   The block is copied into Btilde a micro-panel at a time. */</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">+=</span> <span class="n">NR</span> <span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">jb</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span> <span class="n">NR</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="n">j</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">PackMicro</span><span class="o">-</span><span class="n">PanelB_KCxNR</span><span class="p">(</span> <span class="n">k</span><span class="p">,</span> <span class="n">jb</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">beta</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="p">),</span> <span class="n">ldB</span><span class="p">,</span> <span class="n">Btilde</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Btilde</span> <span class="o">+=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">jb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We divide submatrix of B into many micro-panels and packed them separately. But the Btilde is continous on Kc x Nc.</p>
+<p>Then packing A and store Atilde into L2 cache:</p>
+<p><img alt="image-20200517185150532.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200517185150532.png?raw=true"></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">PackBlockA_MCxKC</span><span class="p">(</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldA</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">Atilde</span> <span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="cm">/* Pack a  m x k block of A into a MC x KC buffer.   MC is assumed to
+</span></span></span><span class="line"><span class="cl"><span class="cm">    be a multiple of MR.  The block is packed into Atilde a micro-panel
+</span></span></span><span class="line"><span class="cl"><span class="cm">    at a time. If necessary, the last micro-panel is padded with rows
+</span></span></span><span class="line"><span class="cl"><span class="cm">    of zeroes. */</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">+=</span> <span class="n">MR</span> <span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ib</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span> <span class="n">MR</span><span class="p">,</span> <span class="n">m</span><span class="o">-</span><span class="n">i</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">PackMicro</span><span class="o">-</span><span class="n">PanelA_MRxKC</span><span class="p">(</span> <span class="n">ib</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">alpha</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">ldA</span><span class="p">,</span> <span class="n">Atilde</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Atilde</span> <span class="o">+=</span> <span class="n">ib</span> <span class="o">*</span> <span class="n">k</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We also divide this as many micro-panels to packed them separately:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">PackMicroPanelA_MRxKC</span><span class="p">(</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ldA</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">Atilde</span> <span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="cm">/* Pack a micro-panel of A into buffer pointed to by Atilde. 
+</span></span></span><span class="line"><span class="cl"><span class="cm">   This is an unoptimized implementation for general MR and KC. */</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* March through A in column-major order, packing into Atilde as we go. */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span> <span class="n">m</span> <span class="o">==</span> <span class="n">MR</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* Full row size micro-panel.*/</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">p</span><span class="o">&lt;</span><span class="n">k</span><span class="p">;</span> <span class="n">p</span><span class="o">++</span> <span class="p">)</span> 
+</span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">MR</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">)</span> 
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="n">Atilde</span><span class="o">++</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* Not a full row size micro-panel.  We pad with zeroes.  To be  added */</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The packing procedure can also been showed in five-loop procedure:</p>
+<p><img alt="img" loading="lazy" src="http://www.cs.utexas.edu/users/flame/laff/pfhp/images/Week3/BLISPicturePack.png"></p>
+<p>Note that in each micro panel, the memory is continous, and for submatrix of B, the counting method is not column-major, it is row-major. When we do rank-1 operation in micro-kernel procedure, the memory of A and B are continuous.</p>
+<p><img alt="image-20200517204226182.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/image-20200517204226182.png?raw=true"></p>
+<p>(The memory is continous because of the packing or renumbering)</p>
+<p>We can see that now the performance of Five_Loops_Packed_12x4Kernel perform very closed to the reference.</p>
+<p>In the small matrix size, the performance is not good that because the computation expense is much smaller than data transferring expense. The amortized cost of coping a matrix is very high.</p>
+<p>Then in the end find the optimal Mc and Kc:</p>
+<h2 id="plot_"><img alt="Plot_Five_loop_packed_12x4_Kernel_MC_KC_Performance.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/Plot_Five_loop_packed_12x4_Kernel_MC_KC_Performance.png?raw=true"><a hidden class="anchor" aria-hidden="true" href="#plot_">#</a></h2>
+<h2 id="5-recommandation-for-hpc">5. Recommandation for HPC<a hidden class="anchor" aria-hidden="true" href="#5-recommandation-for-hpc">#</a></h2>
+<ol>
+<li>
+<p>Using vector intrinsic.</p>
+</li>
+<li>
+<p>Avoid repeatting transfer data.</p>
+</li>
+<li>
+<p>Block the MMM to make good use of cache.</p>
+</li>
+<li>
+<p>Broadcasting A and loading elements of B.(not so effective)</p>
+<p>It sounds very complicated, but there is a smart way to realize this:</p>
+<p>By defining( this means these matrice are row-major):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="cp">#define alpha( j,i ) A[ (j)*ldA + i ]   
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define beta( j,i )  B[ (j)*ldB + i ]   
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define gamma( j,i ) C[ (j)*ldC + i ]   
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Loop unrolling.</p>
+<p>This will decrease the time for branching prediction.</p>
+<p><img alt="Plot_Five_Loops.png" loading="lazy" src="https://github.com/OeuFcok/picture_for_blog/blob/master/Plot_Five_Loops.png?raw=true"></p>
+<p>(with 12x4 and 4x4 loop unrolling)</p>
+</li>
+</ol>
+<p>We can see nothing changed, the improvement of 12x4 and 4x4 is not so obvious.</p>
+<p><a href="https://zh.wikipedia.org/wiki/">https://zh.wikipedia.org/wiki/</a>分支預測器</p>
+<p><a href="https://zh.wikipedia.org/wiki/">https://zh.wikipedia.org/wiki/</a>循环展开</p>
+<ol start="6">
+<li>
+<p>Prefetching (tricky; seems to confuse the compiler&hellip;)</p>
+</li>
+<li>
+<p>Using in-lined assembly code</p>
+<p>useful link:https://github.com/flame/blis/blob/master/kernels/haswell/3/old/bli_gemm_haswell_asm_d6x8.c</p>
+</li>
+</ol>
+<p><strong>Note</strong>:</p>
+<p><a href="https://github.com/flame/blis/blob/master/kernels/haswell/3/old/bli_gemm_haswell_asm_d6x8.c">https://github.com/flame/blis/blob/master/kernels/haswell/3/old/bli_gemm_haswell_asm_d6x8.c</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/memory-hierarchy/">Memory-Hierarchy</a></li>
+      <li><a href="http://localhost:1313/tags/cache/">Cache</a></li>
+      <li><a href="http://localhost:1313/tags/matrix-multiplication/">Matrix-Multiplication</a></li>
+      <li><a href="http://localhost:1313/tags/performance-optimization/">Performance-Optimization</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>HPC-1-divide-and-conquer-block-matrix-algorithmr</span>
+  </a>
+  <a class="next" href="http://localhost:1313/posts/2024-02-24-several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Several issues I meet when plug in new RTX 4090 GPU for my workstation</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Xi&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
