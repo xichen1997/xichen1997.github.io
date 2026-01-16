@@ -66,7 +66,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./hugo-blog/public
+          path: ./public
 
   # Deployment job
   deploy:
