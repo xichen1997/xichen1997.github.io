@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>An interesting flipping coin question | Xi&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="An interesting flipping coin question
+Problem statement
+You have a fair coin, which means a flip result could be tail(T) and head(H), and their probability is 50%.
+You cast the coin until the coin until have a pattern &ldquo;THTHT&rdquo; or &ldquo;THHHT&rdquo;, which one is easier to get? And their probability?
+First thought
+Lots of people will think they are identical intuitivly because &ldquo;T&rdquo; and &ldquo;H&rdquo; both have same probability to get. Then their probability is $\frac{1}{2}^5$.">
+<meta name="author" content="Xi Chen">
+<link rel="canonical" href="https://xichen1997.github.io/posts/2024-10-26-an-interesting-flipping-coin-question/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.56bf4be95d09faf55cd507c845718ccfcabb2e24e37f8fa5a66f9fa098252b06.css" integrity="sha256-Vr9L6V0J&#43;vVc1QfIRXGMz8q7LiTjf4&#43;lpm&#43;foJglKwY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://xichen1997.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://xichen1997.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://xichen1997.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://xichen1997.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://xichen1997.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://xichen1997.github.io/posts/2024-10-26-an-interesting-flipping-coin-question/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+
+window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function(x){
+      x.parentElement.classList += 'has-jax'})
+  });
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<meta property="og:url" content="https://xichen1997.github.io/posts/2024-10-26-an-interesting-flipping-coin-question/">
+  <meta property="og:site_name" content="Xi&#39;s Blog">
+  <meta property="og:title" content="An interesting flipping coin question">
+  <meta property="og:description" content="An interesting flipping coin question Problem statement You have a fair coin, which means a flip result could be tail(T) and head(H), and their probability is 50%.
+You cast the coin until the coin until have a pattern “THTHT” or “THHHT”, which one is easier to get? And their probability?
+First thought Lots of people will think they are identical intuitivly because “T” and “H” both have same probability to get. Then their probability is $\frac{1}{2}^5$.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-10-26T00:05:00+00:00">
+    <meta property="article:modified_time" content="2024-10-26T00:05:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="An interesting flipping coin question">
+<meta name="twitter:description" content="An interesting flipping coin question
+Problem statement
+You have a fair coin, which means a flip result could be tail(T) and head(H), and their probability is 50%.
+You cast the coin until the coin until have a pattern &ldquo;THTHT&rdquo; or &ldquo;THHHT&rdquo;, which one is easier to get? And their probability?
+First thought
+Lots of people will think they are identical intuitivly because &ldquo;T&rdquo; and &ldquo;H&rdquo; both have same probability to get. Then their probability is $\frac{1}{2}^5$.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://xichen1997.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "An interesting flipping coin question",
+      "item": "https://xichen1997.github.io/posts/2024-10-26-an-interesting-flipping-coin-question/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "An interesting flipping coin question",
+  "name": "An interesting flipping coin question",
+  "description": "An interesting flipping coin question Problem statement You have a fair coin, which means a flip result could be tail(T) and head(H), and their probability is 50%.\nYou cast the coin until the coin until have a pattern \u0026ldquo;THTHT\u0026rdquo; or \u0026ldquo;THHHT\u0026rdquo;, which one is easier to get? And their probability?\nFirst thought Lots of people will think they are identical intuitivly because \u0026ldquo;T\u0026rdquo; and \u0026ldquo;H\u0026rdquo; both have same probability to get. Then their probability is $\\frac{1}{2}^5$.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "An interesting flipping coin question Problem statement You have a fair coin, which means a flip result could be tail(T) and head(H), and their probability is 50%.\nYou cast the coin until the coin until have a pattern “THTHT” or “THHHT”, which one is easier to get? And their probability?\nFirst thought Lots of people will think they are identical intuitivly because “T” and “H” both have same probability to get. Then their probability is $\\frac{1}{2}^5$.\nBut then this idea will disappear because of the method above is to extra 5-times result from an infinite sequence, but the statement is to construct a sequence to see which pattern we can get.\nMarkov chain We can use different state to represent the status for each step:\nEach toss has an equal probability (0.5) of being Heads (H) or Tails (T). Based on this, we define the transitions between states: From State 0: On H: Move to State H (probability 0.5). On T: Remain in State 0 (probability 0.5). From State H: On H: Remain in State H (probability 0.5). On T: Move to State HT (probability 0.5). From State HT: On H: Move to State HTH (probability 0.5). On T: Move to State HTT (probability 0.5). From State HTH: On H: Move to State H (probability 0.5). On T: Move to State HTHT (probability 0.5). From State HTHT: On H: Move to State A (sequence HTHTH achieved) (probability 0.5). On T: Move to State HTT (probability 0.5). From State HTT: On H: Move to State H (probability 0.5). On T: Move to State HTTT (probability 0.5). From State HTTT: On H: Move to State B (sequence HTTTH achieved) (probability 0.5). On T: Move to State 0 (probability 0.5). States A and B are absorbing; once entered, the process stops. The markov chain graph looks like: Intuitivly, we can see the path to HTHTH, at state “HTHT”, it could transfer to “HTT”, which belongs to B state. Then we could say it’s more likely to get B rather than A.\nFinal calculation We assume the probability reaching A is u. Then:\nBased on the transitions, we create equations for u_i:\nFrom State 0: $u_0 = 0.5 \\times u_H + 0.5 \\times u_0$ Simplifies to: $u_0 = u_H$ From State H: $u_H = 0.5 \\times u_H + 0.5 \\times u_{HT}$ Simplifies to: $u_H = u_{HT}$ From State HT: $u_{HT} = 0.5 \\times u_{HT} + 0.5 \\times u_{HTT}$ From State HTH: $u_{HTH} = 0.5 \\times u_H + 0.5 \\times u_{HTT}$ From State HTHT: $u_{HTHT} = 0.5 \\times 1 + 0.5 \\times u_{HTTT}$ (Since reaching State A has a probability of 1) From State HTT: $u_{HTT} = 0.5 \\times u_H + 0.5 \\times u_{HTTT}$ From State HTTT: $u_{HTTT} = 0.5 \\times 0 + 0.5 \\times u_0$ (Since reaching State B has a probability of 0 for reaching A) Then the probability before reaching before B is $\\frac{4}{9}$ And the probability to get A is $1-\\frac{4}{9} = \\frac{5}{9}$\nThen A is more easy to get.\n",
+  "wordCount" : "499",
+  "inLanguage": "en",
+  "datePublished": "2024-10-26T00:05:00Z",
+  "dateModified": "2024-10-26T00:05:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Xi Chen"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://xichen1997.github.io/posts/2024-10-26-an-interesting-flipping-coin-question/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xi's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xichen1997.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://xichen1997.github.io/" accesskey="h" title="Xi&#39;s Blog (Alt + H)">Xi&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://xichen1997.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://xichen1997.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://xichen1997.github.io/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://xichen1997.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://xichen1997.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      An interesting flipping coin question
+    </h1>
+    <div class="post-meta"><span title='2024-10-26 00:05:00 +0000 +0000'>October 26, 2024</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>499 words</span>&nbsp;·&nbsp;<span>Xi Chen</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#problem-statement">Problem statement</a></li>
+    <li><a href="#first-thought">First thought</a></li>
+    <li><a href="#markov-chain">Markov chain</a></li>
+    <li><a href="#final-calculation">Final calculation</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="an-interesting-flipping-coin-question">An interesting flipping coin question<a hidden class="anchor" aria-hidden="true" href="#an-interesting-flipping-coin-question">#</a></h1>
+<h2 id="problem-statement">Problem statement<a hidden class="anchor" aria-hidden="true" href="#problem-statement">#</a></h2>
+<p>You have a fair coin, which means a flip result could be tail(T) and head(H), and their probability is 50%.</p>
+<p>You cast the coin until the coin until have a pattern &ldquo;THTHT&rdquo; or &ldquo;THHHT&rdquo;, which one is easier to get? And their probability?</p>
+<h2 id="first-thought">First thought<a hidden class="anchor" aria-hidden="true" href="#first-thought">#</a></h2>
+<p>Lots of people will think they are identical intuitivly because &ldquo;T&rdquo; and &ldquo;H&rdquo; both have same probability to get. Then their probability is $\frac{1}{2}^5$.</p>
+<p>But then this idea will disappear because of the method above is to extra 5-times result from an infinite sequence, but the statement is to construct a sequence to see which pattern we can get.</p>
+<h2 id="markov-chain">Markov chain<a hidden class="anchor" aria-hidden="true" href="#markov-chain">#</a></h2>
+<p>We can use different state to represent the status for each step:</p>
+<pre tabindex="0"><code>Each toss has an equal probability (0.5) of being Heads (H) or Tails (T). Based on this, we define the transitions between states:
+
+From State 0:
+
+On H: Move to State H (probability 0.5).
+On T: Remain in State 0 (probability 0.5).
+From State H:
+
+On H: Remain in State H (probability 0.5).
+On T: Move to State HT (probability 0.5).
+From State HT:
+
+On H: Move to State HTH (probability 0.5).
+On T: Move to State HTT (probability 0.5).
+From State HTH:
+
+On H: Move to State H (probability 0.5).
+On T: Move to State HTHT (probability 0.5).
+From State HTHT:
+
+On H: Move to State A (sequence HTHTH achieved) (probability 0.5).
+On T: Move to State HTT (probability 0.5).
+From State HTT:
+
+On H: Move to State H (probability 0.5).
+On T: Move to State HTTT (probability 0.5).
+From State HTTT:
+
+On H: Move to State B (sequence HTTTH achieved) (probability 0.5).
+On T: Move to State 0 (probability 0.5).
+States A and B are absorbing; once entered, the process stops.
+</code></pre><p>The markov chain graph looks like:
+<img alt="img" loading="lazy" src="https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/output.png"></p>
+<p>Intuitivly, we can see the path to HTHTH, at state &ldquo;HTHT&rdquo;, it could transfer to &ldquo;HTT&rdquo;, which belongs to B state. Then we could say it&rsquo;s more likely to get B rather than A.</p>
+<h2 id="final-calculation">Final calculation<a hidden class="anchor" aria-hidden="true" href="#final-calculation">#</a></h2>
+<p>We assume the probability reaching A is u. Then:</p>
+<p>Based on the transitions, we create equations for u_i:</p>
+<ol>
+<li>From State 0: $u_0 = 0.5 \times u_H + 0.5 \times u_0$ Simplifies to: $u_0 = u_H$</li>
+<li>From State H: $u_H = 0.5 \times u_H + 0.5 \times u_{HT}$ Simplifies to: $u_H = u_{HT}$</li>
+<li>From State HT: $u_{HT} = 0.5 \times u_{HT} + 0.5 \times u_{HTT}$</li>
+<li>From State HTH: $u_{HTH} = 0.5 \times u_H + 0.5 \times u_{HTT}$</li>
+<li>From State HTHT: $u_{HTHT} = 0.5 \times 1 + 0.5 \times u_{HTTT}$ (Since reaching State A has a probability of 1)</li>
+<li>From State HTT: $u_{HTT} = 0.5 \times u_H + 0.5 \times u_{HTTT}$</li>
+<li>From State HTTT: $u_{HTTT} = 0.5 \times 0 + 0.5 \times u_0$ (Since reaching State B has a probability of 0 for reaching A)</li>
+</ol>
+<p>Then the probability before reaching before B is $\frac{4}{9}$ And the probability to get A is $1-\frac{4}{9} = \frac{5}{9}$</p>
+<p>Then A is more easy to get.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://xichen1997.github.io/posts/2025-02-27-running-llm-on-mac-mini-clusters-strategy-and-practice/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Running LLM on mac mini clusters, strategy and practice</span>
+  </a>
+  <a class="next" href="https://xichen1997.github.io/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Set up remote access for my backup desktop to serve as remote development machine</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://xichen1997.github.io/">Xi&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

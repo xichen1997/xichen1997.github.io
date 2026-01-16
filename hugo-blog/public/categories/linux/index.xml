@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Linux on Xi&#39;s Blog</title>
+    <link>https://xichen1997.github.io/categories/linux/</link>
+    <description>Recent content in Linux on Xi&#39;s Blog</description>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 24 Feb 2024 00:05:14 -0400</lastBuildDate>
+    <atom:link href="https://xichen1997.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Several issues I meet when plug in new RTX 4090 GPU for my workstation</title>
+      <link>https://xichen1997.github.io/posts/2024-02-24-several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation/</link>
+      <pubDate>Sat, 24 Feb 2024 00:05:14 -0400</pubDate>
+      <guid>https://xichen1997.github.io/posts/2024-02-24-several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation/</guid>
+      <description>&lt;h1 id=&#34;several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation&#34;&gt;Several issues I meet when plug in new RTX 4090 GPU for my workstation&lt;/h1&gt;
+&lt;p&gt;Background hardware s&lt;/p&gt;
+&lt;p&gt;AMD 7950X3D&lt;/p&gt;
+&lt;p&gt;128GB(4x32GB) DDR5 6000MHz&lt;/p&gt;
+&lt;p&gt;Gigabytes X670 ATX&lt;/p&gt;
+&lt;p&gt;2TB samsung storage&lt;/p&gt;
+&lt;p&gt;[Nvidia RTX 4090]&lt;/p&gt;
+&lt;h2 id=&#34;install-4090-hardware-to-the-workstation&#34;&gt;Install 4090 hardware to the workstation&lt;/h2&gt;
+&lt;p&gt;At first, the installation is smooth, just plug the PCIE slot into the upper one is fine.&lt;/p&gt;
+&lt;p&gt;However, I found I forgot to install the support for the RTX(it&amp;rsquo;s too big and heavy, definitely need the support.)&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

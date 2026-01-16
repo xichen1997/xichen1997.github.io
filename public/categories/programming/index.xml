@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Programming on Xi&#39;s Blog</title>
+    <link>http://localhost:1313/categories/programming/</link>
+    <description>Recent content in Programming on Xi&#39;s Blog</description>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Nov 2023 21:05:14 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The lessons I learned from setting up an API server via perl script</title>
+      <link>http://localhost:1313/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/</link>
+      <pubDate>Tue, 21 Nov 2023 21:05:14 -0400</pubDate>
+      <guid>http://localhost:1313/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/</guid>
+      <description>&lt;h2 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h2&gt;
+&lt;p&gt;Recently When I was trying to set up an API server in a perl script to do some unit tests, I met lots of trouble.&lt;/p&gt;
+&lt;p&gt;In conclusion, the trouble can be classfied as 3 parts:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The residual server processes can&amp;rsquo;t be killed properly.&lt;/li&gt;
+&lt;li&gt;Program stucked after launch the API server.&lt;/li&gt;
+&lt;li&gt;stdin, stdout, stderr on windows.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;error-examples&#34;&gt;Error examples&lt;/h2&gt;
+&lt;h3 id=&#34;the-residual-server-processes-cant-be-killed&#34;&gt;The residual server processes can&amp;rsquo;t be killed.&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-perl&#34; data-lang=&#34;perl&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;perl&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pl&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;daemon&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;l&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;http:&lt;/span&gt;&lt;span class=&#34;sr&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Use the command above in main test script will launch an API server in a child process. The residual server processes should be killed without any left after the tests. At first I use &amp;ldquo;system&amp;rdquo; to run the command, and then kill it in a different system command via:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

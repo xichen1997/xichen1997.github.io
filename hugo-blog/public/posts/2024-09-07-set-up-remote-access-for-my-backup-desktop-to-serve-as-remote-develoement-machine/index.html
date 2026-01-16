@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Set up remote access for my backup desktop to serve as remote development machine | Xi&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Background
+After configuring my new desktop, the previous one was suspended because of the electricity concern. But my friend told me his apartment was electric-free, after discussing with him I decided to move my previous desktop to his living room to set up a remote server to reduce the expence of cloud servers.
+Steps
+Step 1: clean the computer
+This step was quiet simple, just download ubuntu 24.02 LTS image and install in the NVME SSD.">
+<meta name="author" content="Xi Chen">
+<link rel="canonical" href="https://xichen1997.github.io/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.56bf4be95d09faf55cd507c845718ccfcabb2e24e37f8fa5a66f9fa098252b06.css" integrity="sha256-Vr9L6V0J&#43;vVc1QfIRXGMz8q7LiTjf4&#43;lpm&#43;foJglKwY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://xichen1997.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://xichen1997.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://xichen1997.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://xichen1997.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://xichen1997.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://xichen1997.github.io/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+
+window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function(x){
+      x.parentElement.classList += 'has-jax'})
+  });
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<meta property="og:url" content="https://xichen1997.github.io/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/">
+  <meta property="og:site_name" content="Xi&#39;s Blog">
+  <meta property="og:title" content="Set up remote access for my backup desktop to serve as remote development machine">
+  <meta property="og:description" content="Background After configuring my new desktop, the previous one was suspended because of the electricity concern. But my friend told me his apartment was electric-free, after discussing with him I decided to move my previous desktop to his living room to set up a remote server to reduce the expence of cloud servers.
+Steps Step 1: clean the computer This step was quiet simple, just download ubuntu 24.02 LTS image and install in the NVME SSD.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-09-07T00:05:00+00:00">
+    <meta property="article:modified_time" content="2024-09-07T00:05:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Set up remote access for my backup desktop to serve as remote development machine">
+<meta name="twitter:description" content="Background
+After configuring my new desktop, the previous one was suspended because of the electricity concern. But my friend told me his apartment was electric-free, after discussing with him I decided to move my previous desktop to his living room to set up a remote server to reduce the expence of cloud servers.
+Steps
+Step 1: clean the computer
+This step was quiet simple, just download ubuntu 24.02 LTS image and install in the NVME SSD.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://xichen1997.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Set up remote access for my backup desktop to serve as remote development machine",
+      "item": "https://xichen1997.github.io/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Set up remote access for my backup desktop to serve as remote development machine",
+  "name": "Set up remote access for my backup desktop to serve as remote development machine",
+  "description": "Background After configuring my new desktop, the previous one was suspended because of the electricity concern. But my friend told me his apartment was electric-free, after discussing with him I decided to move my previous desktop to his living room to set up a remote server to reduce the expence of cloud servers.\nSteps Step 1: clean the computer This step was quiet simple, just download ubuntu 24.02 LTS image and install in the NVME SSD.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Background After configuring my new desktop, the previous one was suspended because of the electricity concern. But my friend told me his apartment was electric-free, after discussing with him I decided to move my previous desktop to his living room to set up a remote server to reduce the expence of cloud servers.\nSteps Step 1: clean the computer This step was quiet simple, just download ubuntu 24.02 LTS image and install in the NVME SSD.\nStep 2: rent a VPS. I have done some research and found the Digital Ocean has affordable VPS plan, besides, it has more user friendly UI. (compare to AWS and Azure, I still remember I spent tons of time to configure the lambda function with my friends on AWS.)\nI picked nvme SSD plan with 1TB transfer, most of the time we use ssh do the connection, thus, that’s enough for our use case.\nHere is my referral links: https://m.do.co/c/ac935f250670\nStep 3: use ssh reverse tunnel to create connection. Firstly, we need to configure the vps. After setup a VPS in digital ocean we can setup a private public key pairs with instructions, here we call them DigitalOcean.pub/DigitalOcean. And all the network tools are pre-installed.\nBut we need to do some configuration for ssh.\n1 sudo vim /etc/ssh/sshd_config Ensure that “GatewayPorts yes” is enabled.\nIn the local ubuntu desktop, run:\n1 ssh -R -i /path/to/your/private/key [VPS_port]:localhost:[local_port] [vps_user]@[vps_ip] For example:\n1 ssh -R -i /path/to/your/private/key 2222:localhost:22 [vps_user]@[vps_ip] which forward local desktop ssh port 22 to the vps:2222.\nNote: You can add -f -N to the ssh command to run it in the background without opening an interactive shell.\nDone!\nStep4: connect to the VPS and use reverse channel to connect to the local server. First, use any machine ssh to VPS:\n1 ssh -i /path/to/your/private/key [vps_user]@[vps_ip] And then type\n1 ssh [local_user]@localhost -p 2222 Step5: write a auto-restart service Create a systemd service file:\nOpen a new file for the service:\n1 2 sudo nano /etc/systemd/system/reverse-ssh-tunnel.service Edit the service file:\nAdd the following configuration to the file:\n1 2 3 4 5 6 7 8 9 10 11 12 [Unit] Description=Establish Reverse SSH Tunnel on Boot After=network.target [Service] User=your_local_username ExecStart=/usr/bin/ssh -i /path/to/your/private/key -N -R [VPS_port]:localhost:[local_port] [vps_user]@[vps_ip] Restart=always RestartSec=10 [Install] WantedBy=multi-user.target your_local_username: Your local machine’s username. /path/to/your/private/key: The path to your SSH private key. VPS_port: The port on the VPS for the reverse tunnel (e.g., 2222). local_port: The port on the local machine to forward (e.g., 22). vps_user: Your VPS username. vps_ip: The IP address or domain of your VPS. Reload the systemd daemon to recognize the new service:\n1 2 3 4 5 sudo systemctl daemon-reload # Enable the service to start at boot: sudo systemctl enable reverse-ssh-tunnel.service # Start the service manually to test: sudo systemctl start reverse-ssh-tunnel.service Verify and Troubleshoot\nCheck the status of your service: 1 sudo systemctl status reverse-ssh-tunnel.service If there are any errors, check the logs using:\n1 sudo journalctl -u reverse-ssh-tunnel.service Persisting the SSH Connection You might also want to set ClientAliveInterval and ServerAliveInterval in your SSH configuration to keep the tunnel alive during network disruptions. On your VPS, edit /etc/ssh/sshd_config:\n1 2 ClientAliveInterval 60 ClientAliveCountMax 2 On your local machine, you can add the following in your SSH command or /etc/ssh/ssh_config:\n1 ServerAliveInterval 60 This ensures that the reverse SSH tunnel stays alive, even with temporary network issues.\n",
+  "wordCount" : "560",
+  "inLanguage": "en",
+  "datePublished": "2024-09-07T00:05:00Z",
+  "dateModified": "2024-09-07T00:05:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Xi Chen"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://xichen1997.github.io/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xi's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xichen1997.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://xichen1997.github.io/" accesskey="h" title="Xi&#39;s Blog (Alt + H)">Xi&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://xichen1997.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://xichen1997.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://xichen1997.github.io/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://xichen1997.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://xichen1997.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Set up remote access for my backup desktop to serve as remote development machine
+    </h1>
+    <div class="post-meta"><span title='2024-09-07 00:05:00 +0000 +0000'>September 7, 2024</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>560 words</span>&nbsp;·&nbsp;<span>Xi Chen</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#step-1-clean-the-computer">Step 1: clean the computer</a></li>
+    <li><a href="#step-2-rent-a-vps">Step 2: rent a VPS.</a></li>
+    <li><a href="#step-3-use-ssh-reverse-tunnel-to-create-connection">Step 3: use ssh reverse tunnel to create connection.</a></li>
+    <li><a href="#step4-connect-to-the-vps-and-use-reverse-channel-to-connect-to-the-local-server">Step4: connect to the VPS and use reverse channel to connect to the local server.</a></li>
+    <li><a href="#step5-write-a-auto-restart-service">Step5: write a auto-restart service</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="background">Background<a hidden class="anchor" aria-hidden="true" href="#background">#</a></h1>
+<p>After configuring my new desktop, the previous one was suspended because of the electricity concern. But my friend told me his apartment was electric-free, after discussing with him I decided to move my previous desktop to his living room to set up a remote server to reduce the expence of cloud servers.</p>
+<h1 id="steps">Steps<a hidden class="anchor" aria-hidden="true" href="#steps">#</a></h1>
+<h2 id="step-1-clean-the-computer">Step 1: clean the computer<a hidden class="anchor" aria-hidden="true" href="#step-1-clean-the-computer">#</a></h2>
+<p>This step was quiet simple, just download ubuntu 24.02 LTS image and install in the NVME SSD.</p>
+<h2 id="step-2-rent-a-vps">Step 2: rent a VPS.<a hidden class="anchor" aria-hidden="true" href="#step-2-rent-a-vps">#</a></h2>
+<p>I have done some research and found the Digital Ocean has affordable VPS plan, besides, it has more user friendly UI. (compare to AWS and Azure, I still remember I spent tons of time to configure the lambda function with my friends on AWS.)</p>
+<p>I picked nvme SSD plan with 1TB transfer, most of the time we use ssh do the connection, thus, that&rsquo;s enough for our use case.</p>
+<p>Here is my referral links:
+<a href="https://m.do.co/c/ac935f250670">https://m.do.co/c/ac935f250670</a></p>
+<h2 id="step-3-use-ssh-reverse-tunnel-to-create-connection">Step 3: use ssh reverse tunnel to create connection.<a hidden class="anchor" aria-hidden="true" href="#step-3-use-ssh-reverse-tunnel-to-create-connection">#</a></h2>
+<p>Firstly, we need to configure the vps. After setup a VPS in digital ocean we can setup a private public key pairs with instructions, here we call them DigitalOcean.pub/DigitalOcean. And all the network tools are pre-installed.</p>
+<p>But we need to do some configuration for ssh.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vim /etc/ssh/sshd_config
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Ensure that &ldquo;GatewayPorts yes&rdquo; is enabled.</p>
+<p>In the local ubuntu desktop, run:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -R -i /path/to/your/private/key <span class="o">[</span>VPS_port<span class="o">]</span>:localhost:<span class="o">[</span>local_port<span class="o">]</span> <span class="o">[</span>vps_user<span class="o">]</span>@<span class="o">[</span>vps_ip<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>For example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -R -i /path/to/your/private/key 2222:localhost:22 <span class="o">[</span>vps_user<span class="o">]</span>@<span class="o">[</span>vps_ip<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>which forward local desktop ssh port 22 to the vps:2222.</p>
+<p>Note: You can add -f -N to the ssh command to run it in the background without opening an interactive shell.</p>
+<p>Done!</p>
+<h2 id="step4-connect-to-the-vps-and-use-reverse-channel-to-connect-to-the-local-server">Step4: connect to the VPS and use reverse channel to connect to the local server.<a hidden class="anchor" aria-hidden="true" href="#step4-connect-to-the-vps-and-use-reverse-channel-to-connect-to-the-local-server">#</a></h2>
+<p>First, use any machine ssh to VPS:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -i /path/to/your/private/key <span class="o">[</span>vps_user<span class="o">]</span>@<span class="o">[</span>vps_ip<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And then type</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh <span class="o">[</span>local_user<span class="o">]</span>@localhost -p <span class="m">2222</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="step5-write-a-auto-restart-service">Step5: write a auto-restart service<a hidden class="anchor" aria-hidden="true" href="#step5-write-a-auto-restart-service">#</a></h2>
+<p>Create a systemd service file:</p>
+<p>Open a new file for the service:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo nano /etc/systemd/system/reverse-ssh-tunnel.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Edit the service file:</p>
+<p>Add the following configuration to the file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>Unit<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Description</span><span class="o">=</span>Establish Reverse SSH Tunnel on Boot
+</span></span><span class="line"><span class="cl"><span class="nv">After</span><span class="o">=</span>network.target
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>Service<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">User</span><span class="o">=</span>your_local_username
+</span></span><span class="line"><span class="cl"><span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/ssh -i /path/to/your/private/key -N -R <span class="o">[</span>VPS_port<span class="o">]</span>:localhost:<span class="o">[</span>local_port<span class="o">]</span> <span class="o">[</span>vps_user<span class="o">]</span>@<span class="o">[</span>vps_ip<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Restart</span><span class="o">=</span>always
+</span></span><span class="line"><span class="cl"><span class="nv">RestartSec</span><span class="o">=</span><span class="m">10</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>Install<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>your_local_username: Your local machine&rsquo;s username.</li>
+<li>/path/to/your/private/key: The path to your SSH private key.</li>
+<li>VPS_port: The port on the VPS for the reverse tunnel (e.g., 2222).</li>
+<li>local_port: The port on the local machine to forward (e.g., 22).</li>
+<li>vps_user: Your VPS username.</li>
+<li>vps_ip: The IP address or domain of your VPS.</li>
+</ul>
+<p>Reload the systemd daemon to recognize the new service:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl daemon-reload
+</span></span><span class="line"><span class="cl"><span class="c1"># Enable the service to start at boot:</span>
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> reverse-ssh-tunnel.service
+</span></span><span class="line"><span class="cl"><span class="c1"># Start the service manually to test:</span>
+</span></span><span class="line"><span class="cl">sudo systemctl start reverse-ssh-tunnel.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Verify and Troubleshoot</p>
+<ul>
+<li>Check the status of your service:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl status reverse-ssh-tunnel.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>If there are any errors, check the logs using:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo journalctl -u reverse-ssh-tunnel.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Persisting the SSH Connection
+You might also want to set ClientAliveInterval and ServerAliveInterval in your SSH configuration to keep the tunnel alive during network disruptions.</li>
+</ul>
+<p>On your VPS, edit /etc/ssh/sshd_config:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ClientAliveInterval <span class="m">60</span>
+</span></span><span class="line"><span class="cl">ClientAliveCountMax <span class="m">2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>On your local machine, you can add the following in your SSH command or /etc/ssh/ssh_config:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ServerAliveInterval <span class="m">60</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This ensures that the reverse SSH tunnel stays alive, even with temporary network issues.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://xichen1997.github.io/posts/2024-10-26-an-interesting-flipping-coin-question/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>An interesting flipping coin question</span>
+  </a>
+  <a class="next" href="https://xichen1997.github.io/posts/2024-07-21-when-chatgpt-will-let-you-down-after-6-hours-on-a-project/">
+    <span class="title">Next »</span>
+    <br>
+    <span>When ChatGPT will let you down?After 6 hours on a project</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://xichen1997.github.io/">Xi&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

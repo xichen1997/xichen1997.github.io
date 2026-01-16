@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>HPC on Xi&#39;s Blog</title>
+    <link>https://xichen1997.github.io/categories/hpc/</link>
+    <description>Recent content in HPC on Xi&#39;s Blog</description>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Apr 2024 00:05:14 -0400</lastBuildDate>
+    <atom:link href="https://xichen1997.github.io/categories/hpc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HPC-3-use-openmp(shared-memory-method)</title>
+      <link>https://xichen1997.github.io/posts/2024-04-16-hpc3-openmp-shared-memory-method/</link>
+      <pubDate>Tue, 16 Apr 2024 00:05:14 -0400</pubDate>
+      <guid>https://xichen1997.github.io/posts/2024-04-16-hpc3-openmp-shared-memory-method/</guid>
+      <description>&lt;h1 id=&#34;introduction-to-hpc-shared-memory-parallel-using-openmp&#34;&gt;Introduction to HPC, shared memory parallel using openmp&lt;/h1&gt;
+&lt;h2 id=&#34;1-the-multicore-system&#34;&gt;1 The multicore system&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20200520102045196&#34; loading=&#34;lazy&#34; src=&#34;https://raw.githubusercontent.com/OeuFcok/picture_for_blog/master/typora/20200520190314.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The relationship with L1-L3 cache. The L3 cache is shared, but every core have its own L1-2 cache.&lt;/p&gt;
+&lt;h2 id=&#34;2-using-openmp&#34;&gt;2 Using openmp&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;#34;omp.h&amp;#34;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Before using it, we need to define how many threads we want to use:&lt;/p&gt;
+&lt;p&gt;In Unix system:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;OMP_NUM_THREADS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;The instruction:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#pragma omp parallel
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;If we put this macro before one line of code or one block, the line or block will be executed $OMP_NUM_TRHREADS times.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HPC-1-divide-and-conquer-block-matrix-algorithmr</title>
+      <link>https://xichen1997.github.io/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/</link>
+      <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
+      <guid>https://xichen1997.github.io/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/</guid>
+      <description>&lt;h1 id=&#34;week-2-block-matrix-algorithm&#34;&gt;week 2 block matrix algorithm&lt;/h1&gt;
+&lt;h1 id=&#34;1-blis-reference-high-performance-implitation-vs-naive-methods&#34;&gt;1. BLIS reference high performance implitation v.s. naive methods:&lt;/h1&gt;
+&lt;p&gt;&lt;img alt=&#34;img&#34; loading=&#34;lazy&#34; src=&#34;https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/Plot_All_Orderings.png&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;2-with-different-block-size&#34;&gt;2. With different block size:&lt;/h1&gt;
+&lt;p&gt;This is the MB NB PB = 40.&lt;/p&gt;
+&lt;p&gt;But if the block size is too small, the performance is not as good as naive PJI.&lt;/p&gt;
+&lt;p&gt;The front for loop is JIP is not related to the performance of the algorithm because the computer will focus on each implementation in blocking. That means the register will focus on optimize the final for loop: the Gemm_JPI function, but will not paralize and optimize the for loop for block - matrix- matrix - multiplication.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HPC-2-Memory-hierarchy-in-computer</title>
+      <link>https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/</link>
+      <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
+      <guid>https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/</guid>
+      <description>&lt;h1 id=&#34;hierarchy-memory&#34;&gt;Hierarchy Memory&lt;/h1&gt;
+&lt;h2 id=&#34;1-why-use-hierarchy-memory&#34;&gt;1. Why use Hierarchy Memory&lt;/h2&gt;
+&lt;p&gt;Because the register memory is much faster than main memory, in fact the difference is about two magnitude. And the  performance gap will be larger because the CPU&amp;rsquo;s speed increase faster than main memory.&lt;/p&gt;
+&lt;p&gt;In this situation, if we fetch data from the main memory too many times, the expense will be very expensive. But if we create some memory which is faster than main memory but a little bit slower than register memory. We call it cache.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Xi&#39;s Blog</title>
+    <link>https://xichen1997.github.io/posts/</link>
+    <description>Recent content in Posts on Xi&#39;s Blog</description>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 16 Nov 2025 00:06:00 +0000</lastBuildDate>
+    <atom:link href="https://xichen1997.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kernel comparison with a MMA in CUDA and near-SOTA/cuBLAS performance kernel</title>
+      <link>https://xichen1997.github.io/posts/2025-11-17-introduction-to-cuda-and-high-performance-cuda-kernels/</link>
+      <pubDate>Sun, 16 Nov 2025 00:06:00 +0000</pubDate>
+      <guid>https://xichen1997.github.io/posts/2025-11-17-introduction-to-cuda-and-high-performance-cuda-kernels/</guid>
+      <description>&lt;h1 id=&#34;kernel-comparison-with-a-mma-in-cuda-and-near-sotacublas-performance-kernel&#34;&gt;Kernel comparison with a MMA in CUDA and near-SOTA/cuBLAS performance kernel&lt;/h1&gt;
+&lt;p&gt;The project is hosted in the repository:
+&lt;a href=&#34;https://github.com/xichen1997/CUDA-refresh&#34;&gt;CUDA-refresh&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;The kernel is the &amp;ldquo;kernel&amp;rdquo; in the concept of CUDA, it directly influence the compute efficiency and it&amp;rsquo;s the key to take advanage of GPU&amp;rsquo;s huge amount of computation resource and bandwidth.&lt;/p&gt;
+&lt;p&gt;Here is a simple refresh of the CUDA calculation and memory hierachy and their infleunce to the computation efficiency.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Add array support for DSL on Minimal CPU</title>
+      <link>https://xichen1997.github.io/posts/2025-09-19-add-array-support-for-dsl-based-on-minimal-cpu/</link>
+      <pubDate>Fri, 19 Sep 2025 00:06:00 +0000</pubDate>
+      <guid>https://xichen1997.github.io/posts/2025-09-19-add-array-support-for-dsl-based-on-minimal-cpu/</guid>
+      <description>&lt;p&gt;The project is hosted in the repository (section-4):
+&lt;a href=&#34;https://github.com/xichen1997/minimal_turing_complete_CPU&#34;&gt;minimal_CPU&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Currently, the compiler and DSL support the basic calculation like assigning value, reset value, add and substrction operation. However, there is an important part in the language not being supported. It&amp;rsquo;s array. The purpose of this array is to read and write string with more convenience, and it can be used to construct a mini-terminal or shell to interact with the simulated hardware(CPU).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>DSL and Compiler Based on Minimal CPU</title>
+      <link>https://xichen1997.github.io/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/</link>
+      <pubDate>Mon, 14 Jul 2025 00:06:00 +0000</pubDate>
+      <guid>https://xichen1997.github.io/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/</guid>
+      <description>&lt;p&gt;The project is hosted in the repository (section-2):
+&lt;a href=&#34;https://github.com/xichen1997/minimal_turing_complete_CPU&#34;&gt;minimal_CPU&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;After implementing our minimal CPU, we can write machine code or assembly code to run programs. However, these low-level languages are not easy to read or maintain. We need a way to construct a high-level language that can be translated to machine code, making program development more accessible.&lt;/p&gt;
+&lt;p&gt;Thus, the purpose of this section is to design a Domain-Specific Language (DSL) and its compiler with a complete build system.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Learn from MVP: Minimal Instruction Set CPU</title>
+      <link>https://xichen1997.github.io/posts/2025-05-30-learn-from-mvp-minimal-instruction-set-cpu/</link>
+      <pubDate>Fri, 30 May 2025 00:05:00 +0000</pubDate>
+      <guid>https://xichen1997.github.io/posts/2025-05-30-learn-from-mvp-minimal-instruction-set-cpu/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;The 6502 CPU program has been a great inspiration for understanding the foundations of computer science. It&amp;rsquo;s fascinating how basic boolean functions and transistors can form such a complex and beautiful system. However, even the 6502 CPU, with its 150+ instructions, can be overwhelming for those trying to understand the fundamental principles of computing.&lt;/p&gt;
+&lt;h2 id=&#34;the-importance-of-minimal-viable-products&#34;&gt;The Importance of Minimal Viable Products&lt;/h2&gt;
+&lt;p&gt;When learning complex systems, it&amp;rsquo;s crucial to start with a minimal viable product (MVP) - understanding the most essential components that make a program run. This approach led me to explore foundational theories and historical concepts in computing.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Running LLM on mac mini clusters, strategy and practice</title>
+      <link>https://xichen1997.github.io/posts/2025-02-27-running-llm-on-mac-mini-clusters-strategy-and-practice/</link>
+      <pubDate>Fri, 28 Feb 2025 00:05:00 +0000</pubDate>
+      <guid>https://xichen1997.github.io/posts/2025-02-27-running-llm-on-mac-mini-clusters-strategy-and-practice/</guid>
+      <description>&lt;h1 id=&#34;running-llm-on-mac-mini-clusters-strategy-and-practice&#34;&gt;Running LLM on mac mini clusters, strategy and practice&lt;/h1&gt;
+&lt;h2 id=&#34;data-parallel&#34;&gt;Data Parallel&lt;/h2&gt;
+&lt;p&gt;This is the most straightforward strategy, typically used when batch size &amp;gt; 1. It increases throughput by giving the system more data to process simultaneously.&lt;/p&gt;
+&lt;h2 id=&#34;pipeline-parallel&#34;&gt;Pipeline Parallel&lt;/h2&gt;
+&lt;p&gt;Due to VRAM or unified memory limitations in Mac minis, loading the entire model into memory isn&amp;rsquo;t always possible. Pipeline parallel is an effective strategy to reduce memory usage.&lt;/p&gt;
+&lt;p&gt;The approach splits the model into several parts, loading them into memory sequentially. When running, it operates like a factory pipeline - data flows through the system as different model parts process it in sequence.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>An interesting flipping coin question</title>
+      <link>https://xichen1997.github.io/posts/2024-10-26-an-interesting-flipping-coin-question/</link>
+      <pubDate>Sat, 26 Oct 2024 00:05:00 +0000</pubDate>
+      <guid>https://xichen1997.github.io/posts/2024-10-26-an-interesting-flipping-coin-question/</guid>
+      <description>&lt;h1 id=&#34;an-interesting-flipping-coin-question&#34;&gt;An interesting flipping coin question&lt;/h1&gt;
+&lt;h2 id=&#34;problem-statement&#34;&gt;Problem statement&lt;/h2&gt;
+&lt;p&gt;You have a fair coin, which means a flip result could be tail(T) and head(H), and their probability is 50%.&lt;/p&gt;
+&lt;p&gt;You cast the coin until the coin until have a pattern &amp;ldquo;THTHT&amp;rdquo; or &amp;ldquo;THHHT&amp;rdquo;, which one is easier to get? And their probability?&lt;/p&gt;
+&lt;h2 id=&#34;first-thought&#34;&gt;First thought&lt;/h2&gt;
+&lt;p&gt;Lots of people will think they are identical intuitivly because &amp;ldquo;T&amp;rdquo; and &amp;ldquo;H&amp;rdquo; both have same probability to get. Then their probability is $\frac{1}{2}^5$.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Set up remote access for my backup desktop to serve as remote development machine</title>
+      <link>https://xichen1997.github.io/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/</link>
+      <pubDate>Sat, 07 Sep 2024 00:05:00 +0000</pubDate>
+      <guid>https://xichen1997.github.io/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/</guid>
+      <description>&lt;h1 id=&#34;background&#34;&gt;Background&lt;/h1&gt;
+&lt;p&gt;After configuring my new desktop, the previous one was suspended because of the electricity concern. But my friend told me his apartment was electric-free, after discussing with him I decided to move my previous desktop to his living room to set up a remote server to reduce the expence of cloud servers.&lt;/p&gt;
+&lt;h1 id=&#34;steps&#34;&gt;Steps&lt;/h1&gt;
+&lt;h2 id=&#34;step-1-clean-the-computer&#34;&gt;Step 1: clean the computer&lt;/h2&gt;
+&lt;p&gt;This step was quiet simple, just download ubuntu 24.02 LTS image and install in the NVME SSD.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>When ChatGPT will let you down?After 6 hours on a project</title>
+      <link>https://xichen1997.github.io/posts/2024-07-21-when-chatgpt-will-let-you-down-after-6-hours-on-a-project/</link>
+      <pubDate>Sun, 21 Jul 2024 00:05:14 -0400</pubDate>
+      <guid>https://xichen1997.github.io/posts/2024-07-21-when-chatgpt-will-let-you-down-after-6-hours-on-a-project/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Nowadays, chatgpt has been integrated into every aspect of our lives and work. It greatly enhances the capacity not only of the individual developer, but of staff in giant tech.&lt;/p&gt;
+&lt;p&gt;It also has great potential in education. In my opinion, it&amp;rsquo;s more like a very, very patient personal teacher that can many strange questions any time and is willing to discuss the details with you. And it possesses almost all human knowledge, akin to Aristotle in 21st centry.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HPC-3-use-openmp(shared-memory-method)</title>
+      <link>https://xichen1997.github.io/posts/2024-04-16-hpc3-openmp-shared-memory-method/</link>
+      <pubDate>Tue, 16 Apr 2024 00:05:14 -0400</pubDate>
+      <guid>https://xichen1997.github.io/posts/2024-04-16-hpc3-openmp-shared-memory-method/</guid>
+      <description>&lt;h1 id=&#34;introduction-to-hpc-shared-memory-parallel-using-openmp&#34;&gt;Introduction to HPC, shared memory parallel using openmp&lt;/h1&gt;
+&lt;h2 id=&#34;1-the-multicore-system&#34;&gt;1 The multicore system&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20200520102045196&#34; loading=&#34;lazy&#34; src=&#34;https://raw.githubusercontent.com/OeuFcok/picture_for_blog/master/typora/20200520190314.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The relationship with L1-L3 cache. The L3 cache is shared, but every core have its own L1-2 cache.&lt;/p&gt;
+&lt;h2 id=&#34;2-using-openmp&#34;&gt;2 Using openmp&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;#34;omp.h&amp;#34;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Before using it, we need to define how many threads we want to use:&lt;/p&gt;
+&lt;p&gt;In Unix system:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;OMP_NUM_THREADS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;The instruction:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#pragma omp parallel
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;If we put this macro before one line of code or one block, the line or block will be executed $OMP_NUM_TRHREADS times.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HPC-1-divide-and-conquer-block-matrix-algorithmr</title>
+      <link>https://xichen1997.github.io/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/</link>
+      <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
+      <guid>https://xichen1997.github.io/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/</guid>
+      <description>&lt;h1 id=&#34;week-2-block-matrix-algorithm&#34;&gt;week 2 block matrix algorithm&lt;/h1&gt;
+&lt;h1 id=&#34;1-blis-reference-high-performance-implitation-vs-naive-methods&#34;&gt;1. BLIS reference high performance implitation v.s. naive methods:&lt;/h1&gt;
+&lt;p&gt;&lt;img alt=&#34;img&#34; loading=&#34;lazy&#34; src=&#34;https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/Plot_All_Orderings.png&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;2-with-different-block-size&#34;&gt;2. With different block size:&lt;/h1&gt;
+&lt;p&gt;This is the MB NB PB = 40.&lt;/p&gt;
+&lt;p&gt;But if the block size is too small, the performance is not as good as naive PJI.&lt;/p&gt;
+&lt;p&gt;The front for loop is JIP is not related to the performance of the algorithm because the computer will focus on each implementation in blocking. That means the register will focus on optimize the final for loop: the Gemm_JPI function, but will not paralize and optimize the for loop for block - matrix- matrix - multiplication.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HPC-2-Memory-hierarchy-in-computer</title>
+      <link>https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/</link>
+      <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
+      <guid>https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/</guid>
+      <description>&lt;h1 id=&#34;hierarchy-memory&#34;&gt;Hierarchy Memory&lt;/h1&gt;
+&lt;h2 id=&#34;1-why-use-hierarchy-memory&#34;&gt;1. Why use Hierarchy Memory&lt;/h2&gt;
+&lt;p&gt;Because the register memory is much faster than main memory, in fact the difference is about two magnitude. And the  performance gap will be larger because the CPU&amp;rsquo;s speed increase faster than main memory.&lt;/p&gt;
+&lt;p&gt;In this situation, if we fetch data from the main memory too many times, the expense will be very expensive. But if we create some memory which is faster than main memory but a little bit slower than register memory. We call it cache.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Several issues I meet when plug in new RTX 4090 GPU for my workstation</title>
+      <link>https://xichen1997.github.io/posts/2024-02-24-several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation/</link>
+      <pubDate>Sat, 24 Feb 2024 00:05:14 -0400</pubDate>
+      <guid>https://xichen1997.github.io/posts/2024-02-24-several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation/</guid>
+      <description>&lt;h1 id=&#34;several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation&#34;&gt;Several issues I meet when plug in new RTX 4090 GPU for my workstation&lt;/h1&gt;
+&lt;p&gt;Background hardware s&lt;/p&gt;
+&lt;p&gt;AMD 7950X3D&lt;/p&gt;
+&lt;p&gt;128GB(4x32GB) DDR5 6000MHz&lt;/p&gt;
+&lt;p&gt;Gigabytes X670 ATX&lt;/p&gt;
+&lt;p&gt;2TB samsung storage&lt;/p&gt;
+&lt;p&gt;[Nvidia RTX 4090]&lt;/p&gt;
+&lt;h2 id=&#34;install-4090-hardware-to-the-workstation&#34;&gt;Install 4090 hardware to the workstation&lt;/h2&gt;
+&lt;p&gt;At first, the installation is smooth, just plug the PCIE slot into the upper one is fine.&lt;/p&gt;
+&lt;p&gt;However, I found I forgot to install the support for the RTX(it&amp;rsquo;s too big and heavy, definitely need the support.)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The lessons I learned from setting up an API server via perl script</title>
+      <link>https://xichen1997.github.io/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/</link>
+      <pubDate>Tue, 21 Nov 2023 21:05:14 -0400</pubDate>
+      <guid>https://xichen1997.github.io/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/</guid>
+      <description>&lt;h2 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h2&gt;
+&lt;p&gt;Recently When I was trying to set up an API server in a perl script to do some unit tests, I met lots of trouble.&lt;/p&gt;
+&lt;p&gt;In conclusion, the trouble can be classfied as 3 parts:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The residual server processes can&amp;rsquo;t be killed properly.&lt;/li&gt;
+&lt;li&gt;Program stucked after launch the API server.&lt;/li&gt;
+&lt;li&gt;stdin, stdout, stderr on windows.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;error-examples&#34;&gt;Error examples&lt;/h2&gt;
+&lt;h3 id=&#34;the-residual-server-processes-cant-be-killed&#34;&gt;The residual server processes can&amp;rsquo;t be killed.&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-perl&#34; data-lang=&#34;perl&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;perl&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pl&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;daemon&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;l&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;http:&lt;/span&gt;&lt;span class=&#34;sr&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Use the command above in main test script will launch an API server in a child process. The residual server processes should be killed without any left after the tests. At first I use &amp;ldquo;system&amp;rdquo; to run the command, and then kill it in a different system command via:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why I open this blog</title>
+      <link>https://xichen1997.github.io/posts/2023-10-01-why-i-open-this-blog/</link>
+      <pubDate>Thu, 28 Sep 2023 21:05:14 -0400</pubDate>
+      <guid>https://xichen1997.github.io/posts/2023-10-01-why-i-open-this-blog/</guid>
+      <description>&lt;p&gt;Feynman has told us the best way to learn something is that you use concise and understandable words introduce what you learned to others, if they can understand well, then you master the knowledge.&lt;/p&gt;
+&lt;p&gt;I have a habit which writing some notes/docs for myself, which is hard to undetstand for others(Even myself would lost after several weeks). Then I decide to make my work/study log perfect and share what I think is valueable to others.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Memory-Hierarchy on Xi&#39;s Blog</title>
+    <link>https://xichen1997.github.io/tags/memory-hierarchy/</link>
+    <description>Recent content in Memory-Hierarchy on Xi&#39;s Blog</description>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Apr 2024 00:05:14 -0400</lastBuildDate>
+    <atom:link href="https://xichen1997.github.io/tags/memory-hierarchy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HPC-2-Memory-hierarchy-in-computer</title>
+      <link>https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/</link>
+      <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
+      <guid>https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/</guid>
+      <description>&lt;h1 id=&#34;hierarchy-memory&#34;&gt;Hierarchy Memory&lt;/h1&gt;
+&lt;h2 id=&#34;1-why-use-hierarchy-memory&#34;&gt;1. Why use Hierarchy Memory&lt;/h2&gt;
+&lt;p&gt;Because the register memory is much faster than main memory, in fact the difference is about two magnitude. And the  performance gap will be larger because the CPU&amp;rsquo;s speed increase faster than main memory.&lt;/p&gt;
+&lt;p&gt;In this situation, if we fetch data from the main memory too many times, the expense will be very expensive. But if we create some memory which is faster than main memory but a little bit slower than register memory. We call it cache.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
