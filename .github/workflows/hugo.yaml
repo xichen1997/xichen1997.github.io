@@ -52,7 +52,6 @@ jobs:
       - name: Build with Hugo
         run: |
           # Build from the hugo-blog directory
-          cd hugo-blog 
           
           # Hugo build command
           hugo \
