@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Personal on Xi&#39;s Blog</title>
-    <link>http://localhost:1313/categories/personal/</link>
+    <link>https://xichen1997.github.io/categories/personal/</link>
     <description>Recent content in Personal on Xi&#39;s Blog</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 28 Sep 2023 21:05:14 -0400</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/personal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://xichen1997.github.io/categories/personal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why I open this blog</title>
-      <link>http://localhost:1313/posts/2023-10-01-why-i-open-this-blog/</link>
+      <link>https://xichen1997.github.io/posts/2023-10-01-why-i-open-this-blog/</link>
       <pubDate>Thu, 28 Sep 2023 21:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/posts/2023-10-01-why-i-open-this-blog/</guid>
+      <guid>https://xichen1997.github.io/posts/2023-10-01-why-i-open-this-blog/</guid>
       <description>&lt;p&gt;Feynman has told us the best way to learn something is that you use concise and understandable words introduce what you learned to others, if they can understand well, then you master the knowledge.&lt;/p&gt;
 &lt;p&gt;I have a habit which writing some notes/docs for myself, which is hard to undetstand for others(Even myself would lost after several weeks). Then I decide to make my work/study log perfect and share what I think is valueable to others.&lt;/p&gt;</description>
     </item>

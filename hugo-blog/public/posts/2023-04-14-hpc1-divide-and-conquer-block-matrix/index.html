@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="dark">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>HPC-1-divide-and-conquer-block-matrix-algorithmr | Xi&#39;s Blog</title>
 <meta name="keywords" content="matrix-multiplication, cache-optimization, SIMD, intrinsics">
 <meta name="description" content="week 2 block matrix algorithm
@@ -15,16 +15,16 @@ This is the MB NB PB = 40.
 But if the block size is too small, the performance is not as good as naive PJI.
 The front for loop is JIP is not related to the performance of the algorithm because the computer will focus on each implementation in blocking. That means the register will focus on optimize the final for loop: the Gemm_JPI function, but will not paralize and optimize the for loop for block - matrix- matrix - multiplication.">
 <meta name="author" content="Xi Chen">
-<link rel="canonical" href="http://localhost:1313/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/">
+<link rel="canonical" href="https://xichen1997.github.io/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.56bf4be95d09faf55cd507c845718ccfcabb2e24e37f8fa5a66f9fa098252b06.css" integrity="sha256-Vr9L6V0J&#43;vVc1QfIRXGMz8q7LiTjf4&#43;lpm&#43;foJglKwY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://xichen1997.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://xichen1997.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://xichen1997.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://xichen1997.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://xichen1997.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/">
+<link rel="alternate" hreflang="en" href="https://xichen1997.github.io/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/">
 <noscript>
     <style>
         #theme-toggle,
@@ -62,13 +62,91 @@ window.addEventListener('load', (event) => {
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+<meta property="og:url" content="https://xichen1997.github.io/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/">
+  <meta property="og:site_name" content="Xi&#39;s Blog">
+  <meta property="og:title" content="HPC-1-divide-and-conquer-block-matrix-algorithmr">
+  <meta property="og:description" content="week 2 block matrix algorithm 1. BLIS reference high performance implitation v.s. naive methods: 2. With different block size: This is the MB NB PB = 40.
+But if the block size is too small, the performance is not as good as naive PJI.
+The front for loop is JIP is not related to the performance of the algorithm because the computer will focus on each implementation in blocking. That means the register will focus on optimize the final for loop: the Gemm_JPI function, but will not paralize and optimize the for loop for block - matrix- matrix - multiplication.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-04-15T00:05:14-04:00">
+    <meta property="article:modified_time" content="2024-04-15T00:05:14-04:00">
+    <meta property="article:tag" content="Matrix-Multiplication">
+    <meta property="article:tag" content="Cache-Optimization">
+    <meta property="article:tag" content="SIMD">
+    <meta property="article:tag" content="Intrinsics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HPC-1-divide-and-conquer-block-matrix-algorithmr">
+<meta name="twitter:description" content="week 2 block matrix algorithm
+1. BLIS reference high performance implitation v.s. naive methods:
 
+2. With different block size:
+This is the MB NB PB = 40.
+But if the block size is too small, the performance is not as good as naive PJI.
+The front for loop is JIP is not related to the performance of the algorithm because the computer will focus on each implementation in blocking. That means the register will focus on optimize the final for loop: the Gemm_JPI function, but will not paralize and optimize the for loop for block - matrix- matrix - multiplication.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://xichen1997.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "HPC-1-divide-and-conquer-block-matrix-algorithmr",
+      "item": "https://xichen1997.github.io/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "HPC-1-divide-and-conquer-block-matrix-algorithmr",
+  "name": "HPC-1-divide-and-conquer-block-matrix-algorithmr",
+  "description": "week 2 block matrix algorithm 1. BLIS reference high performance implitation v.s. naive methods: 2. With different block size: This is the MB NB PB = 40.\nBut if the block size is too small, the performance is not as good as naive PJI.\nThe front for loop is JIP is not related to the performance of the algorithm because the computer will focus on each implementation in blocking. That means the register will focus on optimize the final for loop: the Gemm_JPI function, but will not paralize and optimize the for loop for block - matrix- matrix - multiplication.\n",
+  "keywords": [
+    "matrix-multiplication", "cache-optimization", "SIMD", "intrinsics"
+  ],
+  "articleBody": "week 2 block matrix algorithm 1. BLIS reference high performance implitation v.s. naive methods: 2. With different block size: This is the MB NB PB = 40.\nBut if the block size is too small, the performance is not as good as naive PJI.\nThe front for loop is JIP is not related to the performance of the algorithm because the computer will focus on each implementation in blocking. That means the register will focus on optimize the final for loop: the Gemm_JPI function, but will not paralize and optimize the for loop for block - matrix- matrix - multiplication.\n3. memory and register model. The relation of register and main memory can be shown as above, then we assume that when we computing we can’t transfer data. The cost of transferring data is $R_m$\nThe register can hold 64 doubles(512 bytes)\n4. A example of how register works. 4.1 analysis This is a exmple of using block matrix to update part of the final answer.\nAssuming the CPU needs to spend $\\gamma_R$ time for each floating-point operation and $\\beta_{R \\leftrightarrow M}$ time to transfer data between registers and memory, the total cost for the operation is:\n$$ \\begin{aligned} \u0026 MNK \\left( (m_R n_R + m_R k_R + k_R n_R) \\beta_{R \\leftrightarrow M} + 2 m_R n_R k_R \\gamma_R + m_R n_R \\beta_{R \\leftrightarrow M} \\right) \\\\ \u0026= 2 (M m_R)(N n_R)(K k_R) \\gamma_R + 2 (M m_R)(N n_R) K \\beta_{R \\leftrightarrow M} \\\\ \u0026\\quad + (M m_R) N (K k_R) \\beta_{R \\leftrightarrow M} + M (N n_R)(K k_R) \\beta_{R \\leftrightarrow M} \\\\ \u0026= 2 m n k \\gamma_R + m n k \\left( \\frac{2}{k_R} + \\frac{1}{n_R} + \\frac{1}{m_R} \\right) \\beta_{R \\leftrightarrow M} \\end{aligned} $$\nThe process is:\n$$ \\begin{aligned} \u0026 \\text{for } j = 0, \\ldots, N-1 \\\\ \u0026 \\quad \\text{for } i = 0, \\ldots, M-1 \\\\ \u0026 \\quad \\quad \\text{for } p = 0, \\ldots, K-1 \\\\ \u0026 \\quad \\quad \\quad \\text{Load } C_{i,j}, A_{i,p}, \\text{ and } B_{p,j} \\text{ into registers} \\\\ \u0026 \\quad \\quad \\quad C_{i,j} := A_{i,p} B_{p,j} + C_{i,j} \\\\ \u0026 \\quad \\quad \\quad \\text{Store } C_{i,j} \\text{ to memory} \\end{aligned} $$\nBut we could do better by saving $C_{ij}$ before the P loop:\n$$ \\begin{aligned} \u0026 \\text{for } j = 0, \\ldots, N-1 \\\\ \u0026 \\quad \\text{for } i = 0, \\ldots, M-1 \\\\ \u0026 \\quad \\quad \\text{Load } C_{i,j} \\\\ \u0026 \\quad \\quad \\text{for } p = 0, \\ldots, K-1 \\\\ \u0026 \\quad \\quad \\quad \\text{Load } A_{i,p} \\text{ and } B_{p,j} \\text{ into registers} \\\\ \u0026 \\quad \\quad \\quad C_{i,j} := A_{i,p} B_{p,j} + C_{i,j} \\\\ \u0026 \\quad \\quad \\text{Store } C_{i,j} \\end{aligned} $$\nThen the final computational time is:\n$$ \\begin{aligned} \u0026 MNK(2m_Rn_Rk_R)\\gamma_R + [MN(2m_Rn_R) + MNK(m_Rk_R + k_Rn_R)]\\beta_{R \\leftrightarrow M} \\\\ \u0026= 2mnk\\gamma_R + \\left[2mn + mnk\\left(\\frac{1}{n_R} + \\frac{1}{m_R}\\right)\\right]\\beta_{R \\leftrightarrow M} \\end{aligned} $$ The capital K is Larger, the saved time is more.\n4.2 Streaming operation:JIP_P_Ger The picture show how we do the streaming, the nature of this operation is to use rank-1 operation to update the block matrix, the rank-1 operation will continue update matrix C without changing data with main memory.\nEvery time we do streaming operation:\nIn order to make good use of all the register memory, we can assume that $m_R$, $n_R$, and $k_R$ are the same, and assume they are 4. The overall memory in register is $$ m_R \\times n_R + m_R + n_R = 24 $$\nBut the performance (use block size of 4) is not soo good.\tthe picture will show the block size is 400. which is much better.\n4.3 Micro Kernel :JIP_P_Ger In fact in the operation of streaming operation, we don’t need to split the p into pk, and we can save the time for for loop:\n5. Optimize the micro kernel 5.1 vector register FMA: fused multiple add operation\nSIMD: simple instruction multiple data\n$$ \\begin{pmatrix} \\gamma_{0,0} \u0026 \\gamma_{0,1} \u0026 \\gamma_{0,2} \u0026 \\gamma_{0,3} \\\\ \\gamma_{1,0} \u0026 \\gamma_{1,1} \u0026 \\gamma_{1,2} \u0026 \\gamma_{1,3} \\\\ \\gamma_{2,0} \u0026 \\gamma_{2,1} \u0026 \\gamma_{2,2} \u0026 \\gamma_{2,3} \\\\ \\gamma_{3,0} \u0026 \\gamma_{3,1} \u0026 \\gamma_{3,2} \u0026 \\gamma_{3,3} \\end{pmatrix} +:= \\begin{pmatrix} \\alpha_{0,p} \\\\ \\alpha_{1,p} \\\\ \\alpha_{2,p} \\\\ \\alpha_{3,p} \\end{pmatrix} \\begin{pmatrix} \\beta_{p,0} \u0026 \\beta_{p,1} \u0026 \\beta_{p,2} \u0026 \\beta_{p,3} \\end{pmatrix} $$\n$$ \\beta_{p,0} \\begin{pmatrix} \\alpha_{0,p} \\\\ \\alpha_{1,p} \\\\ \\alpha_{2,p} \\\\ \\alpha_{3,p} \\end{pmatrix} + \\beta_{p,1} \\begin{pmatrix} \\alpha_{0,p} \\\\ \\alpha_{1,p} \\\\ \\alpha_{2,p} \\\\ \\alpha_{3,p} \\end{pmatrix} + \\beta_{p,2} \\begin{pmatrix} \\alpha_{0,p} \\\\ \\alpha_{1,p} \\\\ \\alpha_{2,p} \\\\ \\alpha_{3,p} \\end{pmatrix} + \\beta_{p,3} \\begin{pmatrix} \\alpha_{0,p} \\\\ \\alpha_{1,p} \\\\ \\alpha_{2,p} \\\\ \\alpha_{3,p} \\end{pmatrix} $$\nIf we use SIMD:\n$$ \\begin{array}{|c|} \\hline \\gamma_{0,0} \\\\ \\hline \\gamma_{1,0} \\\\ \\hline \\gamma_{2,0} \\\\ \\hline \\gamma_{3,0} \\\\ \\hline \\end{array} \\quad \\begin{array}{c} +:= \\\\ +:= \\\\ +:= \\\\ +:= \\end{array} \\quad \\begin{array}{|c|} \\hline \\alpha_{0,p} \\\\ \\hline \\alpha_{1,p} \\\\ \\hline \\alpha_{2,p} \\\\ \\hline \\alpha_{3,p} \\\\ \\hline \\end{array} \\quad \\begin{array}{c} \\times \\\\ \\times \\\\ \\times \\\\ \\times \\end{array} \\quad \\begin{array}{|c|} \\hline \\beta_{p,0} \\\\ \\hline \\beta_{p,0} \\\\ \\hline \\beta_{p,0} \\\\ \\hline \\beta_{p,0} \\\\ \\hline \\end{array} $$\nThen implement it use the code: using AX2 intrinsic.\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 #define alpha( i,j ) A[ (j)*ldA + (i) ] // map alpha( i,j ) to array A #define beta( i,j ) B[ (j)*ldB + (i) ] // map beta( i,j ) to array B #define gamma( i,j ) C[ (j)*ldC + (i) ] // map gamma( i,j ) to array C #include void Gemm_MRxNRKernel( int k, double *A, int ldA, double *B, int ldB, double *C, int ldC ) { /* Declare vector registers to hold 4x4 C and load them */ __m256d gamma_0123_0 = _mm256_loadu_pd( \u0026gamma( 0,0 ) ); __m256d gamma_0123_1 = _mm256_loadu_pd( \u0026gamma( 0,1 ) ); __m256d gamma_0123_2 = _mm256_loadu_pd( \u0026gamma( 0,2 ) ); __m256d gamma_0123_3 = _mm256_loadu_pd( \u0026gamma( 0,3 ) ); for ( int p=0; p\u003ck; p++ ){ /* Declare vector register for load/broadcasting beta( p,j ) */ __m256d beta_p_j; /* Declare a vector register to hold the current column of A and load it with the four elements of that column. */ __m256d alpha_0123_p = _mm256_loadu_pd( \u0026alpha( 0,p ) ); /* Load/broadcast beta( p,0 ). */ beta_p_j = _mm256_broadcast_sd( \u0026beta( p, 0) ); /* update the first column of C with the current column of A times beta ( p,0 ) */ gamma_0123_0 = _mm256_fmadd_pd( alpha_0123_p, beta_p_j, gamma_0123_0 ); /* REPEAT for second, third, and fourth columns of C. Notice that the current column of A needs not be reloaded. */ beta_p_j = _mm256_broadcast_sd( \u0026beta( p, 1) ); gamma_0123_1 = _mm256_fmadd_pd( alpha_0123_p, beta_p_j, gamma_0123_1 ); beta_p_j = _mm256_broadcast_sd( \u0026beta( p, 2) ); gamma_0123_2 = _mm256_fmadd_pd( alpha_0123_p, beta_p_j, gamma_0123_2 ); beta_p_j = _mm256_broadcast_sd( \u0026beta( p, 3) ); gamma_0123_3 = _mm256_fmadd_pd( alpha_0123_p, beta_p_j, gamma_0123_3 ); } /* Store the updated results */ _mm256_storeu_pd( \u0026gamma(0,0), gamma_0123_0 ); _mm256_storeu_pd( \u0026gamma(0,1), gamma_0123_1 ); _mm256_storeu_pd( \u0026gamma(0,2), gamma_0123_2 ); _mm256_storeu_pd( \u0026gamma(0,3), gamma_0123_3 ); } 1 2 3 4 5 6 7 8 __m256d gamma_0123_0 = _mm256_loadu_pd \\\\\\\\ This load the vector which contains 4 doubles (note the intrinsic can only hold 4 doubles) beta_p_j = _mm256_broadcast_sd( \u0026beta( p, 0) );\\\\\\\\ This use one double to do broadcast. gamma_0123_0 = _mm256_fmadd_pd( alpha_0123_p, beta_p_j, gamma_0123_0 );\\\\\\\\ This will use FMA to compute from two vectors and accumulate the result _mm256_storeu_pd( \u0026gamma(0,0), gamma_0123_0 );\\\\\\\\ This will return the memory from register to main-memory. 5.2 Best performance analysis of the data transferring cost when the register memory is limited. S is for the C matrix, M is for the matrix of B and A. Because in the end we will send all C matrix parts into register memory, so the total number of this is |C| we don’t need to analysis. As for the B and A, because of the streaming data, we should analyze them carefully.\nWe can combine the 3 for loop and split them into different phases. at each phase, we send S+M data into the register memory. S is storage of fast memory, and M is the data need to be replaced next phase.\n$$ \\begin{aligned} \u0026 \\text{for } r = 0, \\ldots, mnk-1 \\\\ \u0026 \\quad \\gamma_{i_r,j_r} := \\alpha_{i_r,p_r} \\beta_{p_r,j_r} + \\gamma_{i_r,j_r} \\\\ \u0026 \\text{end} \\end{aligned} $$\nThe overall FMAs is mnk in this equation, we assume we can have Fmax FMAs by sending the memory into register once, then we need to transfer data:\n$$ \\begin{equation*} \\left(\\frac{m n k}{F_{\\rm max}} -1 \\right) M \\end{equation*} $$\nSo if we choose S and M properly, we can maximize F and get the good solution of all the equation. In order to maximize F, we could use a model to abstract this procedure:\nFor a each phase, we assume a space D combined with (ir,jr,pr) tuple, In the subspace of AD, we have (ir,pr), for the subspace of BD, we have (jr, pr), in the subspace of CD, we have (ir,jr). ( r is the index of one phase.)\nThe number of the space D can be limited by this relation(3d geometry):\n$$ \\vert \\mathbf{D} \\vert \\leq \\sqrt{\\vert \\mathbf{C_D} \\vert \\vert \\mathbf{A_D} \\vert \\vert \\mathbf{B_D} \\vert }\\text{.} $$\nSo we could limit D by these inequal:\n$$ \\begin{equation*} {\\rm maximize~} F_{\\rm max} {\\rm suchthat~} \\left{ \\begin{array}{l} F_{\\rm max} \\leq \\sqrt{\\vert \\mathbf{C_D} \\vert \\vert \\mathbf{A_D} \\vert \\vert \\mathbf{B_D} \\vert } \\\\ \\vert \\mathbf{C_D} \\vert \\gt 0, \\vert \\mathbf{A_D} \\vert \\gt 0, \\vert \\mathbf{B_D} \\vert \\gt 0 \\\\ \\vert \\mathbf{C_D} \\vert + \\vert \\mathbf{A_D} \\vert + \\vert \\mathbf{B_D} \\vert = S + M. \\end{array} \\right. \\end{equation*} $$\nAccording to mathematical calculation, the:\n$$ \\begin{aligned} |\\mathbf{C_D}| = |\\mathbf{A_D}| = |\\mathbf{B_D}| \u0026= \\frac{S+M}{3} \\\\ F_{\\max} \u0026= \\frac{(S + M)\\sqrt{S+M}}{3\\sqrt{3}} \\end{aligned} $$\nAnd:\n$$ \\begin{equation*} \\left(\\frac{m n k}{F_{\\rm max}} -1 \\right) M = \\left(3 \\sqrt{3} \\frac{m n k}{( S + M )\\sqrt{S+M}} -1 \\right) M. \\end{equation*} $$\nTake the derivatives of the right hand side, we assume S is a const and M is a variable, so in the end we get:\n$$ M=2S $$\n$$ \\begin{equation*} \\left(3 \\sqrt{3} \\frac{m n k}{( 3 S )\\sqrt{3 S}} -1 \\right) (2S) = 2 \\frac{m n k}{\\sqrt{S}} - 2S. \\end{equation*} $$\nSatisfy the equation, and S+M \u003c= register memory, the S is bigger, the performance is better. and M = 2S. If we take an example, the register can hold 32 doubles, so S+M = 32, and with M = 2S, we get S = 32/3 ≈ 10.67 doubles for storage.\nAll the information are from the paper: https://arxiv.org/pdf/1702.02017.pdf\nAppendix I 1 __m256d _mm256_loadu_pd (double const * mem_addr) Description\nLoad 256-bits (composed of 4 packed double-precision (64-bit) floating-point elements) from memory into dst (output). mem_addr does not need to be aligned on any particular boundary.\n1 __m256d _mm256_broadcast_sd (double const * mem_addr) Description\nBroadcast a double-precision (64-bit) floating-point element from memory to all elements of dst (output).\n1 __m256d _mm256_fmadd_pd (__m256d a, __m256d b, __m256d c) Description\nMultiply packed double-precision (64-bit) floating-point elements in a and b, add the intermediate result to packed elements in c, and store the results in dst (output).\nAppendix II Intel intrinsics reference:\nhttps://software.intel.com/sites/landingpage/IntrinsicsGuide/\n",
+  "wordCount" : "1852",
+  "inLanguage": "en",
+  "datePublished": "2024-04-15T00:05:14-04:00",
+  "dateModified": "2024-04-15T00:05:14-04:00",
+  "author":{
+    "@type": "Person",
+    "name": "Xi Chen"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://xichen1997.github.io/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xi's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xichen1997.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Xi&#39;s Blog (Alt + H)">Xi&#39;s Blog</a>
+            <a href="https://xichen1997.github.io/" accesskey="h" title="Xi&#39;s Blog (Alt + H)">Xi&#39;s Blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -94,17 +172,17 @@ window.addEventListener('load', (event) => {
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="https://xichen1997.github.io/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://xichen1997.github.io/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
+                <a href="https://xichen1997.github.io/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
@@ -115,7 +193,7 @@ window.addEventListener('load', (event) => {
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://xichen1997.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://xichen1997.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       HPC-1-divide-and-conquer-block-matrix-algorithmr
     </h1>
@@ -544,18 +622,18 @@ $$</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/matrix-multiplication/">Matrix-Multiplication</a></li>
-      <li><a href="http://localhost:1313/tags/cache-optimization/">Cache-Optimization</a></li>
-      <li><a href="http://localhost:1313/tags/simd/">SIMD</a></li>
-      <li><a href="http://localhost:1313/tags/intrinsics/">Intrinsics</a></li>
+      <li><a href="https://xichen1997.github.io/tags/matrix-multiplication/">Matrix-Multiplication</a></li>
+      <li><a href="https://xichen1997.github.io/tags/cache-optimization/">Cache-Optimization</a></li>
+      <li><a href="https://xichen1997.github.io/tags/simd/">SIMD</a></li>
+      <li><a href="https://xichen1997.github.io/tags/intrinsics/">Intrinsics</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/2024-04-16-hpc3-openmp-shared-memory-method/">
+  <a class="prev" href="https://xichen1997.github.io/posts/2024-04-16-hpc3-openmp-shared-memory-method/">
     <span class="title">« Prev</span>
     <br>
     <span>HPC-3-use-openmp(shared-memory-method)</span>
   </a>
-  <a class="next" href="http://localhost:1313/posts/2023-04-15-hpc2-memory-hierarchy/">
+  <a class="next" href="https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/">
     <span class="title">Next »</span>
     <br>
     <span>HPC-2-Memory-hierarchy-in-computer</span>
@@ -567,7 +645,7 @@ $$</p>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Xi&#39;s Blog</a></span> · 
+        <span>&copy; 2026 <a href="https://xichen1997.github.io/">Xi&#39;s Blog</a></span> · 
 
     <span>
         Powered by

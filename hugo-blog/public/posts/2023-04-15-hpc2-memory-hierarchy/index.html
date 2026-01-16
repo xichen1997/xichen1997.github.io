@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="dark">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>HPC-2-Memory-hierarchy-in-computer | Xi&#39;s Blog</title>
 <meta name="keywords" content="memory-hierarchy, cache, matrix-multiplication, performance-optimization">
 <meta name="description" content="Hierarchy Memory
@@ -12,16 +12,16 @@
 Because the register memory is much faster than main memory, in fact the difference is about two magnitude. And the  performance gap will be larger because the CPU&rsquo;s speed increase faster than main memory.
 In this situation, if we fetch data from the main memory too many times, the expense will be very expensive. But if we create some memory which is faster than main memory but a little bit slower than register memory. We call it cache.">
 <meta name="author" content="Xi Chen">
-<link rel="canonical" href="http://localhost:1313/posts/2023-04-15-hpc2-memory-hierarchy/">
+<link rel="canonical" href="https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.56bf4be95d09faf55cd507c845718ccfcabb2e24e37f8fa5a66f9fa098252b06.css" integrity="sha256-Vr9L6V0J&#43;vVc1QfIRXGMz8q7LiTjf4&#43;lpm&#43;foJglKwY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://xichen1997.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://xichen1997.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://xichen1997.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://xichen1997.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://xichen1997.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2023-04-15-hpc2-memory-hierarchy/">
+<link rel="alternate" hreflang="en" href="https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/">
 <noscript>
     <style>
         #theme-toggle,
@@ -59,13 +59,87 @@ window.addEventListener('load', (event) => {
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+<meta property="og:url" content="https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/">
+  <meta property="og:site_name" content="Xi&#39;s Blog">
+  <meta property="og:title" content="HPC-2-Memory-hierarchy-in-computer">
+  <meta property="og:description" content="Hierarchy Memory 1. Why use Hierarchy Memory Because the register memory is much faster than main memory, in fact the difference is about two magnitude. And the performance gap will be larger because the CPU’s speed increase faster than main memory.
+In this situation, if we fetch data from the main memory too many times, the expense will be very expensive. But if we create some memory which is faster than main memory but a little bit slower than register memory. We call it cache.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-04-15T00:05:14-04:00">
+    <meta property="article:modified_time" content="2024-04-15T00:05:14-04:00">
+    <meta property="article:tag" content="Memory-Hierarchy">
+    <meta property="article:tag" content="Cache">
+    <meta property="article:tag" content="Matrix-Multiplication">
+    <meta property="article:tag" content="Performance-Optimization">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HPC-2-Memory-hierarchy-in-computer">
+<meta name="twitter:description" content="Hierarchy Memory
+1. Why use Hierarchy Memory
+Because the register memory is much faster than main memory, in fact the difference is about two magnitude. And the  performance gap will be larger because the CPU&rsquo;s speed increase faster than main memory.
+In this situation, if we fetch data from the main memory too many times, the expense will be very expensive. But if we create some memory which is faster than main memory but a little bit slower than register memory. We call it cache.">
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://xichen1997.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "HPC-2-Memory-hierarchy-in-computer",
+      "item": "https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "HPC-2-Memory-hierarchy-in-computer",
+  "name": "HPC-2-Memory-hierarchy-in-computer",
+  "description": "Hierarchy Memory 1. Why use Hierarchy Memory Because the register memory is much faster than main memory, in fact the difference is about two magnitude. And the performance gap will be larger because the CPU\u0026rsquo;s speed increase faster than main memory.\nIn this situation, if we fetch data from the main memory too many times, the expense will be very expensive. But if we create some memory which is faster than main memory but a little bit slower than register memory. We call it cache.\n",
+  "keywords": [
+    "memory-hierarchy", "cache", "matrix-multiplication", "performance-optimization"
+  ],
+  "articleBody": "Hierarchy Memory 1. Why use Hierarchy Memory Because the register memory is much faster than main memory, in fact the difference is about two magnitude. And the performance gap will be larger because the CPU’s speed increase faster than main memory.\nIn this situation, if we fetch data from the main memory too many times, the expense will be very expensive. But if we create some memory which is faster than main memory but a little bit slower than register memory. We call it cache.\nThe cache memory is bigger than register memory, if every time we fetch data from main memory to cache firstly, then the register will extract data and return result to cache, which is faster. After all data completed, the register will communicate with main memory and get another batch of data.\nUsually the expense of fetching data from register memory to cache is cheap. And because cache is larger so every time we could fetch more data from main memory. This means we could decrease the frequency of fetching data. Which will save a lot of time.\n2. Cache algorithm In order to make the algorithm easy to analyse, we assume that the main memory will exchange data with cache and cache will exchange with register.\nIn order to simiplify this model, we assume in the data exchange procedure, there is no calculation(in fact they can do simultaneously, just image that the main memory update while cache change data with register, it is easy to achieve.)\nThis inspire us, that if the matrix size is smaller, which is smaller than L1-L3 cache size, the data will be all stored in cache, and it is very fast. So we make an algorithm:\nWe divide the matrix as many micro-tile:\nNote that:\nThis algorithm means that we can use micro kernel algorithm to realize the operation in the three-for-loop: $$ \\begin{equation*} C_{i, j}:= A_{i, p} B_{p, j}+C_{i, j} \\end{equation*} $$\nThe block matrix $C_{i,j}$ ,$A_{i,p}$ and $B_{p,j}$ small block matrix, which are submatrix. We define the ijp loop as level 1 for loop. The algorithm to realize\n$$ \\begin{equation*} C_{i, j}:= A_{i, p} B_{p, j}+C_{i, j} \\end{equation*} $$\nas level 2 loop.\nTerminology\nA $m_R\\times n_R$ submatrix of C is called micro-tile\nThe $m_R\\times k_C$ , $k_C\\times n_R$is called micro-panles\nThe routine that updates a micro-tile by multiplying two micro-panels we will call the micro-kernel.\nReview the picture:\nIf we want to maintain good performance, the size of the micro-tile algorithm can be equal to L2 cache.\nAnd according to the estimate, the best size of the three matrix can be:\n96x96. (Because the L2 cache is 256KBytes, we want to find the matrix size which is the multiple of 12(because 12 is multiple of 2 4 6 12), then 96 is the most suitable)\nThe algorithm can be show using this picture:\nThen we use the algorithm, the micro-kernel algorithm can use 4x4 or 12x4, compare their performance:\nThe size of micro-kernel should consider the size of L1 cache and register.\n2.1 Test for different outer for loop From the result above we can see that the micro-kernel is not sensitive to the outer for loop. But the size of micro Kernel will related to the speed of MMM.\n3.2 performance analysis In the micro kernel for loop, we use vector intrinsic function:\nAssume we have the square matrix, and their sizes are the same:\nSo the b is larger, more time you will use in computation rather than transferring data.\nnote that the data transferring expense in cache to main memory is more than 100 times than floats operation. In practice the movement of the data can often be overlapped with computation (this is known as prefetching). However, clearly only so much can be overlapped, so it is still important to make the ratio favorable. 3.3 Algorithm improvments Streaming submatrix of B and C. Consider previous algorithm:\nEvery time we put 3 submatrix into the cache, but according to the calculation, the larger of the submatrix, the better performance. Note that every time in fact we do streaming operation, just use a little piece of A and a panel of B.\nSo we can do this instead:\nEvery time we put the colored space into L2 cache, that means we could store larger submatrix of A(the blue part) to get better efficiency. And every time, we pick up micro panel of A and streaming micro panel of B and streaming micro-tile of C to finish calculation.\n$m_c$,$n_c$ and $k_c$ are dimensional of submatrix of C, A and B.\nIf we use a 4x4 micro kernel algorithm, then we can continue divide the submatrix into micro kernel and using streaming method:\n$m_r\\times 4= m_c$, $n_r\\times 4= n_c$, $k_r\\times 4= k_c$\nIn the L2 cache, use JIP for rank-1 operation for calculating submatrix multiplication. J is the outer for loop, then in this processdure we can keep the matrix of A stay in L2 cache, stay for the all loop, then every time we just need to stream the micro kernel of submatrix C and B(in the picture is the red and green part).\nThe algorithm above is just an example, of course you could make the whole submatrix of B in the L2 cache, just change the order of the micro-kernel loop is OK.\nA smarter method.\nIn the previous part, we use PIJ loop to take apart the A, B and C matrix. In this method, we will load the same $A_{i,p}$ submatrix for many times. We could do better to optimize this, and we could compress the PIJ for loop to PI for loop. This will decrease the number which the same block of A will loaded.\nThe picture will show the procedure:\nThat means every time we move the submatrix of A($m_c\\times k_c$) into the L2 cache , and stream the red and green part from main memory to L2 cache.\nEach Level 2 for loop’s expense is:\n$$ \\begin{equation*} \\begin{array}{rcl} \\begin{array}{c} \\underbrace{ m_C n \\beta_{C \\leftrightarrow M}} \\ \\text{load}~C_{i,j} \\end{array} + \\begin{array}{c} \\underbrace{ m_C k_C \\beta_{C \\leftrightarrow M}} \\ \\text{load}~A_{i,p} \\end{array} + \\begin{array}{c} \\underbrace{ k_C n \\beta_{C \\leftrightarrow M}} \\ \\text{load}~B_{p,j} \\end{array} \\[0.2in] + \\begin{array}{c} \\underbrace{ 2 m_C n k_C \\gamma_C} \\ \\text{update}~C_{i} +:= A_{i,p} B_{p} \\end{array} + \\begin{array}{c} \\underbrace{ m_C n \\beta_{C \\leftrightarrow M}} \\ \\text{store}~C_{i,j} \\end{array} \\end{array} \\end{equation*} $$ And the summary is: $$ \\begin{equation*} \\begin{array}{c} \\underbrace{ m_C k_C + \\left( 2 m_C n + k_C n \\right) \\beta_{C \\leftrightarrow M} } \\ \\text{data movement overhead} \\end{array} + \\begin{array}{c} \\underbrace{ 2 m_C n k_C \\gamma_C } \\ \\text{useful computation} \\end{array} \\end{equation*} $$\nThe ratio of use ful computation and data movement expense is:\n$$ \\begin{equation*} \\frac{ 2 m_C n k_C} {\t2 m_C n + m_C k_C + k_C n }. = \\frac{2 b^2 n}{3b n + b^2} \\approx \\frac{2 b^2n}{3bn} \\approx \\frac{2b}{3} \\end{equation*} $$\nis a little better than PIJ level 1 For loop’s performance.\nThis is the comparison of PIJ v.s. PI Level 1 For loop:\nNo large difference, I use the newest software, may be the compiler have automatic optimization function for this problem.\n3.4 Find the best $A_{i,p}$ size Using the last streaming algorithm, we can calculate all possible situation to get the best performance size of micro tile: $m_C\\times k_C$\nAfter trying different size of the submatrix of A.\nFrom this figure, we can see that the best size of the submatirx of A is 192x40.\nPerformance Analysis\nFor this procedure, the analysis method is to calculate the ratio of computation and memory operation.\nEvery time we store the blue part of A for multiple usage, and streaming the submatrix of B and C, that means the marked part in the picture. We should compute the how many effective computation after we read from A, B and C. For submatrix of A, it could be reused for many streaming operation of B and C, thus the analysis base is not the same.\nBring an $mC \\times kC$ submatrix of A into the cache, at a cost of $m_C \\times k_C\\beta_{M \\leftrightarrow C}$, And the floats is:$2m_Ck_Cn$, the ratio is, $$ \\frac{floats}{memory\\ operation}=\\frac{2n}{\\beta_{M\\leftrightarrow C}} $$ The larger n, the better ratio(performance).\nThis analysis didn’t consider the streaming cost of submatrix of C and B.\nFor the micro-kernel operation:\nEvery time we read a submatrix of B: $$ \\frac{floats}{memory\\ operations} = \\frac{2m_C}{\\beta’_{M\\leftrightarrow C}} $$\nFor the micro-kernel operation:\nEvery time we read a submatrix of C: $$ \\frac{floats}{memory\\ operations} = \\frac{2m_Ck_Cn_R}{2m_Cn_R\\beta’’{M\\leftrightarrow C}}=\\frac{k_C}{\\beta’’{M\\leftrightarrow C}} $$\nWe should make sure the $m_C$, $k_C$ as large as enough.\n3.5 Blocking for L1 and L2 cache If we want to do better, we could use L1 and L2 cache properly. The micro-tile is small could be use in register memory. Then keep submatrix of A in L2 cache and streaming micro-panel of B to L1 cache, which is faster.\nThis algorithm’s Level 1 for loop is the same as 3.4, the smarter method, which is show in the picture at the main memory part.\n3.6 Blocking for L1 L2 and L3 cache The for loop procedue can be illustrated using this picture:\nEvery for loop, we can know from the picture what the loop do in this level. and the code is attached:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 #include #include #define alpha( i,j ) A[ (j)*ldA + (i) ] // map alpha( i,j ) to array A #define beta( i,j ) B[ (j)*ldB + (i) ] // map beta( i,j ) to array B #define gamma( i,j ) C[ (j)*ldC + (i) ] // map gamma( i,j ) to array C #define min( x, y ) ( ( x ) \u003c ( y ) ? x : y ) void LoopFive( int, int, int, double *, int, double *, int, double *, int ); void LoopFour( int, int, int, double *, int, double *, int, double *, int ); void LoopThree( int, int, int, double *, int, double *, int, double *, int ); void LoopTwo( int, int, int, double *, int, double *, int, double *, int ); void LoopOne( int, int, int, double *, int, double *, int, double *, int ); void Gemm_MRxNRKernel( int, double *, int, double *, int, double *, int ); void MyGemm( int m, int n, int k, double *A, int ldA, double *B, int ldB, double *C, int ldC ) { if ( m % MR != 0 || MC % MR != 0 ){ printf( \"m and MC must be multiples of MR\\n\" ); exit( 0 ); } if ( n % NR != 0 || NC % NR != 0 ){ printf( \"n and NC must be multiples of NR\\n\" ); exit( 0 ); } LoopFive( m, n, k, A, ldA, B, ldB, C, ldC ); } void LoopFive( int m, int n, int k, double *A, int ldA, double *B, int ldB, double *C, int ldC ) { for ( int j=0; j\u003cn; j+=NC ) { int jb = min( NC, n-j ); /* Last loop may not involve a full block */ LoopFour( m, jb, k, A, ldA, \u0026beta( 0,j ), ldB, \u0026gamma( 0, j ), ldC ); } } void LoopFour( int m, int n, int k, double *A, int ldA, double *B, int ldB, double *C, int ldC ) { for ( int p=0; p\u003ck; p+=KC ) { int pb = min( KC, k-p ); /* Last loop may not involve a full block */ LoopThree( m, n, pb, \u0026alpha( 0, p ), ldA, \u0026beta( p , 0 ), ldB, C, ldC ); } } void LoopThree( int m, int n, int k, double *A, int ldA, double *B, int ldB, double *C, int ldC ) { for ( int i=0; i\u003cm; i+=MC ) { int ib = min( MC, m-i ); /* Last loop may not involve a full block */ LoopTwo( ib, n, k, \u0026alpha( i ,0 ), ldA, B, ldB, \u0026gamma( i , 0 ), ldC ); } } void LoopTwo( int m, int n, int k, double *A, int ldA, double *B, int ldB, double *C, int ldC ) { for ( int j=0; j\u003cn; j+=NR ) { int jb = min( NR, n-j ); LoopOne( m, jb, k, A, ldA, \u0026beta( 0, j ), ldB, \u0026gamma( 0 , j ), ldC ); } } void LoopOne( int m, int n, int k, double *A, int ldA, double *B, int ldB, double *C, int ldC ) { for ( int i=0; i\u003cm; i+=MR ) { int ib = min( MR, m-i ); Gemm_MRxNRKernel( k, \u0026alpha(i , 0 ), ldA, B, ldB, \u0026gamma( i, 0 ), ldC ); } } And this is the performance of the implementation:\nwhich is much better. And 12x4 micro-kernel is very good.\n4 Packing in MMM 4.1 Stride matters From the picture:\nWe can see that the performance will go down with the matrix dimension. When the size is small, its efficiency is good, but when the size become larger, it will tends to a lower constant.\nIn our experiment, if we at first will create a matrix of leading dimension is 1500x1500, and use submatrix to do the experimental ,like the picture :\nwe will get the result(Five_Loops_12x4Kernel_Ldim).\nThat is because the data is not continous, which is not packed tightly. So it will decrease the efficiency of the algorithm.\nThe result also related to some conceptiong about memory pages(4kb) and cache prefetching technique.\nMemory page: https://en.wikipedia.org/wiki/Page_(computer_memory).\nCache prefetching: https://en.wikipedia.org/wiki/Cache_prefetching.\nNote that the prefetching only allow for the size continuously below 4kb, so once the matrix become larger, the prefetching will not be executed. Thus the performance goes down.\nNote\nThe packing operation will need some extra operation, but if we amortize the expense, the performance will still increase.\n4.2 Packing of A and B In order to let the matrix become continuous memory we should pack the submatrix of A and B.\nApply for a extra memory to store packed submatrix of B (the Btilde):\nThe code is:\n1 2 3 4 5 6 7 8 9 10 11 12 void PackPanelB_KCxNC( int k, int n, double *B, int ldB, double *Btilde ) /* Pack a k x n panel of B in to a KC x NC buffer. . The block is copied into Btilde a micro-panel at a time. */ { for ( int j=0; j\u003cn; j+= NR ){ int jb = min( NR, n-j ); PackMicro-PanelB_KCxNR( k, jb, \u0026beta( 0, j ), ldB, Btilde ); Btilde += k * jb; } } We divide submatrix of B into many micro-panels and packed them separately. But the Btilde is continous on Kc x Nc.\nThen packing A and store Atilde into L2 cache:\n1 2 3 4 5 6 7 8 9 10 11 12 13 void PackBlockA_MCxKC( int m, int k, double *A, int ldA, double *Atilde ) /* Pack a m x k block of A into a MC x KC buffer. MC is assumed to be a multiple of MR. The block is packed into Atilde a micro-panel at a time. If necessary, the last micro-panel is padded with rows of zeroes. */ { for ( int i=0; i\u003cm; i+= MR ){ int ib = min( MR, m-i ); PackMicro-PanelA_MRxKC( ib, k, \u0026alpha( i, 0 ), ldA, Atilde ); Atilde += ib * k; } } We also divide this as many micro-panels to packed them separately:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 void PackMicroPanelA_MRxKC( int m, int k, double *A, int ldA, double *Atilde ) /* Pack a micro-panel of A into buffer pointed to by Atilde. This is an unoptimized implementation for general MR and KC. */ { /* March through A in column-major order, packing into Atilde as we go. */ if ( m == MR ) { /* Full row size micro-panel.*/ for ( int p=0; p\u003ck; p++ ) for ( int i=0; i\u003cMR; i++ ) *Atilde++ = alpha( i, p ); } else { /* Not a full row size micro-panel. We pad with zeroes. To be added */ } } The packing procedure can also been showed in five-loop procedure:\nNote that in each micro panel, the memory is continous, and for submatrix of B, the counting method is not column-major, it is row-major. When we do rank-1 operation in micro-kernel procedure, the memory of A and B are continuous.\n(The memory is continous because of the packing or renumbering)\nWe can see that now the performance of Five_Loops_Packed_12x4Kernel perform very closed to the reference.\nIn the small matrix size, the performance is not good that because the computation expense is much smaller than data transferring expense. The amortized cost of coping a matrix is very high.\nThen in the end find the optimal Mc and Kc:\n5. Recommandation for HPC Using vector intrinsic.\nAvoid repeatting transfer data.\nBlock the MMM to make good use of cache.\nBroadcasting A and loading elements of B.(not so effective)\nIt sounds very complicated, but there is a smart way to realize this:\nBy defining( this means these matrice are row-major):\n1 2 3 #define alpha( j,i ) A[ (j)*ldA + i ] #define beta( j,i ) B[ (j)*ldB + i ] #define gamma( j,i ) C[ (j)*ldC + i ] Loop unrolling.\nThis will decrease the time for branching prediction.\n(with 12x4 and 4x4 loop unrolling)\nWe can see nothing changed, the improvement of 12x4 and 4x4 is not so obvious.\nhttps://zh.wikipedia.org/wiki/分支預測器\nhttps://zh.wikipedia.org/wiki/循环展开\nPrefetching (tricky; seems to confuse the compiler…)\nUsing in-lined assembly code\nuseful link:https://github.com/flame/blis/blob/master/kernels/haswell/3/old/bli_gemm_haswell_asm_d6x8.c\nNote:\nhttps://github.com/flame/blis/blob/master/kernels/haswell/3/old/bli_gemm_haswell_asm_d6x8.c\n",
+  "wordCount" : "3002",
+  "inLanguage": "en",
+  "datePublished": "2024-04-15T00:05:14-04:00",
+  "dateModified": "2024-04-15T00:05:14-04:00",
+  "author":{
+    "@type": "Person",
+    "name": "Xi Chen"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xi's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xichen1997.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Xi&#39;s Blog (Alt + H)">Xi&#39;s Blog</a>
+            <a href="https://xichen1997.github.io/" accesskey="h" title="Xi&#39;s Blog (Alt + H)">Xi&#39;s Blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -91,17 +165,17 @@ window.addEventListener('load', (event) => {
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="https://xichen1997.github.io/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://xichen1997.github.io/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
+                <a href="https://xichen1997.github.io/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
@@ -112,7 +186,7 @@ window.addEventListener('load', (event) => {
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://xichen1997.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://xichen1997.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       HPC-2-Memory-hierarchy-in-computer
     </h1>
@@ -698,18 +772,18 @@ $$</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/memory-hierarchy/">Memory-Hierarchy</a></li>
-      <li><a href="http://localhost:1313/tags/cache/">Cache</a></li>
-      <li><a href="http://localhost:1313/tags/matrix-multiplication/">Matrix-Multiplication</a></li>
-      <li><a href="http://localhost:1313/tags/performance-optimization/">Performance-Optimization</a></li>
+      <li><a href="https://xichen1997.github.io/tags/memory-hierarchy/">Memory-Hierarchy</a></li>
+      <li><a href="https://xichen1997.github.io/tags/cache/">Cache</a></li>
+      <li><a href="https://xichen1997.github.io/tags/matrix-multiplication/">Matrix-Multiplication</a></li>
+      <li><a href="https://xichen1997.github.io/tags/performance-optimization/">Performance-Optimization</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/">
+  <a class="prev" href="https://xichen1997.github.io/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/">
     <span class="title">« Prev</span>
     <br>
     <span>HPC-1-divide-and-conquer-block-matrix-algorithmr</span>
   </a>
-  <a class="next" href="http://localhost:1313/posts/2024-02-24-several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation/">
+  <a class="next" href="https://xichen1997.github.io/posts/2024-02-24-several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation/">
     <span class="title">Next »</span>
     <br>
     <span>Several issues I meet when plug in new RTX 4090 GPU for my workstation</span>
@@ -721,7 +795,7 @@ $$</p>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Xi&#39;s Blog</a></span> · 
+        <span>&copy; 2026 <a href="https://xichen1997.github.io/">Xi&#39;s Blog</a></span> · 
 
     <span>
         Powered by

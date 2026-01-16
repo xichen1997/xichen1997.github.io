@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Computer_science on Xi&#39;s Blog</title>
-    <link>http://localhost:1313/categories/computer_science/</link>
+    <link>https://xichen1997.github.io/categories/computer_science/</link>
     <description>Recent content in Computer_science on Xi&#39;s Blog</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 16 Nov 2025 00:06:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/computer_science/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://xichen1997.github.io/categories/computer_science/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kernel comparison with a MMA in CUDA and near-SOTA/cuBLAS performance kernel</title>
-      <link>http://localhost:1313/posts/2025-11-17-introduction-to-cuda-and-high-performance-cuda-kernels/</link>
+      <link>https://xichen1997.github.io/posts/2025-11-17-introduction-to-cuda-and-high-performance-cuda-kernels/</link>
       <pubDate>Sun, 16 Nov 2025 00:06:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025-11-17-introduction-to-cuda-and-high-performance-cuda-kernels/</guid>
+      <guid>https://xichen1997.github.io/posts/2025-11-17-introduction-to-cuda-and-high-performance-cuda-kernels/</guid>
       <description>&lt;h1 id=&#34;kernel-comparison-with-a-mma-in-cuda-and-near-sotacublas-performance-kernel&#34;&gt;Kernel comparison with a MMA in CUDA and near-SOTA/cuBLAS performance kernel&lt;/h1&gt;
 &lt;p&gt;The project is hosted in the repository:
 &lt;a href=&#34;https://github.com/xichen1997/CUDA-refresh&#34;&gt;CUDA-refresh&lt;/a&gt;&lt;/p&gt;
@@ -22,9 +22,9 @@
     </item>
     <item>
       <title>Add array support for DSL on Minimal CPU</title>
-      <link>http://localhost:1313/posts/2025-09-19-add-array-support-for-dsl-based-on-minimal-cpu/</link>
+      <link>https://xichen1997.github.io/posts/2025-09-19-add-array-support-for-dsl-based-on-minimal-cpu/</link>
       <pubDate>Fri, 19 Sep 2025 00:06:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025-09-19-add-array-support-for-dsl-based-on-minimal-cpu/</guid>
+      <guid>https://xichen1997.github.io/posts/2025-09-19-add-array-support-for-dsl-based-on-minimal-cpu/</guid>
       <description>&lt;p&gt;The project is hosted in the repository (section-4):
 &lt;a href=&#34;https://github.com/xichen1997/minimal_turing_complete_CPU&#34;&gt;minimal_CPU&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
@@ -32,9 +32,9 @@
     </item>
     <item>
       <title>DSL and Compiler Based on Minimal CPU</title>
-      <link>http://localhost:1313/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/</link>
+      <link>https://xichen1997.github.io/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/</link>
       <pubDate>Mon, 14 Jul 2025 00:06:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/</guid>
+      <guid>https://xichen1997.github.io/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/</guid>
       <description>&lt;p&gt;The project is hosted in the repository (section-2):
 &lt;a href=&#34;https://github.com/xichen1997/minimal_turing_complete_CPU&#34;&gt;minimal_CPU&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
@@ -43,9 +43,9 @@
     </item>
     <item>
       <title>Learn from MVP: Minimal Instruction Set CPU</title>
-      <link>http://localhost:1313/posts/2025-05-30-learn-from-mvp-minimal-instruction-set-cpu/</link>
+      <link>https://xichen1997.github.io/posts/2025-05-30-learn-from-mvp-minimal-instruction-set-cpu/</link>
       <pubDate>Fri, 30 May 2025 00:05:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025-05-30-learn-from-mvp-minimal-instruction-set-cpu/</guid>
+      <guid>https://xichen1997.github.io/posts/2025-05-30-learn-from-mvp-minimal-instruction-set-cpu/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;The 6502 CPU program has been a great inspiration for understanding the foundations of computer science. It&amp;rsquo;s fascinating how basic boolean functions and transistors can form such a complex and beautiful system. However, even the 6502 CPU, with its 150+ instructions, can be overwhelming for those trying to understand the fundamental principles of computing.&lt;/p&gt;
 &lt;h2 id=&#34;the-importance-of-minimal-viable-products&#34;&gt;The Importance of Minimal Viable Products&lt;/h2&gt;
@@ -53,9 +53,9 @@
     </item>
     <item>
       <title>Running LLM on mac mini clusters, strategy and practice</title>
-      <link>http://localhost:1313/posts/2025-02-27-running-llm-on-mac-mini-clusters-strategy-and-practice/</link>
+      <link>https://xichen1997.github.io/posts/2025-02-27-running-llm-on-mac-mini-clusters-strategy-and-practice/</link>
       <pubDate>Fri, 28 Feb 2025 00:05:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025-02-27-running-llm-on-mac-mini-clusters-strategy-and-practice/</guid>
+      <guid>https://xichen1997.github.io/posts/2025-02-27-running-llm-on-mac-mini-clusters-strategy-and-practice/</guid>
       <description>&lt;h1 id=&#34;running-llm-on-mac-mini-clusters-strategy-and-practice&#34;&gt;Running LLM on mac mini clusters, strategy and practice&lt;/h1&gt;
 &lt;h2 id=&#34;data-parallel&#34;&gt;Data Parallel&lt;/h2&gt;
 &lt;p&gt;This is the most straightforward strategy, typically used when batch size &amp;gt; 1. It increases throughput by giving the system more data to process simultaneously.&lt;/p&gt;
@@ -65,9 +65,9 @@
     </item>
     <item>
       <title>Set up remote access for my backup desktop to serve as remote development machine</title>
-      <link>http://localhost:1313/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/</link>
+      <link>https://xichen1997.github.io/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/</link>
       <pubDate>Sat, 07 Sep 2024 00:05:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/</guid>
+      <guid>https://xichen1997.github.io/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/</guid>
       <description>&lt;h1 id=&#34;background&#34;&gt;Background&lt;/h1&gt;
 &lt;p&gt;After configuring my new desktop, the previous one was suspended because of the electricity concern. But my friend told me his apartment was electric-free, after discussing with him I decided to move my previous desktop to his living room to set up a remote server to reduce the expence of cloud servers.&lt;/p&gt;
 &lt;h1 id=&#34;steps&#34;&gt;Steps&lt;/h1&gt;

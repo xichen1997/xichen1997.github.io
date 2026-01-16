@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Xi&#39;s Blog</title>
-    <link>http://localhost:1313/</link>
+    <link>https://xichen1997.github.io/</link>
     <description>Recent content on Xi&#39;s Blog</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 16 Nov 2025 00:06:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://xichen1997.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kernel comparison with a MMA in CUDA and near-SOTA/cuBLAS performance kernel</title>
-      <link>http://localhost:1313/posts/2025-11-17-introduction-to-cuda-and-high-performance-cuda-kernels/</link>
+      <link>https://xichen1997.github.io/posts/2025-11-17-introduction-to-cuda-and-high-performance-cuda-kernels/</link>
       <pubDate>Sun, 16 Nov 2025 00:06:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025-11-17-introduction-to-cuda-and-high-performance-cuda-kernels/</guid>
+      <guid>https://xichen1997.github.io/posts/2025-11-17-introduction-to-cuda-and-high-performance-cuda-kernels/</guid>
       <description>&lt;h1 id=&#34;kernel-comparison-with-a-mma-in-cuda-and-near-sotacublas-performance-kernel&#34;&gt;Kernel comparison with a MMA in CUDA and near-SOTA/cuBLAS performance kernel&lt;/h1&gt;
 &lt;p&gt;The project is hosted in the repository:
 &lt;a href=&#34;https://github.com/xichen1997/CUDA-refresh&#34;&gt;CUDA-refresh&lt;/a&gt;&lt;/p&gt;
@@ -22,9 +22,9 @@
     </item>
     <item>
       <title>Add array support for DSL on Minimal CPU</title>
-      <link>http://localhost:1313/posts/2025-09-19-add-array-support-for-dsl-based-on-minimal-cpu/</link>
+      <link>https://xichen1997.github.io/posts/2025-09-19-add-array-support-for-dsl-based-on-minimal-cpu/</link>
       <pubDate>Fri, 19 Sep 2025 00:06:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025-09-19-add-array-support-for-dsl-based-on-minimal-cpu/</guid>
+      <guid>https://xichen1997.github.io/posts/2025-09-19-add-array-support-for-dsl-based-on-minimal-cpu/</guid>
       <description>&lt;p&gt;The project is hosted in the repository (section-4):
 &lt;a href=&#34;https://github.com/xichen1997/minimal_turing_complete_CPU&#34;&gt;minimal_CPU&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
@@ -32,9 +32,9 @@
     </item>
     <item>
       <title>DSL and Compiler Based on Minimal CPU</title>
-      <link>http://localhost:1313/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/</link>
+      <link>https://xichen1997.github.io/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/</link>
       <pubDate>Mon, 14 Jul 2025 00:06:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/</guid>
+      <guid>https://xichen1997.github.io/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/</guid>
       <description>&lt;p&gt;The project is hosted in the repository (section-2):
 &lt;a href=&#34;https://github.com/xichen1997/minimal_turing_complete_CPU&#34;&gt;minimal_CPU&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
@@ -43,9 +43,9 @@
     </item>
     <item>
       <title>Learn from MVP: Minimal Instruction Set CPU</title>
-      <link>http://localhost:1313/posts/2025-05-30-learn-from-mvp-minimal-instruction-set-cpu/</link>
+      <link>https://xichen1997.github.io/posts/2025-05-30-learn-from-mvp-minimal-instruction-set-cpu/</link>
       <pubDate>Fri, 30 May 2025 00:05:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025-05-30-learn-from-mvp-minimal-instruction-set-cpu/</guid>
+      <guid>https://xichen1997.github.io/posts/2025-05-30-learn-from-mvp-minimal-instruction-set-cpu/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;The 6502 CPU program has been a great inspiration for understanding the foundations of computer science. It&amp;rsquo;s fascinating how basic boolean functions and transistors can form such a complex and beautiful system. However, even the 6502 CPU, with its 150+ instructions, can be overwhelming for those trying to understand the fundamental principles of computing.&lt;/p&gt;
 &lt;h2 id=&#34;the-importance-of-minimal-viable-products&#34;&gt;The Importance of Minimal Viable Products&lt;/h2&gt;
@@ -53,9 +53,9 @@
     </item>
     <item>
       <title>Running LLM on mac mini clusters, strategy and practice</title>
-      <link>http://localhost:1313/posts/2025-02-27-running-llm-on-mac-mini-clusters-strategy-and-practice/</link>
+      <link>https://xichen1997.github.io/posts/2025-02-27-running-llm-on-mac-mini-clusters-strategy-and-practice/</link>
       <pubDate>Fri, 28 Feb 2025 00:05:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025-02-27-running-llm-on-mac-mini-clusters-strategy-and-practice/</guid>
+      <guid>https://xichen1997.github.io/posts/2025-02-27-running-llm-on-mac-mini-clusters-strategy-and-practice/</guid>
       <description>&lt;h1 id=&#34;running-llm-on-mac-mini-clusters-strategy-and-practice&#34;&gt;Running LLM on mac mini clusters, strategy and practice&lt;/h1&gt;
 &lt;h2 id=&#34;data-parallel&#34;&gt;Data Parallel&lt;/h2&gt;
 &lt;p&gt;This is the most straightforward strategy, typically used when batch size &amp;gt; 1. It increases throughput by giving the system more data to process simultaneously.&lt;/p&gt;
@@ -65,9 +65,9 @@
     </item>
     <item>
       <title>An interesting flipping coin question</title>
-      <link>http://localhost:1313/posts/2024-10-26-an-interesting-flipping-coin-question/</link>
+      <link>https://xichen1997.github.io/posts/2024-10-26-an-interesting-flipping-coin-question/</link>
       <pubDate>Sat, 26 Oct 2024 00:05:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2024-10-26-an-interesting-flipping-coin-question/</guid>
+      <guid>https://xichen1997.github.io/posts/2024-10-26-an-interesting-flipping-coin-question/</guid>
       <description>&lt;h1 id=&#34;an-interesting-flipping-coin-question&#34;&gt;An interesting flipping coin question&lt;/h1&gt;
 &lt;h2 id=&#34;problem-statement&#34;&gt;Problem statement&lt;/h2&gt;
 &lt;p&gt;You have a fair coin, which means a flip result could be tail(T) and head(H), and their probability is 50%.&lt;/p&gt;
@@ -77,9 +77,9 @@
     </item>
     <item>
       <title>Set up remote access for my backup desktop to serve as remote development machine</title>
-      <link>http://localhost:1313/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/</link>
+      <link>https://xichen1997.github.io/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/</link>
       <pubDate>Sat, 07 Sep 2024 00:05:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/</guid>
+      <guid>https://xichen1997.github.io/posts/2024-09-07-set-up-remote-access-for-my-backup-desktop-to-serve-as-remote-develoement-machine/</guid>
       <description>&lt;h1 id=&#34;background&#34;&gt;Background&lt;/h1&gt;
 &lt;p&gt;After configuring my new desktop, the previous one was suspended because of the electricity concern. But my friend told me his apartment was electric-free, after discussing with him I decided to move my previous desktop to his living room to set up a remote server to reduce the expence of cloud servers.&lt;/p&gt;
 &lt;h1 id=&#34;steps&#34;&gt;Steps&lt;/h1&gt;
@@ -88,18 +88,18 @@
     </item>
     <item>
       <title>When ChatGPT will let you down?After 6 hours on a project</title>
-      <link>http://localhost:1313/posts/2024-07-21-when-chatgpt-will-let-you-down-after-6-hours-on-a-project/</link>
+      <link>https://xichen1997.github.io/posts/2024-07-21-when-chatgpt-will-let-you-down-after-6-hours-on-a-project/</link>
       <pubDate>Sun, 21 Jul 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/posts/2024-07-21-when-chatgpt-will-let-you-down-after-6-hours-on-a-project/</guid>
+      <guid>https://xichen1997.github.io/posts/2024-07-21-when-chatgpt-will-let-you-down-after-6-hours-on-a-project/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Nowadays, chatgpt has been integrated into every aspect of our lives and work. It greatly enhances the capacity not only of the individual developer, but of staff in giant tech.&lt;/p&gt;
 &lt;p&gt;It also has great potential in education. In my opinion, it&amp;rsquo;s more like a very, very patient personal teacher that can many strange questions any time and is willing to discuss the details with you. And it possesses almost all human knowledge, akin to Aristotle in 21st centry.&lt;/p&gt;</description>
     </item>
     <item>
       <title>HPC-3-use-openmp(shared-memory-method)</title>
-      <link>http://localhost:1313/posts/2024-04-16-hpc3-openmp-shared-memory-method/</link>
+      <link>https://xichen1997.github.io/posts/2024-04-16-hpc3-openmp-shared-memory-method/</link>
       <pubDate>Tue, 16 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/posts/2024-04-16-hpc3-openmp-shared-memory-method/</guid>
+      <guid>https://xichen1997.github.io/posts/2024-04-16-hpc3-openmp-shared-memory-method/</guid>
       <description>&lt;h1 id=&#34;introduction-to-hpc-shared-memory-parallel-using-openmp&#34;&gt;Introduction to HPC, shared memory parallel using openmp&lt;/h1&gt;
 &lt;h2 id=&#34;1-the-multicore-system&#34;&gt;1 The multicore system&lt;/h2&gt;
 &lt;p&gt;&lt;img alt=&#34;image-20200520102045196&#34; loading=&#34;lazy&#34; src=&#34;https://raw.githubusercontent.com/OeuFcok/picture_for_blog/master/typora/20200520190314.png&#34;&gt;&lt;/p&gt;
@@ -136,9 +136,9 @@
     </item>
     <item>
       <title>HPC-1-divide-and-conquer-block-matrix-algorithmr</title>
-      <link>http://localhost:1313/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/</link>
+      <link>https://xichen1997.github.io/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/</link>
       <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/</guid>
+      <guid>https://xichen1997.github.io/posts/2023-04-14-hpc1-divide-and-conquer-block-matrix/</guid>
       <description>&lt;h1 id=&#34;week-2-block-matrix-algorithm&#34;&gt;week 2 block matrix algorithm&lt;/h1&gt;
 &lt;h1 id=&#34;1-blis-reference-high-performance-implitation-vs-naive-methods&#34;&gt;1. BLIS reference high performance implitation v.s. naive methods:&lt;/h1&gt;
 &lt;p&gt;&lt;img alt=&#34;img&#34; loading=&#34;lazy&#34; src=&#34;https://raw.githubusercontent.com/xichen1997/picture_for_blog/master/Plot_All_Orderings.png&#34;&gt;&lt;/p&gt;
@@ -149,9 +149,9 @@
     </item>
     <item>
       <title>HPC-2-Memory-hierarchy-in-computer</title>
-      <link>http://localhost:1313/posts/2023-04-15-hpc2-memory-hierarchy/</link>
+      <link>https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/</link>
       <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/posts/2023-04-15-hpc2-memory-hierarchy/</guid>
+      <guid>https://xichen1997.github.io/posts/2023-04-15-hpc2-memory-hierarchy/</guid>
       <description>&lt;h1 id=&#34;hierarchy-memory&#34;&gt;Hierarchy Memory&lt;/h1&gt;
 &lt;h2 id=&#34;1-why-use-hierarchy-memory&#34;&gt;1. Why use Hierarchy Memory&lt;/h2&gt;
 &lt;p&gt;Because the register memory is much faster than main memory, in fact the difference is about two magnitude. And the  performance gap will be larger because the CPU&amp;rsquo;s speed increase faster than main memory.&lt;/p&gt;
@@ -159,9 +159,9 @@
     </item>
     <item>
       <title>Several issues I meet when plug in new RTX 4090 GPU for my workstation</title>
-      <link>http://localhost:1313/posts/2024-02-24-several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation/</link>
+      <link>https://xichen1997.github.io/posts/2024-02-24-several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation/</link>
       <pubDate>Sat, 24 Feb 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/posts/2024-02-24-several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation/</guid>
+      <guid>https://xichen1997.github.io/posts/2024-02-24-several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation/</guid>
       <description>&lt;h1 id=&#34;several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation&#34;&gt;Several issues I meet when plug in new RTX 4090 GPU for my workstation&lt;/h1&gt;
 &lt;p&gt;Background hardware s&lt;/p&gt;
 &lt;p&gt;AMD 7950X3D&lt;/p&gt;
@@ -175,9 +175,9 @@
     </item>
     <item>
       <title>The lessons I learned from setting up an API server via perl script</title>
-      <link>http://localhost:1313/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/</link>
+      <link>https://xichen1997.github.io/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/</link>
       <pubDate>Tue, 21 Nov 2023 21:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/</guid>
+      <guid>https://xichen1997.github.io/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/</guid>
       <description>&lt;h2 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h2&gt;
 &lt;p&gt;Recently When I was trying to set up an API server in a perl script to do some unit tests, I met lots of trouble.&lt;/p&gt;
 &lt;p&gt;In conclusion, the trouble can be classfied as 3 parts:&lt;/p&gt;
@@ -200,9 +200,9 @@
     </item>
     <item>
       <title>Why I open this blog</title>
-      <link>http://localhost:1313/posts/2023-10-01-why-i-open-this-blog/</link>
+      <link>https://xichen1997.github.io/posts/2023-10-01-why-i-open-this-blog/</link>
       <pubDate>Thu, 28 Sep 2023 21:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/posts/2023-10-01-why-i-open-this-blog/</guid>
+      <guid>https://xichen1997.github.io/posts/2023-10-01-why-i-open-this-blog/</guid>
       <description>&lt;p&gt;Feynman has told us the best way to learn something is that you use concise and understandable words introduce what you learned to others, if they can understand well, then you master the knowledge.&lt;/p&gt;
 &lt;p&gt;I have a habit which writing some notes/docs for myself, which is hard to undetstand for others(Even myself would lost after several weeks). Then I decide to make my work/study log perfect and share what I think is valueable to others.&lt;/p&gt;</description>
     </item>

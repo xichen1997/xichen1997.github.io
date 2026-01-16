@@ -2,185 +2,185 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Xi&#39;s Blog</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://xichen1997.github.io/tags/</link>
     <description>Recent content in Tags on Xi&#39;s Blog</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 21 Jul 2024 00:05:14 -0400</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://xichen1997.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ChatGPT</title>
-      <link>http://localhost:1313/tags/chatgpt/</link>
+      <link>https://xichen1997.github.io/tags/chatgpt/</link>
       <pubDate>Sun, 21 Jul 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/chatgpt/</guid>
+      <guid>https://xichen1997.github.io/tags/chatgpt/</guid>
       <description></description>
     </item>
     <item>
       <title>HomeAssistant</title>
-      <link>http://localhost:1313/tags/homeassistant/</link>
+      <link>https://xichen1997.github.io/tags/homeassistant/</link>
       <pubDate>Sun, 21 Jul 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/homeassistant/</guid>
+      <guid>https://xichen1997.github.io/tags/homeassistant/</guid>
       <description></description>
     </item>
     <item>
       <title>LLM</title>
-      <link>http://localhost:1313/tags/llm/</link>
+      <link>https://xichen1997.github.io/tags/llm/</link>
       <pubDate>Sun, 21 Jul 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/llm/</guid>
+      <guid>https://xichen1997.github.io/tags/llm/</guid>
       <description></description>
     </item>
     <item>
       <title>Raspberry-Pi</title>
-      <link>http://localhost:1313/tags/raspberry-pi/</link>
+      <link>https://xichen1997.github.io/tags/raspberry-pi/</link>
       <pubDate>Sun, 21 Jul 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/raspberry-pi/</guid>
+      <guid>https://xichen1997.github.io/tags/raspberry-pi/</guid>
       <description></description>
     </item>
     <item>
       <title>Multi-Threading</title>
-      <link>http://localhost:1313/tags/multi-threading/</link>
+      <link>https://xichen1997.github.io/tags/multi-threading/</link>
       <pubDate>Tue, 16 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/multi-threading/</guid>
+      <guid>https://xichen1997.github.io/tags/multi-threading/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenMP</title>
-      <link>http://localhost:1313/tags/openmp/</link>
+      <link>https://xichen1997.github.io/tags/openmp/</link>
       <pubDate>Tue, 16 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/openmp/</guid>
+      <guid>https://xichen1997.github.io/tags/openmp/</guid>
       <description></description>
     </item>
     <item>
       <title>Parallel-Computing</title>
-      <link>http://localhost:1313/tags/parallel-computing/</link>
+      <link>https://xichen1997.github.io/tags/parallel-computing/</link>
       <pubDate>Tue, 16 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/parallel-computing/</guid>
+      <guid>https://xichen1997.github.io/tags/parallel-computing/</guid>
       <description></description>
     </item>
     <item>
       <title>Shared-Memory</title>
-      <link>http://localhost:1313/tags/shared-memory/</link>
+      <link>https://xichen1997.github.io/tags/shared-memory/</link>
       <pubDate>Tue, 16 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/shared-memory/</guid>
+      <guid>https://xichen1997.github.io/tags/shared-memory/</guid>
       <description></description>
     </item>
     <item>
       <title>Cache</title>
-      <link>http://localhost:1313/tags/cache/</link>
+      <link>https://xichen1997.github.io/tags/cache/</link>
       <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/cache/</guid>
+      <guid>https://xichen1997.github.io/tags/cache/</guid>
       <description></description>
     </item>
     <item>
       <title>Cache-Optimization</title>
-      <link>http://localhost:1313/tags/cache-optimization/</link>
+      <link>https://xichen1997.github.io/tags/cache-optimization/</link>
       <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/cache-optimization/</guid>
+      <guid>https://xichen1997.github.io/tags/cache-optimization/</guid>
       <description></description>
     </item>
     <item>
       <title>Intrinsics</title>
-      <link>http://localhost:1313/tags/intrinsics/</link>
+      <link>https://xichen1997.github.io/tags/intrinsics/</link>
       <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/intrinsics/</guid>
+      <guid>https://xichen1997.github.io/tags/intrinsics/</guid>
       <description></description>
     </item>
     <item>
       <title>Matrix-Multiplication</title>
-      <link>http://localhost:1313/tags/matrix-multiplication/</link>
+      <link>https://xichen1997.github.io/tags/matrix-multiplication/</link>
       <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/matrix-multiplication/</guid>
+      <guid>https://xichen1997.github.io/tags/matrix-multiplication/</guid>
       <description></description>
     </item>
     <item>
       <title>Memory-Hierarchy</title>
-      <link>http://localhost:1313/tags/memory-hierarchy/</link>
+      <link>https://xichen1997.github.io/tags/memory-hierarchy/</link>
       <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/memory-hierarchy/</guid>
+      <guid>https://xichen1997.github.io/tags/memory-hierarchy/</guid>
       <description></description>
     </item>
     <item>
       <title>Performance-Optimization</title>
-      <link>http://localhost:1313/tags/performance-optimization/</link>
+      <link>https://xichen1997.github.io/tags/performance-optimization/</link>
       <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/performance-optimization/</guid>
+      <guid>https://xichen1997.github.io/tags/performance-optimization/</guid>
       <description></description>
     </item>
     <item>
       <title>SIMD</title>
-      <link>http://localhost:1313/tags/simd/</link>
+      <link>https://xichen1997.github.io/tags/simd/</link>
       <pubDate>Mon, 15 Apr 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/simd/</guid>
+      <guid>https://xichen1997.github.io/tags/simd/</guid>
       <description></description>
     </item>
     <item>
       <title>GPU</title>
-      <link>http://localhost:1313/tags/gpu/</link>
+      <link>https://xichen1997.github.io/tags/gpu/</link>
       <pubDate>Sat, 24 Feb 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/gpu/</guid>
+      <guid>https://xichen1997.github.io/tags/gpu/</guid>
       <description></description>
     </item>
     <item>
       <title>Networking</title>
-      <link>http://localhost:1313/tags/networking/</link>
+      <link>https://xichen1997.github.io/tags/networking/</link>
       <pubDate>Sat, 24 Feb 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/networking/</guid>
+      <guid>https://xichen1997.github.io/tags/networking/</guid>
       <description></description>
     </item>
     <item>
       <title>RTX-4090</title>
-      <link>http://localhost:1313/tags/rtx-4090/</link>
+      <link>https://xichen1997.github.io/tags/rtx-4090/</link>
       <pubDate>Sat, 24 Feb 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/rtx-4090/</guid>
+      <guid>https://xichen1997.github.io/tags/rtx-4090/</guid>
       <description></description>
     </item>
     <item>
       <title>Troubleshooting</title>
-      <link>http://localhost:1313/tags/troubleshooting/</link>
+      <link>https://xichen1997.github.io/tags/troubleshooting/</link>
       <pubDate>Sat, 24 Feb 2024 00:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/troubleshooting/</guid>
+      <guid>https://xichen1997.github.io/tags/troubleshooting/</guid>
       <description></description>
     </item>
     <item>
       <title>API</title>
-      <link>http://localhost:1313/tags/api/</link>
+      <link>https://xichen1997.github.io/tags/api/</link>
       <pubDate>Tue, 21 Nov 2023 21:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/api/</guid>
+      <guid>https://xichen1997.github.io/tags/api/</guid>
       <description></description>
     </item>
     <item>
       <title>Debugging</title>
-      <link>http://localhost:1313/tags/debugging/</link>
+      <link>https://xichen1997.github.io/tags/debugging/</link>
       <pubDate>Tue, 21 Nov 2023 21:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/debugging/</guid>
+      <guid>https://xichen1997.github.io/tags/debugging/</guid>
       <description></description>
     </item>
     <item>
       <title>IPC</title>
-      <link>http://localhost:1313/tags/ipc/</link>
+      <link>https://xichen1997.github.io/tags/ipc/</link>
       <pubDate>Tue, 21 Nov 2023 21:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/ipc/</guid>
+      <guid>https://xichen1997.github.io/tags/ipc/</guid>
       <description></description>
     </item>
     <item>
       <title>Perl</title>
-      <link>http://localhost:1313/tags/perl/</link>
+      <link>https://xichen1997.github.io/tags/perl/</link>
       <pubDate>Tue, 21 Nov 2023 21:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/perl/</guid>
+      <guid>https://xichen1997.github.io/tags/perl/</guid>
       <description></description>
     </item>
     <item>
       <title>Blog</title>
-      <link>http://localhost:1313/tags/blog/</link>
+      <link>https://xichen1997.github.io/tags/blog/</link>
       <pubDate>Thu, 28 Sep 2023 21:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/blog/</guid>
+      <guid>https://xichen1997.github.io/tags/blog/</guid>
       <description></description>
     </item>
     <item>
       <title>Writing</title>
-      <link>http://localhost:1313/tags/writing/</link>
+      <link>https://xichen1997.github.io/tags/writing/</link>
       <pubDate>Thu, 28 Sep 2023 21:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/tags/writing/</guid>
+      <guid>https://xichen1997.github.io/tags/writing/</guid>
       <description></description>
     </item>
   </channel>

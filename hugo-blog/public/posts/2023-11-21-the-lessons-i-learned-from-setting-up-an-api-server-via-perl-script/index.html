@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="dark">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>The lessons I learned from setting up an API server via perl script | Xi&#39;s Blog</title>
 <meta name="keywords" content="Perl, API, IPC, debugging">
 <meta name="description" content="Problem Statement
@@ -27,16 +27,16 @@ system(perl server.pl daemon -l http://*:0);
 
 Use the command above in main test script will launch an API server in a child process. The residual server processes should be killed without any left after the tests. At first I use &ldquo;system&rdquo; to run the command, and then kill it in a different system command via:">
 <meta name="author" content="Xi Chen">
-<link rel="canonical" href="http://localhost:1313/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/">
+<link rel="canonical" href="https://xichen1997.github.io/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.56bf4be95d09faf55cd507c845718ccfcabb2e24e37f8fa5a66f9fa098252b06.css" integrity="sha256-Vr9L6V0J&#43;vVc1QfIRXGMz8q7LiTjf4&#43;lpm&#43;foJglKwY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://xichen1997.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://xichen1997.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://xichen1997.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://xichen1997.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://xichen1997.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/">
+<link rel="alternate" hreflang="en" href="https://xichen1997.github.io/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/">
 <noscript>
     <style>
         #theme-toggle,
@@ -74,13 +74,103 @@ window.addEventListener('load', (event) => {
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+<meta property="og:url" content="https://xichen1997.github.io/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/">
+  <meta property="og:site_name" content="Xi&#39;s Blog">
+  <meta property="og:title" content="The lessons I learned from setting up an API server via perl script">
+  <meta property="og:description" content="Problem Statement Recently When I was trying to set up an API server in a perl script to do some unit tests, I met lots of trouble.
+In conclusion, the trouble can be classfied as 3 parts:
+The residual server processes can’t be killed properly. Program stucked after launch the API server. stdin, stdout, stderr on windows. Error examples The residual server processes can’t be killed. 1 system(perl server.pl daemon -l http://*:0); Use the command above in main test script will launch an API server in a child process. The residual server processes should be killed without any left after the tests. At first I use “system” to run the command, and then kill it in a different system command via:">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-11-21T21:05:14-04:00">
+    <meta property="article:modified_time" content="2023-11-21T21:05:14-04:00">
+    <meta property="article:tag" content="Perl">
+    <meta property="article:tag" content="API">
+    <meta property="article:tag" content="IPC">
+    <meta property="article:tag" content="Debugging">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The lessons I learned from setting up an API server via perl script">
+<meta name="twitter:description" content="Problem Statement
+Recently When I was trying to set up an API server in a perl script to do some unit tests, I met lots of trouble.
+In conclusion, the trouble can be classfied as 3 parts:
 
+The residual server processes can&rsquo;t be killed properly.
+Program stucked after launch the API server.
+stdin, stdout, stderr on windows.
+
+Error examples
+The residual server processes can&rsquo;t be killed.
+
+
+1
+
+
+system(perl server.pl daemon -l http://*:0);
+
+
+Use the command above in main test script will launch an API server in a child process. The residual server processes should be killed without any left after the tests. At first I use &ldquo;system&rdquo; to run the command, and then kill it in a different system command via:">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://xichen1997.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "The lessons I learned from setting up an API server via perl script",
+      "item": "https://xichen1997.github.io/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The lessons I learned from setting up an API server via perl script",
+  "name": "The lessons I learned from setting up an API server via perl script",
+  "description": "Problem Statement Recently When I was trying to set up an API server in a perl script to do some unit tests, I met lots of trouble.\nIn conclusion, the trouble can be classfied as 3 parts:\nThe residual server processes can\u0026rsquo;t be killed properly. Program stucked after launch the API server. stdin, stdout, stderr on windows. Error examples The residual server processes can\u0026rsquo;t be killed. 1 system(perl server.pl daemon -l http://*:0); Use the command above in main test script will launch an API server in a child process. The residual server processes should be killed without any left after the tests. At first I use \u0026ldquo;system\u0026rdquo; to run the command, and then kill it in a different system command via:\n",
+  "keywords": [
+    "Perl", "API", "IPC", "debugging"
+  ],
+  "articleBody": "Problem Statement Recently When I was trying to set up an API server in a perl script to do some unit tests, I met lots of trouble.\nIn conclusion, the trouble can be classfied as 3 parts:\nThe residual server processes can’t be killed properly. Program stucked after launch the API server. stdin, stdout, stderr on windows. Error examples The residual server processes can’t be killed. 1 system(perl server.pl daemon -l http://*:0); Use the command above in main test script will launch an API server in a child process. The residual server processes should be killed without any left after the tests. At first I use “system” to run the command, and then kill it in a different system command via:\n1 ps aux \\| grep \"xxx\" \\| awk {print $2}\" \\| xargs kill However, my tests need to be run on all platform including windows, then it’s not possible to use the UNIX/MAC specific command to kill the processes.\nOf course I can use\n1 print \"$^0\" to detect different OS and use different command to kill them, but I don’t because I am afraid of some problem which unspecified platform will show up. I would like to use the naive perl method.\nThen the question become how to get the pid from the “system” command in perl, here, I use open3 [https://perldoc.perl.org/IPC::Open3]\nThe open3 will return a pid number, which could be used by perl to execute:\nKill ‘TERM’, $pid. which is quiet convenient.\nThe command is:\n1 2 my $pid = open3(my $in, my $out, my $err, \"perl server.pl daemon -l http://*:0\"); kill 'TERM', $pid; It should be fine to solve the problem, however, then I met the second question: The test is stucked once the child processes launch the API server.\nProgram stucked after launch the API server. This is quiet interesting caused by open3.\nopen3 will open the subprocess with its stdin, stdout and stderr. However, there is buffer setting in linux terminal(not sure if there is in windows os.). So the buffer always waiting for some output to accumulate and then release them. The api server always waiting for new output, however, it never reached the requirements of the buffer. Then the program stucked.\nTwo ways to solve the problem:\nuse “unbuffer” to launch the server:\n1 my $pid = open3(my $in, my $out, my $err, \"unbuffer perl server.pl daemon -l http://*:0\"); However, this can’t be done on windows.\nIn the server.pl, add |=1 to force flush buffer.\nIt should solve the problem of stucked program.\nHowever, new problem showed up:\nThe server.pl still alive after successfully tests.\nI can still use ps aux | grep \"server.pl\" to find 4-5 processes.\nAfter careful thinking, I made an experiment which I will comment the “kill” in each tests, and after running the tests I found the residual processes have twice than before. This means the open3 launch not only 1 subprocess but 2.\nThe reason is that the _ couldn’t been recognized by the open3 command, so open3 launch the command “perl server.pl daemon -l http://_:0” as a string via a bash subprocess, which run sh -c “perl server.pl daemon -l http://*:0”. Thus, we know the reason behind it was we just kill the bash subprocess, not the server process.\nThe fix is easy: replace it with “localhost” or “127.0.0.1”.\nproblem on windows Until this step, everything works fun on linux, however, on windows, the program stucked.\nAfter investigation, I found the windows prefer the syntax:\n1 open3(my *IN, my *OUT, my *ERR, $cmd); It was solved very easily. But I spent a lot of time on it.\nConclusion Even if this is just a not so hard unit test, I spent a lot of time to deal with the async problem, IPC problem, the stand output and error log problem. These things are very tricky to deal with.\n",
+  "wordCount" : "644",
+  "inLanguage": "en",
+  "datePublished": "2023-11-21T21:05:14-04:00",
+  "dateModified": "2023-11-21T21:05:14-04:00",
+  "author":{
+    "@type": "Person",
+    "name": "Xi Chen"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://xichen1997.github.io/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xi's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xichen1997.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Xi&#39;s Blog (Alt + H)">Xi&#39;s Blog</a>
+            <a href="https://xichen1997.github.io/" accesskey="h" title="Xi&#39;s Blog (Alt + H)">Xi&#39;s Blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -106,17 +196,17 @@ window.addEventListener('load', (event) => {
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="https://xichen1997.github.io/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://xichen1997.github.io/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
+                <a href="https://xichen1997.github.io/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
@@ -127,7 +217,7 @@ window.addEventListener('load', (event) => {
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://xichen1997.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://xichen1997.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       The lessons I learned from setting up an API server via perl script
     </h1>
@@ -258,18 +348,18 @@ window.addEventListener('load', (event) => {
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/perl/">Perl</a></li>
-      <li><a href="http://localhost:1313/tags/api/">API</a></li>
-      <li><a href="http://localhost:1313/tags/ipc/">IPC</a></li>
-      <li><a href="http://localhost:1313/tags/debugging/">Debugging</a></li>
+      <li><a href="https://xichen1997.github.io/tags/perl/">Perl</a></li>
+      <li><a href="https://xichen1997.github.io/tags/api/">API</a></li>
+      <li><a href="https://xichen1997.github.io/tags/ipc/">IPC</a></li>
+      <li><a href="https://xichen1997.github.io/tags/debugging/">Debugging</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/2024-02-24-several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation/">
+  <a class="prev" href="https://xichen1997.github.io/posts/2024-02-24-several-issues-i-meet-when-plug-in-new-rtx-4090-gpu-for-my-workstation/">
     <span class="title">« Prev</span>
     <br>
     <span>Several issues I meet when plug in new RTX 4090 GPU for my workstation</span>
   </a>
-  <a class="next" href="http://localhost:1313/posts/2023-10-01-why-i-open-this-blog/">
+  <a class="next" href="https://xichen1997.github.io/posts/2023-10-01-why-i-open-this-blog/">
     <span class="title">Next »</span>
     <br>
     <span>Why I open this blog</span>
@@ -281,7 +371,7 @@ window.addEventListener('load', (event) => {
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Xi&#39;s Blog</a></span> · 
+        <span>&copy; 2026 <a href="https://xichen1997.github.io/">Xi&#39;s Blog</a></span> · 
 
     <span>
         Powered by

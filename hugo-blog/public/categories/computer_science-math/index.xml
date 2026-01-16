@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Computer_science Math on Xi&#39;s Blog</title>
-    <link>http://localhost:1313/categories/computer_science-math/</link>
+    <link>https://xichen1997.github.io/categories/computer_science-math/</link>
     <description>Recent content in Computer_science Math on Xi&#39;s Blog</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 26 Oct 2024 00:05:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/computer_science-math/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://xichen1997.github.io/categories/computer_science-math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>An interesting flipping coin question</title>
-      <link>http://localhost:1313/posts/2024-10-26-an-interesting-flipping-coin-question/</link>
+      <link>https://xichen1997.github.io/posts/2024-10-26-an-interesting-flipping-coin-question/</link>
       <pubDate>Sat, 26 Oct 2024 00:05:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2024-10-26-an-interesting-flipping-coin-question/</guid>
+      <guid>https://xichen1997.github.io/posts/2024-10-26-an-interesting-flipping-coin-question/</guid>
       <description>&lt;h1 id=&#34;an-interesting-flipping-coin-question&#34;&gt;An interesting flipping coin question&lt;/h1&gt;
 &lt;h2 id=&#34;problem-statement&#34;&gt;Problem statement&lt;/h2&gt;
 &lt;p&gt;You have a fair coin, which means a flip result could be tail(T) and head(H), and their probability is 50%.&lt;/p&gt;

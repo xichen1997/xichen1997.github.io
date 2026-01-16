@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Perl on Xi&#39;s Blog</title>
-    <link>http://localhost:1313/tags/perl/</link>
+    <link>https://xichen1997.github.io/tags/perl/</link>
     <description>Recent content in Perl on Xi&#39;s Blog</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 21 Nov 2023 21:05:14 -0400</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/perl/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://xichen1997.github.io/tags/perl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The lessons I learned from setting up an API server via perl script</title>
-      <link>http://localhost:1313/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/</link>
+      <link>https://xichen1997.github.io/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/</link>
       <pubDate>Tue, 21 Nov 2023 21:05:14 -0400</pubDate>
-      <guid>http://localhost:1313/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/</guid>
+      <guid>https://xichen1997.github.io/posts/2023-11-21-the-lessons-i-learned-from-setting-up-an-api-server-via-perl-script/</guid>
       <description>&lt;h2 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h2&gt;
 &lt;p&gt;Recently When I was trying to set up an API server in a perl script to do some unit tests, I met lots of trouble.&lt;/p&gt;
 &lt;p&gt;In conclusion, the trouble can be classfied as 3 parts:&lt;/p&gt;

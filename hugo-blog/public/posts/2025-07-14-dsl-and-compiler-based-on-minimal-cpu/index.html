@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="dark">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>DSL and Compiler Based on Minimal CPU | Xi&#39;s Blog</title>
 <meta name="keywords" content="">
 <meta name="description" content="The project is hosted in the repository (section-2):
@@ -13,16 +13,16 @@ Introduction
 After implementing our minimal CPU, we can write machine code or assembly code to run programs. However, these low-level languages are not easy to read or maintain. We need a way to construct a high-level language that can be translated to machine code, making program development more accessible.
 Thus, the purpose of this section is to design a Domain-Specific Language (DSL) and its compiler with a complete build system.">
 <meta name="author" content="Xi Chen">
-<link rel="canonical" href="http://localhost:1313/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/">
+<link rel="canonical" href="https://xichen1997.github.io/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.56bf4be95d09faf55cd507c845718ccfcabb2e24e37f8fa5a66f9fa098252b06.css" integrity="sha256-Vr9L6V0J&#43;vVc1QfIRXGMz8q7LiTjf4&#43;lpm&#43;foJglKwY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://xichen1997.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://xichen1997.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://xichen1997.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://xichen1997.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://xichen1997.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/">
+<link rel="alternate" hreflang="en" href="https://xichen1997.github.io/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/">
 <noscript>
     <style>
         #theme-toggle,
@@ -60,13 +60,85 @@ window.addEventListener('load', (event) => {
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+<meta property="og:url" content="https://xichen1997.github.io/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/">
+  <meta property="og:site_name" content="Xi&#39;s Blog">
+  <meta property="og:title" content="DSL and Compiler Based on Minimal CPU">
+  <meta property="og:description" content="The project is hosted in the repository (section-2): minimal_CPU
+Introduction After implementing our minimal CPU, we can write machine code or assembly code to run programs. However, these low-level languages are not easy to read or maintain. We need a way to construct a high-level language that can be translated to machine code, making program development more accessible.
+Thus, the purpose of this section is to design a Domain-Specific Language (DSL) and its compiler with a complete build system.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-14T00:06:00+00:00">
+    <meta property="article:modified_time" content="2025-07-14T00:06:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DSL and Compiler Based on Minimal CPU">
+<meta name="twitter:description" content="The project is hosted in the repository (section-2):
+minimal_CPU
+Introduction
+After implementing our minimal CPU, we can write machine code or assembly code to run programs. However, these low-level languages are not easy to read or maintain. We need a way to construct a high-level language that can be translated to machine code, making program development more accessible.
+Thus, the purpose of this section is to design a Domain-Specific Language (DSL) and its compiler with a complete build system.">
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://xichen1997.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "DSL and Compiler Based on Minimal CPU",
+      "item": "https://xichen1997.github.io/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "DSL and Compiler Based on Minimal CPU",
+  "name": "DSL and Compiler Based on Minimal CPU",
+  "description": "The project is hosted in the repository (section-2): minimal_CPU\nIntroduction After implementing our minimal CPU, we can write machine code or assembly code to run programs. However, these low-level languages are not easy to read or maintain. We need a way to construct a high-level language that can be translated to machine code, making program development more accessible.\nThus, the purpose of this section is to design a Domain-Specific Language (DSL) and its compiler with a complete build system.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "The project is hosted in the repository (section-2): minimal_CPU\nIntroduction After implementing our minimal CPU, we can write machine code or assembly code to run programs. However, these low-level languages are not easy to read or maintain. We need a way to construct a high-level language that can be translated to machine code, making program development more accessible.\nThus, the purpose of this section is to design a Domain-Specific Language (DSL) and its compiler with a complete build system.\nCompiler Architecture: From High-Level Language to Machine Code Modern language design requires three core components: language design, Intermediate Representation (IR), and utilities for parsing and code generation.\nThe IR is crucial because it provides an abstraction layer between the high-level language and machine code, making compiler implementation more manageable.\nThe complete compilation workflow is:\nDSL → IR → Machine Code From DSL → IR, we need a lexer and parser. A code generator then translates IR → Machine Code.\nIn the DSL and IR, we don’t need to handle specific memory addresses or CPU registers directly. Instead, we use symbols to represent values (constants or variables). However, when translating IR → Machine Code, we must map each symbol to its actual RAM location. For example, a variable called ‘a’ might be assigned to address 0x8000, so all references to ‘a’ in the IR will be translated to that memory location.\nFor example:\n// IR: store value of b into a // b is at 0x8001, a is at 0x8000 STORE{ a, b } This translates to machine code/assembly:\nLOAD R0, 80, 01 // Load value from b into R0 (register 0) STORE R0, 80, 00 // Store value from R0 into a The IR provides abstraction, so we only need to focus on the IR-to-machine-code translation. If we change the high-level language design, we don’t need to worry about extensive changes in the IR → Machine Code layer—we just need to add new mappings.\nIn our compilation system, to separate data variables from code, we set PC = 0 by default and the DATA section starts from 0x8000.\nDSL Features Our Domain-Specific Language includes the following features:\nVariable Declaration: let variable = value; Conditional Logic: if variable1 \u003c= variable2 goto label; Labels: label_name: Unconditional Jumps: goto label; Output: out variable; Program Termination: halt; Example of a DSL snippet:\nlet a = 10; let b = 20; if a \u003c= b goto end; label end; halt; CPU Instructions and Architecture Refinements Opcode Mnemonic Description Format 0x00 HALT Stop program execution HALT 0x01 LOAD Load from memory to register LOAD Rd, addr 0x02 LOAD_CONST Load constant to register LOAD Rd, const 0x03 STORE Store register to memory STORE addr, Rs 0x04 STORE_CONST Store constant to memory STORE addr, const 0x05 ADD Add two registers ADD Rd, Rs 0x06 SUB Subtract two registers SUB Rd, Rs 0x07 JNZ Jump if register not zero JNZ Rd, addr 0x08 JZ Jump if register zero JZ Rd, addr Key Architectural Features Carry Register: R2 serves as a carry flag for comparisons\nAutomatically set by the SUB instruction R2 = 1 if underflow occurred (Rd \u003c Rs) R2 = 0 if no underflow (Rd \u003e= Rs) Enables efficient comparison operations Comparison Logic: SUB sets R2=1 if underflow (Rd \u003c Rs), R2=0 otherwise\nEliminates the need for a separate comparison instruction Enables complex conditional logic with minimal instructions Supports all comparison operators through arithmetic operations Conditional Jumps: JZ/JNZ use R3 for comparison results\nJZ R3, addr: Jump if R3 == 0 (meaning Rd \u003e= Rs) JNZ R3, addr: Jump if R3 != 0 (meaning Rd \u003c Rs) Enables if-then-else constructs and loops Setting R3=1 as a constant turns JZ/JNZ into JMP IR Design The IR resembles the instruction set because we want easy translation from IR to machine code. The opcode includes special operations like IFLEQ to abstract if-conditions and jumps, along with LABEL and GOTO for control flow.\n1 2 3 4 5 6 7 8 9 10 11 enum class OpCode { LOAD_CONST, LOAD_VAR, ADD, SUB, STORE, STORE_CONST, IFLEQ, GOTO, LABEL, OUT, HALT }; struct IR { OpCode op; // Operation code std::string arg1, arg2, result; // arg1: variable name, arg2: constant value, result: temporary variable name }; IR to Machine Code Translation The IR generation logic can be found in the codegen.cpp file.\nAn important consideration is that we need to scan twice for LABELs because label definitions may appear before we know their actual locations in the code section.\nWe use a backpatching method: we place a placeholder when a LABEL appears, and after completing the compilation loop, we look for these LABEL placeholders and fill in the correct locations.\nFor the implementation details, please refer to the code.\nCompiler System Implementation Lexer Tokenizes the input DSL program into a stream of tokens (keywords, identifiers, numbers, operators, etc.).\nPlease refer to the lexer.cpp code. It defines the tokens for translating text to tokens and checking for errors. All token definitions are in token.h.\nParser Consumes the token stream and builds an intermediate representation (IR) of the program, suitable for execution or further compilation. We use linear scanning and memory write-back methods to keep generation simple, though this generates more code.\nFor example:\nlet a = 1 + 2 + 3; Will be parsed into:\n1 → __temp__0 2 → __temp__1 __temp__0 + __temp__1 → __temp__2 3 → __temp__3 __temp__2 + __temp__3 → __temp__4 __temp__4 → a For parsing expressions, we store every constant as a variable in the data section. This might waste some memory but keeps the implementation simple.\nFor the complete parser implementation, please refer to parser.cpp.\nIntermediate Representation (IR) The IR is a vector of instructions, each corresponding to a CPU operation (e.g., LOAD_CONST, ADD, STORE, IFLEQ, GOTO, LABEL, OUT, HALT).\nPlease refer to codegen.cpp for the implementation.\nTesting the Compiler Please refer to the documentation in the GitHub repository: docs. Clone the repository and navigate to section-2. You can use make to build the compiler and try different DSL programs. The documentation also includes examples showing the complete pipeline from code → IR → machine code.\n",
+  "wordCount" : "1015",
+  "inLanguage": "en",
+  "datePublished": "2025-07-14T00:06:00Z",
+  "dateModified": "2025-07-14T00:06:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Xi Chen"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://xichen1997.github.io/posts/2025-07-14-dsl-and-compiler-based-on-minimal-cpu/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xi's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xichen1997.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Xi&#39;s Blog (Alt + H)">Xi&#39;s Blog</a>
+            <a href="https://xichen1997.github.io/" accesskey="h" title="Xi&#39;s Blog (Alt + H)">Xi&#39;s Blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -92,17 +164,17 @@ window.addEventListener('load', (event) => {
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="https://xichen1997.github.io/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://xichen1997.github.io/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
+                <a href="https://xichen1997.github.io/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
@@ -113,7 +185,7 @@ window.addEventListener('load', (event) => {
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://xichen1997.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://xichen1997.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       DSL and Compiler Based on Minimal CPU
     </h1>
@@ -350,12 +422,12 @@ __temp__4 → a
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/2025-09-19-add-array-support-for-dsl-based-on-minimal-cpu/">
+  <a class="prev" href="https://xichen1997.github.io/posts/2025-09-19-add-array-support-for-dsl-based-on-minimal-cpu/">
     <span class="title">« Prev</span>
     <br>
     <span>Add array support for DSL on Minimal CPU</span>
   </a>
-  <a class="next" href="http://localhost:1313/posts/2025-05-30-learn-from-mvp-minimal-instruction-set-cpu/">
+  <a class="next" href="https://xichen1997.github.io/posts/2025-05-30-learn-from-mvp-minimal-instruction-set-cpu/">
     <span class="title">Next »</span>
     <br>
     <span>Learn from MVP: Minimal Instruction Set CPU</span>
@@ -367,7 +439,7 @@ __temp__4 → a
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Xi&#39;s Blog</a></span> · 
+        <span>&copy; 2026 <a href="https://xichen1997.github.io/">Xi&#39;s Blog</a></span> · 
 
     <span>
         Powered by
